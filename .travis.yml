@@ -8,7 +8,7 @@ os: linux
 addons:
   apt:
     packages:
-    - cmake-3.10
+    - cmake 3.10
 
 script: ./build.sh
     
