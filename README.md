@@ -18,4 +18,4 @@ make
 Qt online docs
 https://doc.qt.io/
 
-![Alt text](https://i.imgur.com/WtM7eHQ.png)
+![Alt text](https://i.imgur.com/6NiTf1E.png)
