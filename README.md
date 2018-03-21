@@ -10,7 +10,7 @@ cd your/project/build
 cmake ..    
 make
 
-./qtdice
+./QtDice
 
 
 -- Tutorials and resources --
@@ -18,4 +18,4 @@ make
 Qt online docs
 https://doc.qt.io/
 
-![Alt text](https://imgur.com/a/4XDVe)
+![Alt text](https://i.imgur.com/WtM7eHQ.png)
