@@ -37,9 +37,6 @@ addons:
     packages:
     - cmake 3.10
 
-before_install:
-    - sudo apt-get install -y cmake
-
 script:
     - mkdir build
     - cd build
