@@ -31,11 +31,8 @@ matrix:
             - clang-5
     env: COMPILER=clang++-5
 
-os: linux
-addons:
-  apt:
-    packages:
-    - cmake 3.10
+os: 
+    - linux
 
 script:
     - mkdir build
