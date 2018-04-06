@@ -6,14 +6,46 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
-    <height>345</height>
+    <width>498</width>
+    <height>337</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>498</width>
+    <height>337</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>About</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0" colspan="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
@@ -28,15 +60,15 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>121</width>
-         <height>121</height>
+         <width>142</width>
+         <height>127</height>
         </rect>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../../dice.qrc">:/images/dice.png</pixmap>
+        <pixmap>:/images/dice.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -45,8 +77,8 @@
       <widget class="QLabel" name="label_name">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>30</y>
+         <x>168</x>
+         <y>24</y>
          <width>51</width>
          <height>21</height>
         </rect>
@@ -73,8 +105,8 @@
       <widget class="QLabel" name="label_name_str">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>30</y>
+         <x>219</x>
+         <y>24</y>
          <width>221</width>
          <height>21</height>
         </rect>
@@ -86,11 +118,17 @@
       <widget class="QLabel" name="label_email">
        <property name="geometry">
         <rect>
-         <x>200</x>
-         <y>50</y>
-         <width>181</width>
-         <height>20</height>
+         <x>219</x>
+         <y>39</y>
+         <width>600</width>
+         <height>300</height>
         </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="text">
         <string>&lt;petross404@gmail.com&gt;</string>
@@ -99,8 +137,8 @@
       <widget class="QLabel" name="label_version">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>90</y>
+         <x>168</x>
+         <y>72</y>
          <width>61</width>
          <height>20</height>
         </rect>
@@ -118,8 +156,8 @@
       <widget class="QLabel" name="label_version_number">
        <property name="geometry">
         <rect>
-         <x>220</x>
-         <y>90</y>
+         <x>231</x>
+         <y>72</y>
          <width>141</width>
          <height>20</height>
         </rect>
@@ -131,8 +169,8 @@
       <widget class="QLabel" name="label_qt_version">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>130</y>
+         <x>168</x>
+         <y>117</y>
          <width>261</width>
          <height>20</height>
         </rect>
@@ -144,8 +182,8 @@
       <widget class="QLabel" name="label_cpp_info">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>150</y>
+         <x>168</x>
+         <y>138</y>
          <width>211</width>
          <height>20</height>
         </rect>
@@ -162,8 +200,8 @@
       <widget class="QLabel" name="label_links">
        <property name="geometry">
         <rect>
-         <x>160</x>
-         <y>190</y>
+         <x>168</x>
+         <y>180</y>
          <width>41</width>
          <height>20</height>
         </rect>
@@ -181,8 +219,8 @@
       <widget class="QLabel" name="label_links_str">
        <property name="geometry">
         <rect>
-         <x>180</x>
-         <y>210</y>
+         <x>195</x>
+         <y>204</y>
          <width>221</width>
          <height>20</height>
         </rect>
@@ -214,7 +252,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../../dice.qrc">:/images/386.png</pixmap>
+          <pixmap>:/images/386.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -237,33 +275,25 @@
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
         <widget class="QLabel" name="label_thanks">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Thanks message</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>OK</string>
-     </property>
     </widget>
    </item>
   </layout>

@@ -24,11 +24,11 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->spinBox->setRange(1, 6);
 
 #ifdef USER_MODE
- 	checkBox = new QCheckBox("User mode", this);
- 	label_status = new QLabel("Haven't rolled yet", this);
+	checkBox = new QCheckBox("User mode", this);
+	label_status = new QLabel("Haven't rolled yet", this);
 
- 	qtdice_ui->gridLayout_Status->addWidget(checkBox, 0, 0);
- 	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 1);
+	qtdice_ui->gridLayout_Status->addWidget(checkBox, 0, 0);
+	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 1);
 #endif
 
 	//Create the image to show our red dice in the beggining
@@ -62,6 +62,11 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	//Connect buttons to functions
 	connect(qtdice_ui->m_button, &QPushButton::clicked,
 	        this, static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+	connect(qtdice_ui->m_button, &QPushButton::clicked, this, [this]()
+	{
+		QSound::play(":/sound/roll.wav");
+		qDebug() << "Play sound";
+	});
 	connect(qtdice_ui->m_button_quit, &QPushButton::clicked, this, &QApplication::exit);
 
 	//Let's connect the menus with some functions
@@ -165,5 +170,138 @@ void QtDice::aboutQtDice()
 {
 	About* a = new About(this);
 	a->show();
-	//About(this).show();
+}
+
+void QtDice::reload()
+{
+	animate_dice();
+
+	Dice qtdice;
+	qtdice.roll();
+	image_update(qtdice.get_number());
+	emit reloaded_without_spinbox();
+}
+
+void QtDice::reload(int number)
+{
+	animate_dice();
+	Dice qtdice {number};
+	image_update(qtdice.get_number());
+}
+
+void QtDice::disableWidgets()
+{
+	//Now that movie is started, set the following...
+	qtdice_ui->m_button_quit->setFocus();
+	qtdice_ui->action_Roll_the_dice->setEnabled(false);
+	qtdice_ui->m_button->setEnabled(false);
+	//...also set the QLabel's that show the status
+	label_status->setText(tr("Rolling..."));
+	qtdice_ui->spinBox->setEnabled(false);
+}
+
+void QtDice::enableWidgets()
+{
+	qtdice_ui->label->setPixmap(image);
+	qtdice_ui->label->show();
+	qtdice_ui->m_button->setEnabled(true);
+	qtdice_ui->m_button->setFocus();
+	qtdice_ui->action_Roll_the_dice->setEnabled(true);
+
+	emit dice_stopped_rolling();
+}
+
+void QtDice::stop_last_frame(QMovie* movie)
+{
+	if(movie->currentFrameNumber() == (movie->frameCount() - 1))
+	{
+		movie->stop();
+
+		//Explicity emit finished signal
+		//https://bugreports.qt.io/browse/QTBUG-66733
+		if(movie->state() == QMovie::NotRunning)
+		{
+			emit movie->finished();
+			label_status->setText(tr("Stopped"));
+			qtdice_ui->spinBox->setEnabled(true);
+		}
+	}
+}
+
+/*
+* This function declares image_update(int image_number)
+* What this function does, is that it accepts an image_number
+* which is generated randomly in Dice class members and based
+* on this integer it selects the proper dice image to show
+*/
+
+void QtDice::image_update(int image_number)
+{
+	//Now deal with which image will be loaded based on image_number
+	//The whole point of this program is here
+	QString image_name {":/images/dice-%1.png"};
+
+	if((image_number < 0) || (image_number > 6))
+	{
+		qDebug() << "Oops! Very wrong number...";
+		QString msg_error = "A dice doesn't have this number : " + (QString("%1").arg(image_number));
+		QMessageBox::critical(this, tr("QtDice"),
+		                      tr(msg_error.toLocal8Bit().constData()));
+	}
+	else
+	{
+		image.load(image_name.arg(image_number));
+	}
+
+	connect(movie, &QMovie::frameChanged, this,
+	        [ = ]()
+	{
+		if(movie->state() == QMovie::NotRunning)
+		{
+			qtdice_ui->spinBox->blockSignals(true);
+			qtdice_ui->spinBox->setValue(image_number);
+			qtdice_ui->spinBox->blockSignals(false);
+		}
+	});
+}
+
+/*
+* Before showing the image, it plays a small animation of
+* a dice that is rolling for enhanced user experience
+*/
+void QtDice::animate_dice()
+{
+	// When animation starts, disable spinBox, the buttons etc...
+	connect(movie, &QMovie::started, this, &QtDice::disableWidgets);
+
+	//Thanks to the guys at this thread :
+	//https://forum.qt.io/topic/88197/custom-signal-to-slot-the-slot-requires-more-arguments-than-the-signal-provides
+	connect(movie, &QMovie::frameChanged, this, std::bind(&QtDice::qmovieFrameChanged, this, movie));
+	connect(this, &QtDice::qmovieFrameChanged, this, &QtDice::stop_last_frame);
+
+	// When movie is finished, re-enable spinBox, buttons etc
+	connect(movie, &QMovie::finished, this, &QtDice::enableWidgets);
+
+	//Make sure we don't constantly re-append a fileName!
+	if(movie->fileName() == "")
+	{
+		//movie->setFileName(":/images/rolling_infinite.gif");
+		movie->setFileName(":images/bluedice.gif");
+	}
+
+	qtdice_ui->label->setMovie(movie);
+
+	//Just to make sure that movie has a valid type or exit
+	if(movie->isValid())
+	{
+		//TODO Debug why this is printed twice for every press of the m_button
+		//qDebug() << "is valid";
+		movie->start();
+	}
+	else
+	{
+		QString anim_error {"Animation type is not supported!"};
+		qtdice_ui->label->setText(tr(anim_error.toLocal8Bit().constData()));
+		QMessageBox::critical(this, tr("Error"), tr(anim_error.toLocal8Bit().constData()));
+	}
 }

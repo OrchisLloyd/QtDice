@@ -5,8 +5,6 @@
  *
  * This file defines a messagebox to show up
  * when the user clicks the "About QtDice" action.
- *
- * TODO In the future, make a custom messagebox with my logo etc
  */
 
 #include "about.h"
@@ -21,7 +19,7 @@ About::About(QWidget* parent) : QDialog(parent), about_ui(new Ui::About)
 	connect(about_ui->pushButton, &QPushButton::clicked, this, &About::done);
 
 	this->setWindowTitle(QString(tr("About QtDice")));
-	about_ui->label_version_number->setText("0.1");
+	about_ui->label_version_number->setText(QString("%1").arg(QtDice_VERSION));
 	about_ui->label_qt_version->setText(tr("Using Qt %1 (compiled with Qt %2)").arg(qVersion()).arg(QT_VERSION_STR));
 	about_ui->pushButton->setIcon(QIcon::fromTheme("answer"));
 
@@ -45,8 +43,14 @@ About::About(QWidget* parent) : QDialog(parent), about_ui(new Ui::About)
 	                                      "it under the terms of the GNU General Public License as published by\n"
 	                                      "the Free Software Foundation"));
 
-	about_ui->label_thanks->setText(tr("Special thanks to my beloved girlfriend Aidonitsa, who tolerates my\n"
-	                                   "passion and love for Qt/C++ and Gentoo Linux.\n\nWithout her, none of these would be possible."));
+	about_ui->label_thanks->setText(tr("Special thanks to my beloved girlfriend Aidonitsa, who tolerates my passion"
+	                                   "and love for Qt/C++ and Gentoo Linux.\n\nWithout her, none of these would be possible."));
+	about_ui->label_thanks->setWordWrap(true);
+
+	about_ui->tab_info->setAutoFillBackground(true);
+	about_ui->tab_contributions->setAutoFillBackground(true);
+	about_ui->tab_license->setAutoFillBackground(true);
+	about_ui->tab_thanks->setAutoFillBackground(true);
 }
 
 void About::show()
@@ -66,6 +70,7 @@ void About::setAboutIcon(QString imageName)
 	Q_ASSERT_X(image.load(imageName), "This image couldn't be loaded", "Check for grammar errors");
 	about_ui->label_icon->setPixmap(image);
 }
+
 void About::setThanksText(QString thanksText)
 {
 	about_ui->label_thanks->setText(thanksText);
@@ -75,4 +80,3 @@ QString About::getName()
 {
 	return this->m_name;
 }
-

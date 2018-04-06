@@ -13,7 +13,8 @@
 	<file>images/rolling_infinite.gif</file>
 	<file>images/Qt_logo_2016.svg.ico</file>
 	<file>images/386.png</file>
-        <file>images/386.ico</file>
+	<file>images/386.ico</file>
 	<file>images/bluedice.gif</file>
+	<file>sound/roll.wav</file>
 </qresource>
 </RCC>	

@@ -9,6 +9,8 @@
 #define ABOUT_H
 #include "ui_about.h"
 
+#include "../version.h"
+
 #include <QApplication>
 #include <QWidget>
 #include <QDialog>

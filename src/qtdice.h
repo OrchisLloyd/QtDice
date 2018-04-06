@@ -10,6 +10,7 @@
 # include "ui_qtdice.h"
 
 #include "Dice/dice.hpp"
+#include "version.h"
 #include <iostream>
 
 #include <QMainWindow>
@@ -24,6 +25,8 @@
 #include <QTranslator>
 #include <QScopedPointer>
 #include <QtGlobal>
+
+#include <QtMultimedia/QSound>
 
 #include <QEvent>
 #include <QKeyEvent>
