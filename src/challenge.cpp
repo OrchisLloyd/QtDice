@@ -1,3 +1,5 @@
+#ifdef USER_MODE
+
 #include "challenge.h"
 #include "ui_challenge.h"
 #include <QDebug>
@@ -22,3 +24,5 @@ Challenge::~Challenge()
 	qDebug() << "deleting challenge menu";
 	delete challenge_ui;
 }
+
+#endif

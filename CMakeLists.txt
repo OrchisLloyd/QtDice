@@ -22,7 +22,6 @@ set(UI_SOURCES
     src/challengr.ui)
 qt5_wrap_ui(UI_H ${UI_SOURCES})
 
-
 set(qtdice_SRC
   src/main.cpp
   src/qtdice.cpp
@@ -40,6 +39,12 @@ set(qtdice_SRC
 
 set(qtdice_RES
   src/dice.qrc)
+
+option(USER_MODE "Enable the user mode to save user's score etc" OFF)
+if(USER_MODE)
+	message(STATUS "Enabled user mode")
+	add_definitions(-DUSER_MODE)
+endif()
 
 # Tell CMake to create the executable
 add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} 

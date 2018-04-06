@@ -18,8 +18,18 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->m_button->setIcon(*qico);
 
 	movie = new QMovie(this);
+	label_status = new QLabel("Haven't rolled yet", this);
+	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 0);
 
 	qtdice_ui->spinBox->setRange(1, 6);
+
+#ifdef USER_MODE
+ 	checkBox = new QCheckBox("User mode", this);
+ 	label_status = new QLabel("Haven't rolled yet", this);
+
+ 	qtdice_ui->gridLayout_Status->addWidget(checkBox, 0, 0);
+ 	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 1);
+#endif
 
 	//Create the image to show our red dice in the beggining
 	QPixmap image(":/images/dice.png");
@@ -39,8 +49,6 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->action_Quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
 	qtdice_ui->action_About_QtDice->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));
 	qtdice_ui->action_About_Qt->setIcon(QIcon(":/images/Qt_logo_2016.svg.ico"));
-
-	qtdice_ui->label_status->setText("Haven't rolled yet.");
 
 	connect(qtdice_ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged),
 	        this, static_cast<void (QtDice::*)(int)>(&QtDice::reload));
@@ -63,6 +71,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	connect(qtdice_ui->action_About_QtDice, &QAction::triggered, this, &QtDice::aboutQtDice);
 	connect(qtdice_ui->action_About_Qt, &QAction::triggered,  &QApplication::aboutQt);
 
+#ifdef USER_MODE
 	//Handle the user mode and it's creation/deletion
 	//At first, make the menu disabled if user mode is already
 	//on. This avoids the creation of multiples UserWidget
@@ -80,37 +89,39 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	connect(qtdice_ui->actionEnable_User_Menu, &QAction::triggered, this, [this]()
 	{
 		enableUserWidget();
-		qtdice_ui->checkBox->setChecked(true);
+		checkBox->setChecked(true);
 		qtdice_ui->actionDisable_User_Menu->setEnabled(true);
 	});
 	connect(qtdice_ui->actionDisable_User_Menu, &QAction::triggered, this, [this]()
 	{
 		deleteUserWidget();
-		qtdice_ui->checkBox->setChecked(false);
+		checkBox->setChecked(false);
 		qtdice_ui->actionDisable_User_Menu->setEnabled(false);
 	});
-	connect(qtdice_ui->checkBox, &QCheckBox::clicked, this,
+	connect(checkBox, &QCheckBox::clicked, this,
 	        [this]()
 	{
-		if(qtdice_ui->checkBox->isChecked())
+		if(checkBox->isChecked())
 		{
 			qtdice_ui->actionEnable_User_Menu->setEnabled(false);
 			qtdice_ui->actionDisable_User_Menu->setEnabled(true);
 			this->enableUserWidget();
 		}
-		else if(!qtdice_ui->checkBox->isChecked())
+		else if(!checkBox->isChecked())
 		{
 			qtdice_ui->actionEnable_User_Menu->setEnabled(true);
 			qtdice_ui->actionDisable_User_Menu->setEnabled(false);
 			this->deleteUserWidget();
 		}
 	});
+#endif
 
 	qtdice_ui->label_warning->clear();
 	qtdice_ui->centralwidget->adjustSize();
-	this->adjustSize();
+	adjustSize();
 }
 
+#ifdef USER_MODE
 void QtDice::enableUserWidget()
 {
 	userwidget = new UserWidget(this);
@@ -136,6 +147,7 @@ void QtDice::deleteUserWidget()
 
 	emit userModeIsOff();
 }
+#endif
 
 void QtDice::keyPressEvent(QKeyEvent* e)
 {

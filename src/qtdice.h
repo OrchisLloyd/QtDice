@@ -7,7 +7,7 @@
 
 #ifndef QTDICE_H
 #define QTDICE_H
-#include "ui_qtdice.h"
+# include "ui_qtdice.h"
 
 #include "Dice/dice.hpp"
 #include <iostream>
@@ -33,7 +33,10 @@
 #include <QIcon>
 #include <QInputDialog>
 
+#ifdef USER_MODE
 #include "userwidget.h"
+#include <QCheckBox>
+#endif
 
 namespace Ui
 {
@@ -50,9 +53,11 @@ public:
 	void animate_dice();
 	void image_update(int image_num);
 
+# ifdef USER_MODE
 public slots:
 	void enableUserWidget();
 	void deleteUserWidget();
+#endif
 
 private slots :
 	void reload();
@@ -66,8 +71,10 @@ signals:
 	void qmovieFrameChanged(QMovie* movie);
 	bool reloaded_without_spinbox();
 	bool dice_stopped_rolling();
+#ifdef USER_MODE
 	void userModeIsOn();
 	void userModeIsOff();
+#endif
 
 protected:
 	void keyPressEvent(QKeyEvent* e) override;
@@ -75,13 +82,17 @@ protected:
 private:
 	QScopedPointer<Ui::QtDice> qtdice_ui;
 	QTranslator translator;
-	UserWidget* userwidget;
 	int spacerSize_x;
 	int spacerSize_y;
 	QPixmap image;
 	QImage qimage;
 	QMovie* movie;
 	QSize windowSize;
+	QLabel* label_status;
+# ifdef USER_MODE
+	UserWidget* userwidget;
+	QCheckBox* checkBox;
+# endif
 };
 
 #endif // QTDICE_H

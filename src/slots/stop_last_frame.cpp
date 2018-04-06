@@ -22,7 +22,7 @@ void QtDice::stop_last_frame(QMovie* movie)
 		if(movie->state() == QMovie::NotRunning)
 		{
 			emit movie->finished();
-			qtdice_ui->label_status->setText(tr("Stopped"));
+			this->label_status->setText(tr("Stopped"));
 			qtdice_ui->spinBox->setEnabled(true);
 		}
 	}

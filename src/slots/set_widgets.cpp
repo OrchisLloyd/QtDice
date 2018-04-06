@@ -7,7 +7,7 @@ void QtDice::disableWidgets()
 	qtdice_ui->action_Roll_the_dice->setEnabled(false);
 	qtdice_ui->m_button->setEnabled(false);
 	//...also set the QLabel's that show the status
-	qtdice_ui->label_status->setText(tr("Rolling..."));
+	label_status->setText(tr("Rolling..."));
 	qtdice_ui->spinBox->setEnabled(false);
 }
 

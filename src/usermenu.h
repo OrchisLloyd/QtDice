@@ -1,3 +1,5 @@
+#ifdef USER_MODE
+
 #ifndef USERMENU_H
 #define USERMENU_H
 
@@ -35,3 +37,4 @@ private:
 };
 
 #endif // USERMENU_H
+#endif

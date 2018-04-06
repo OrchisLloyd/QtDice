@@ -1,3 +1,5 @@
+#ifdef USER_MODE
+
 #ifndef CHALLENGE_H
 #define CHALLENGE_H
 
@@ -21,3 +23,5 @@ private:
 };
 
 #endif // CHALLENGE_H
+
+#endif //USER_MODE   

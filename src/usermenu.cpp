@@ -1,3 +1,5 @@
+#ifdef USER_MODE
+
 #include "usermenu.h"
 #include <QDebug>
 
@@ -77,3 +79,4 @@ UserMenu::~UserMenu()
 	qDebug() << "Deleting user menu";
 	delete userUi;
 }
+#endif

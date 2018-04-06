@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifdef USER_MODE
 
 #include "ui_userwidget.h"
 #include "userwidget.h"
@@ -101,3 +102,4 @@ UserWidget::~UserWidget()
 	qDebug() << "Deleting user widget";
 	delete user_ui;
 }
+#endif
