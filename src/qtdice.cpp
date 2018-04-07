@@ -7,6 +7,7 @@
 
 #include "qtdice.h"
 #include "About/about.h"
+#include "Settings/configure.h"
 
 QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 {
@@ -55,6 +56,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->action_Quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
 	qtdice_ui->action_About_QtDice->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));
 	qtdice_ui->action_About_Qt->setIcon(QIcon(":/images/Qt_logo_2016.svg.ico"));
+	qtdice_ui->action_Configure->setIcon(QIcon::fromTheme("settings"));
 
 	connect(qtdice_ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged),
 	        this, static_cast<void (QtDice::*)(int)>(&QtDice::reload));
@@ -76,6 +78,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	connect(qtdice_ui->action_Quit, &QAction::triggered, this, &QApplication::quit);
 	connect(qtdice_ui->action_About_QtDice, &QAction::triggered, this, &QtDice::aboutQtDice);
 	connect(qtdice_ui->action_About_Qt, &QAction::triggered,  &QApplication::aboutQt);
+	connect(qtdice_ui->action_Configure, &QAction::triggered, this, &QtDice::QtDiceConfiguration);
 
 #ifdef USER_MODE
 	//Handle the user mode and it's creation/deletion
@@ -172,6 +175,13 @@ void QtDice::aboutQtDice()
 	About* a = new About(this);
 	a->show();
 }
+
+void QtDice::QtDiceConfiguration()
+{
+	Configure* c = new Configure(this);
+	c->show();
+}
+
 
 void QtDice::reload()
 {

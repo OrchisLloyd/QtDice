@@ -265,7 +265,14 @@
     <addaction name="action_About_QtDice"/>
     <addaction name="action_About_Qt"/>
    </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>S&amp;ettings</string>
+    </property>
+    <addaction name="action_Configure"/>
+   </widget>
    <addaction name="menu_File"/>
+   <addaction name="menuSettings"/>
    <addaction name="menu_Help"/>
   </widget>
   <action name="action_Roll_the_dice">
@@ -296,6 +303,11 @@
   <action name="actionDisable_User_Menu">
    <property name="text">
     <string>&amp;Disable User Menu</string>
+   </property>
+  </action>
+  <action name="action_Configure">
+   <property name="text">
+    <string>&amp;Configure QtDice</string>
    </property>
   </action>
  </widget>

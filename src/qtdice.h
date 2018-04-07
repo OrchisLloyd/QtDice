@@ -74,6 +74,7 @@ private slots :
 	void enableWidgets();
 	void stop_last_frame(QMovie* movie);
 	void aboutQtDice();
+	void QtDiceConfiguration();
 
 signals:
 	void qmovieFrameChanged(QMovie* movie);
