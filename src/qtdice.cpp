@@ -17,6 +17,12 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	QtDice::setWindowIcon(*qico);
 	qtdice_ui->m_button->setIcon(*qico);
 
+#ifdef ENABLE_SOUND
+	roll_sound.setSource(QUrl("qrc:/sound/roll.wav"));
+	Q_ASSERT_X(roll_sound.isLoaded(), "Error loading roll.wav", "");
+	roll_sound.setVolume(1.0f);
+#endif
+
 	movie = new QMovie(this);
 	label_status = new QLabel("Haven't rolled yet", this);
 	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 0);
@@ -62,11 +68,6 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	//Connect buttons to functions
 	connect(qtdice_ui->m_button, &QPushButton::clicked,
 	        this, static_cast<void (QtDice::*)(void)>(&QtDice::reload));
-	connect(qtdice_ui->m_button, &QPushButton::clicked, this, [this]()
-	{
-		QSound::play(":/sound/roll.wav");
-		qDebug() << "Play sound";
-	});
 	connect(qtdice_ui->m_button_quit, &QPushButton::clicked, this, &QApplication::exit);
 
 	//Let's connect the menus with some functions
@@ -271,6 +272,12 @@ void QtDice::image_update(int image_number)
 */
 void QtDice::animate_dice()
 {
+#ifdef ENABLE_SOUND
+	//QSound::play(":/sound/roll.wav");
+	roll_sound.play();
+	qDebug() << "Play sound";
+#endif
+
 	// When animation starts, disable spinBox, the buttons etc...
 	connect(movie, &QMovie::started, this, &QtDice::disableWidgets);
 

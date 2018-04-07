@@ -68,7 +68,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/images/dice.png</pixmap>
+        <pixmap resource="../dice.qrc">:/images/dice.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -105,14 +105,14 @@
       <widget class="QLabel" name="label_name_str">
        <property name="geometry">
         <rect>
-         <x>219</x>
+         <x>228</x>
          <y>24</y>
          <width>221</width>
          <height>21</height>
         </rect>
        </property>
        <property name="text">
-        <string>© (C) 2018 Petross404 Petros S</string>
+        <string>2018 Petross404 (Petros S)</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_email">
@@ -252,7 +252,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/images/386.png</pixmap>
+          <pixmap resource="../dice.qrc">:/images/386.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -299,7 +299,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../dice.qrc"/>
+  <include location="../dice.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -26,7 +26,12 @@
 #include <QScopedPointer>
 #include <QtGlobal>
 
+#ifdef ENABLE_SOUND
 #include <QtMultimedia/QSound>
+#include <QtMultimedia/QMediaPlayer>
+#include <QUrl>
+#include <QtMultimedia/QSoundEffect>
+#endif
 
 #include <QEvent>
 #include <QKeyEvent>
@@ -92,6 +97,9 @@ private:
 	QMovie* movie;
 	QSize windowSize;
 	QLabel* label_status;
+#ifdef ENABLE_SOUND
+	QSoundEffect roll_sound;
+#endif
 # ifdef USER_MODE
 	UserWidget* userwidget;
 	QCheckBox* checkBox;

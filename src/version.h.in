@@ -1,0 +1,8 @@
+#define QtDice_VERSION_MAJOR @QtDice_VERSION_MAJOR@
+#define QtDice_VERSION_MINOR @QtDice_VERSION_MINOR@
+#define QtDice_VERSION @QtDice_VERSION@
+
+#define Dice_VERSION_MAJOR @Dice_VERSION_MAJOR@
+#define Dice_VERSION_MINOR @Dice_VERSION_MINOR@
+
+

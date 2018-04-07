@@ -11,7 +11,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 set(QtDice_VERSION_MAJOR 0)
-set(QtDice_VERSION_MINOR 2)
+set(QtDice_VERSION_MINOR 1)
 set(QtDice_VERSION ${QtDice_VERSION_MAJOR}.${QtDice_VERSION_MINOR})
 
 set(Dice_VERSION_MAJOR 1)
@@ -21,16 +21,19 @@ configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/
 
 #file(GLOB TS_FILES "${PROJECT_SOURCE_DIR}/translations/*.ts")
 add_subdirectory(src/About)
+add_subdirectory(src/Settings)
 include_directories(src/)
-# Find the QtWidgets library
+# Find the QtWidgets and Qt5Multimedia library
 find_package(Qt5Widgets CONFIG REQUIRED)
 find_package(Qt5Multimedia CONFIG REQUIRED)
-set(UI_SOURCES
-    src/qtdice.ui
-    src/userwidget.ui
-    src/usermenu.ui
-    src/challengr.ui)
-qt5_wrap_ui(UI_H ${UI_SOURCES})
+#set(UI_SOURCES
+#    src/qtdice.ui
+#    src/userwidget.ui
+#    src/usermenu.ui
+#    src/challenge.ui
+#    src/About/about.ui
+#    src/Settings/configure.ui)
+#qt5_wrap_ui(UI_H ${UI_SOURCES})
 
 set(qtdice_SRC
   src/main.cpp
@@ -40,6 +43,7 @@ set(qtdice_SRC
   src/challenge.cpp
   src/Dice/dice.cpp
   src/About/about.cpp
+  src/Settings/configure.cpp
 )
 
 set(qtdice_RES
@@ -49,6 +53,12 @@ option(USER_MODE "Enable the user mode to save user's score etc" OFF)
 if(USER_MODE)
 	message(STATUS "Enabled user mode")
 	add_definitions(-DUSER_MODE)
+endif()
+
+option(ENABLE_SOUND "Enable rolling sound effect")
+if(ENABLE_SOUND)
+	message(STATUS "Enable rolling sound of the dice")
+	add_definitions(-DENABLE_SOUND)
 endif()
 
 # Tell CMake to create the executable
