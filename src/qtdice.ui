@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>510</width>
+    <width>520</width>
     <height>590</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>510</width>
+    <width>520</width>
     <height>580</height>
    </size>
   </property>
@@ -148,7 +148,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>125</width>
+          <width>145</width>
           <height>0</height>
          </size>
         </property>
@@ -197,7 +197,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>125</width>
+          <width>145</width>
           <height>0</height>
          </size>
         </property>
@@ -207,7 +207,14 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QSpinBox" name="spinBox"/>
+       <widget class="QSpinBox" name="spinBox">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <spacer name="horizontalSpacer_2">
@@ -247,7 +254,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>510</width>
+     <width>520</width>
      <height>32</height>
     </rect>
    </property>

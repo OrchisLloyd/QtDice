@@ -44,9 +44,6 @@ find_package(Qt5Multimedia CONFIG REQUIRED)
 set(qtdice_SRC
   src/main.cpp
   src/qtdice.cpp
-  src/userwidget.cpp
-  src/usermenu.cpp
-  src/challenge.cpp
   src/Dice/dice.cpp
   src/About/about.cpp
   src/Settings/configure.cpp
@@ -59,12 +56,19 @@ option(USER_MODE "Enable the user mode to save user's score etc" OFF)
 if(USER_MODE)
 	message(STATUS "Enabled user mode")
 	add_definitions(-DUSER_MODE)
+	set(qtdice_SRC "${qtdice_SRC} src/userwidget.cpp src/usermenu.cpp src/challenge.cpp")
 endif()
 
-option(ENABLE_SOUND "Enable rolling sound effect")
+option(ENABLE_SOUND "Enable rolling sound effect" ON)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
 	add_definitions(-DENABLE_SOUND)
+endif()
+
+option(ENABLE_POPUP "Enable popup menu on QPushButton" OFF)
+if(ENABLE_POPUP)
+	message(STATUS "Enable popup menu on QPushButton")
+	add_definitions(-DENABLE_POPUP)
 endif()
 
 # Tell CMake to create the executable

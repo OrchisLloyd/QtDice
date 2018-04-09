@@ -27,10 +27,10 @@ public:
 
 public slots:
 	void show();
-#ifdef ENABLE_SOUND
-	void createSoundMenu();
-#endif
-	void create_generalSettings();
+// #ifdef ENABLE_SOUND
+// 	void createSoundMenu();
+// #endif
+// 	void create_generalSettings();
 
 private:
 	//QScopedPointer<Ui::Configure> configureUi;

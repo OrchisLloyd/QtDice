@@ -28,6 +28,15 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	label_status = new QLabel("Haven't rolled yet", this);
 	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 0);
 
+	// Just for experimenting with submenus. Ignore this
+#ifdef ENABLE_POPUP
+	QMenu* menu = new QMenu(tr("Sub Menu"));
+	QAction* roll = new QAction(tr("Roll the dice"));
+	menu->addAction(roll);
+	connect(roll, &QAction::triggered, this, static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+	qtdice_ui->m_button->setMenu(menu);
+#endif
+
 	qtdice_ui->spinBox->setRange(1, 6);
 
 #ifdef USER_MODE
