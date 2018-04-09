@@ -4,6 +4,6 @@ Exec=QtDice
 Icon=dice
 Terminal=false
 Name=QtDice
-GenericName=Roll the dice game
+GenericName=Simple Qt5 game to roll the dice
 Comment=Roll the dice with Qt5
 Categories=Game;
