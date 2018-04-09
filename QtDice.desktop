@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
 Exec=QtDice
-Icon=some-icon
+Icon=dice.png
 Terminal=false
 Name=QtDice
 GenericName=Roll the dice game
 Comment=Roll the dice with Qt5
-Categories=Games;
+Categories=Game;
