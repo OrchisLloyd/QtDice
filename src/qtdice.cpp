@@ -15,8 +15,8 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 
 	QtDice::setWindowTitle("QtDice");
 	QIcon* qico = new QIcon(":/images/dice.ico");
-	QtDice::setWindowIcon(*qico);
-	qtdice_ui->m_button->setIcon(*qico);
+	QtDice::setWindowIcon(QIcon::fromTheme("roll"));
+	qtdice_ui->m_button->setIcon(QIcon::fromTheme("roll"));
 
 #ifdef ENABLE_SOUND
 	roll_sound.setSource(QUrl("qrc:/sound/roll.wav"));
@@ -51,7 +51,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	//it later it trigers the warning message
 	qtdice_ui->m_button_quit->setFocus();
 
-	qtdice_ui->action_Roll_the_dice->setIcon(*qico);
+	qtdice_ui->action_Roll_the_dice->setIcon(QIcon::fromTheme("roll", *qico));
 	qtdice_ui->m_button_quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
 	qtdice_ui->action_Quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
 	qtdice_ui->action_About_QtDice->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));

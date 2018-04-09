@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
 project(QtDice)
-include(GNUInstallDirs)
+
+find_package(ECM REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(FeatureSummary)
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
@@ -69,4 +75,6 @@ add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC}
 target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::Multimedia)
 
 # Install the executable
-install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION CMAKE_INSTALL_BINDIR)
+install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${KDE_INSTALL_BINDIR})
+install(PROGRAMS QtDice.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(PROGRAMS src/images/dice.png DESTINATION ${KDE_INSTALL_ICONDIR})
