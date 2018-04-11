@@ -191,22 +191,43 @@ void QtDice::QtDiceConfiguration()
 	c->show();
 }
 
-
+// This is the random reload function. After the animation is over, 
+// a dice is rolled. Look at Dice/dice.cpp for more details.
 void QtDice::reload()
 {
 	animate_dice();
 
-	Dice qtdice;
-	qtdice.roll();
-	image_update(qtdice.get_number());
+	//If Dice object doesn't exist (=first run), initialize one
+	if(!pDice)
+	{
+		pDice = new Dice();
+	}
+
+	pDice->roll();
+	image_update(pDice->get_number());
+
 	emit reloaded_without_spinbox();
 }
 
+// This is a reload function. After the animation is over, 
+// a dice is given a "hardcoded" value. Look at Dice/dice.cpp for more details.
 void QtDice::reload(int number)
 {
 	animate_dice();
-	Dice qtdice {number};
-	image_update(qtdice.get_number());
+
+	//If Dice object doesn't exist (=first run), initialize one
+	if(!pDice)
+	{
+		pDice = new Dice(number);
+	}
+	else 
+	{
+		pDice->set_number(number);
+	}
+
+	image_update(pDice->get_number());
+	// Actually this function doesn't even need one Dice.
+	// It uses a known int value, it doesn't have to use Dice::get_number to get one.
 }
 
 void QtDice::disableWidgets()

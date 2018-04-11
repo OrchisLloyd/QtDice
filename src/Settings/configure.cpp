@@ -49,7 +49,7 @@ void Configure::show()
 // 	gridLayout->addLayout(gridLayout_GeneralSettings, 0, 2);
 // #endif
 // }
-// 
+//
 // #ifdef ENABLE_SOUND
 // void Configure::createSoundMenu()
 // {

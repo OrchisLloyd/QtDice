@@ -105,6 +105,9 @@ private:
 	UserWidget* userwidget;
 	QCheckBox* checkBox;
 # endif
+// Making an dynamic object of type Dice, will help upon creating one
+// only when the programm is first run by checking if it already exists.
+	Dice* pDice = nullptr;
 };
 
 #endif // QTDICE_H
