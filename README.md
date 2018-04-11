@@ -5,8 +5,8 @@ You need Qt5 and CMake 3 or higher
 -- Build instructions --
 
 cd path/QtDice/ && mkdir build && cd build
-cmake ..
-make
+
+cmake .. && make
 
 ./QtDice
 
