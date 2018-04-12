@@ -15,8 +15,8 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 
 	QtDice::setWindowTitle("QtDice");
 	QIcon* qico = new QIcon(":/images/dice.ico");
-	QtDice::setWindowIcon(QIcon::fromTheme("roll"));
-	qtdice_ui->m_button->setIcon(QIcon::fromTheme("roll"));
+	QtDice::setWindowIcon(QIcon::fromTheme("roll", *qico));
+	qtdice_ui->m_button->setIcon(QIcon::fromTheme("roll", *qico));
 
 #ifdef ENABLE_SOUND
 	roll_sound.setSource(QUrl("qrc:/sound/roll.wav"));

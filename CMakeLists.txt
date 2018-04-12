@@ -21,7 +21,7 @@ set(QtDice_VERSION_MINOR 1)
 set(QtDice_VERSION ${QtDice_VERSION_MAJOR}.${QtDice_VERSION_MINOR})
 
 set(Dice_VERSION_MAJOR 1)
-set(Dice_VERSION_MAJOR 0)
+set(Dice_VERSION_MINOR 0)
 
 configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/version.h @ONLY)
 
