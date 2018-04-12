@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
 {
 	QApplication app(argc, argv);
 
-	QtDice dice_window;
-	dice_window.show();
+	QtDice diceWindow;
+	diceWindow.show();
 
 	return app.exec();
 }

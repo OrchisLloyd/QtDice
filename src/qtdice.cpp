@@ -39,14 +39,6 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 
 	qtdice_ui->spinBox->setRange(1, 6);
 
-#ifdef USER_MODE
-	checkBox = new QCheckBox("User mode", this);
-	label_status = new QLabel("Haven't rolled yet", this);
-
-	qtdice_ui->gridLayout_Status->addWidget(checkBox, 0, 0);
-	qtdice_ui->gridLayout_Status->addWidget(label_status, 0, 1);
-#endif
-
 	//Create the image to show our red dice in the beggining
 	QPixmap image(":/images/dice.png");
 	qtdice_ui->label->setPixmap(image);
@@ -89,83 +81,10 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	connect(qtdice_ui->action_About_Qt, &QAction::triggered,  &QApplication::aboutQt);
 	connect(qtdice_ui->action_Configure, &QAction::triggered, this, &QtDice::QtDiceConfiguration);
 
-#ifdef USER_MODE
-	//Handle the user mode and it's creation/deletion
-	//At first, make the menu disabled if user mode is already
-	//on. This avoids the creation of multiples UserWidget
-	qtdice_ui->actionDisable_User_Menu->setEnabled(false);
-	connect(this, &QtDice::userModeIsOn, this, [this]()
-	{
-		qtdice_ui->actionEnable_User_Menu->setEnabled(false);
-		qtdice_ui->actionDisable_User_Menu->setEnabled(true);
-	});
-	connect(this, &QtDice::userModeIsOff, this, [this]()
-	{
-		qtdice_ui->actionDisable_User_Menu->setEnabled(false);
-		qtdice_ui->actionEnable_User_Menu->setEnabled(true);
-	});
-	connect(qtdice_ui->actionEnable_User_Menu, &QAction::triggered, this, [this]()
-	{
-		enableUserWidget();
-		checkBox->setChecked(true);
-		qtdice_ui->actionDisable_User_Menu->setEnabled(true);
-	});
-	connect(qtdice_ui->actionDisable_User_Menu, &QAction::triggered, this, [this]()
-	{
-		deleteUserWidget();
-		checkBox->setChecked(false);
-		qtdice_ui->actionDisable_User_Menu->setEnabled(false);
-	});
-	connect(checkBox, &QCheckBox::clicked, this,
-	        [this]()
-	{
-		if(checkBox->isChecked())
-		{
-			qtdice_ui->actionEnable_User_Menu->setEnabled(false);
-			qtdice_ui->actionDisable_User_Menu->setEnabled(true);
-			this->enableUserWidget();
-		}
-		else if(!checkBox->isChecked())
-		{
-			qtdice_ui->actionEnable_User_Menu->setEnabled(true);
-			qtdice_ui->actionDisable_User_Menu->setEnabled(false);
-			this->deleteUserWidget();
-		}
-	});
-#endif
-
 	qtdice_ui->label_warning->clear();
 	qtdice_ui->centralwidget->adjustSize();
 	adjustSize();
 }
-
-#ifdef USER_MODE
-void QtDice::enableUserWidget()
-{
-	userwidget = new UserWidget(this);
-	qtdice_ui->gridLayout_Widget->addWidget(userwidget);
-	qtdice_ui->actionDisable_User_Menu->setEnabled(true);
-	qtdice_ui->actionEnable_User_Menu->setEnabled(false);
-
-	emit userModeIsOn();
-}
-
-void QtDice::deleteUserWidget()
-{
-	qtdice_ui->gridLayout_Widget->removeWidget(userwidget);
-
-	userwidget->setParent(nullptr);
-	delete userwidget;
-
-	qtdice_ui->actionEnable_User_Menu->setEnabled(true);
-	qtdice_ui->actionDisable_User_Menu->setEnabled(false);
-
-	this->centralWidget()->adjustSize();
-	this->adjustSize();
-
-	emit userModeIsOff();
-}
-#endif
 
 void QtDice::keyPressEvent(QKeyEvent* e)
 {
@@ -191,125 +110,8 @@ void QtDice::QtDiceConfiguration()
 	c->show();
 }
 
-// This is the random reload function. After the animation is over, 
-// a dice is rolled. Look at Dice/dice.cpp for more details.
-void QtDice::reload()
-{
-	animate_dice();
-
-	//If Dice object doesn't exist (=first run), initialize one
-	if(!pDice)
-	{
-		pDice = new Dice();
-	}
-
-	pDice->roll();
-	image_update(pDice->get_number());
-
-	emit reloaded_without_spinbox();
-}
-
-// This is a reload function. After the animation is over, 
-// a dice is given a "hardcoded" value. Look at Dice/dice.cpp for more details.
-void QtDice::reload(int number)
-{
-	animate_dice();
-
-	//If Dice object doesn't exist (=first run), initialize one
-	if(!pDice)
-	{
-		pDice = new Dice(number);
-	}
-	else 
-	{
-		pDice->set_number(number);
-	}
-
-	image_update(pDice->get_number());
-	// Actually this function doesn't even need one Dice.
-	// It uses a known int value, it doesn't have to use Dice::get_number to get one.
-}
-
-void QtDice::disableWidgets()
-{
-	//Now that movie is started, set the following...
-	qtdice_ui->m_button_quit->setFocus();
-	qtdice_ui->action_Roll_the_dice->setEnabled(false);
-	qtdice_ui->m_button->setEnabled(false);
-	//...also set the QLabel's that show the status
-	label_status->setText(tr("Rolling..."));
-	qtdice_ui->spinBox->setEnabled(false);
-}
-
-void QtDice::enableWidgets()
-{
-	qtdice_ui->label->setPixmap(image);
-	qtdice_ui->label->show();
-	qtdice_ui->m_button->setEnabled(true);
-	qtdice_ui->m_button->setFocus();
-	qtdice_ui->action_Roll_the_dice->setEnabled(true);
-
-	emit dice_stopped_rolling();
-}
-
-void QtDice::stop_last_frame(QMovie* movie)
-{
-	if(movie->currentFrameNumber() == (movie->frameCount() - 1))
-	{
-		movie->stop();
-
-		//Explicity emit finished signal
-		//https://bugreports.qt.io/browse/QTBUG-66733
-		if(movie->state() == QMovie::NotRunning)
-		{
-			emit movie->finished();
-			label_status->setText(tr("Stopped"));
-			qtdice_ui->spinBox->setEnabled(true);
-		}
-	}
-}
-
-/*
-* This function declares image_update(int image_number)
-* What this function does, is that it accepts an image_number
-* which is generated randomly in Dice class members and based
-* on this integer it selects the proper dice image to show
-*/
-
-void QtDice::image_update(int image_number)
-{
-	//Now deal with which image will be loaded based on image_number
-	//The whole point of this program is here
-	QString image_name {":/images/dice-%1.png"};
-
-	if((image_number < 0) || (image_number > 6))
-	{
-		qDebug() << "Oops! Very wrong number...";
-		QString msg_error = "A dice doesn't have this number : " + (QString("%1").arg(image_number));
-		QMessageBox::critical(this, tr("QtDice"),
-		                      tr(msg_error.toLocal8Bit().constData()));
-	}
-	else
-	{
-		image.load(image_name.arg(image_number));
-	}
-
-	connect(movie, &QMovie::frameChanged, this,
-	        [ = ]()
-	{
-		if(movie->state() == QMovie::NotRunning)
-		{
-			qtdice_ui->spinBox->blockSignals(true);
-			qtdice_ui->spinBox->setValue(image_number);
-			qtdice_ui->spinBox->blockSignals(false);
-		}
-	});
-}
-
-/*
-* Before showing the image, it plays a small animation of
-* a dice that is rolling for enhanced user experience
-*/
+//Before showing the image, it plays a small animation of
+//a dice that is rolling for enhanced user experience
 void QtDice::animate_dice()
 {
 #ifdef ENABLE_SOUND
@@ -352,3 +154,117 @@ void QtDice::animate_dice()
 		QMessageBox::critical(this, tr("Error"), tr(anim_error.toLocal8Bit().constData()));
 	}
 }
+
+void QtDice::enableWidgets()
+{
+	qtdice_ui->label->setPixmap(image);
+	qtdice_ui->label->show();
+	qtdice_ui->m_button->setEnabled(true);
+	qtdice_ui->m_button->setFocus();
+	qtdice_ui->action_Roll_the_dice->setEnabled(true);
+
+	emit dice_stopped_rolling();
+}
+
+void QtDice::disableWidgets()
+{
+	//Now that movie is started, set the following...
+	qtdice_ui->m_button_quit->setFocus();
+	qtdice_ui->action_Roll_the_dice->setEnabled(false);
+	qtdice_ui->m_button->setEnabled(false);
+	//...also set the QLabel's that show the status
+	label_status->setText(tr("Rolling..."));
+	qtdice_ui->spinBox->setEnabled(false);
+}
+
+// This function declares image_update(int image_number)
+// What this function does, is that it accepts an image_number
+// which is generated randomly in Dice class members and based
+// on this integer it selects the proper dice image to show
+void QtDice::image_update(int image_number)
+{
+	//Now deal with which image will be loaded based on image_number
+	//The whole point of this program is here
+	QString image_name {":/images/dice-%1.png"};
+
+	if((image_number < 0) || (image_number > 6))
+	{
+		qDebug() << "Oops! Very wrong number...";
+		QString msg_error = "A dice doesn't have this number : " + (QString("%1").arg(image_number));
+		QMessageBox::critical(this, tr("QtDice"),
+		                      tr(msg_error.toLocal8Bit().constData()));
+	}
+	else
+	{
+		image.load(image_name.arg(image_number));
+	}
+
+	connect(movie, &QMovie::frameChanged, this,
+	        [ = ]()
+	{
+		if(movie->state() == QMovie::NotRunning)
+		{
+			qtdice_ui->spinBox->blockSignals(true);
+			qtdice_ui->spinBox->setValue(image_number);
+			qtdice_ui->spinBox->blockSignals(false);
+		}
+	});
+}
+
+// Check if the frame is the last one and stop the dice animation
+void QtDice::stop_last_frame(QMovie* movie)
+{
+	if(movie->currentFrameNumber() == (movie->frameCount() - 1))
+	{
+		movie->stop();
+
+		//Explicity emit finished signal
+		//https://bugreports.qt.io/browse/QTBUG-66733
+		if(movie->state() == QMovie::NotRunning)
+		{
+			emit movie->finished();
+			label_status->setText(tr("Stopped"));
+			qtdice_ui->spinBox->setEnabled(true);
+		}
+	}
+}
+
+// This is the random reload function. After the animation is over,
+// a dice is rolled. Look at Dice/dice.cpp for more details.
+void QtDice::reload()
+{
+	animate_dice();
+
+	//If Dice object doesn't exist (=first run), initialize one
+	if(!pDice)
+	{
+		pDice = new Dice();
+	}
+
+	pDice->roll();
+	image_update(pDice->get_number());
+
+	emit reloaded_without_spinbox();
+}
+
+// This is a reload function. After the animation is over,
+// a dice is given a "hardcoded" value. Look at Dice/dice.cpp for more details.
+void QtDice::reload(int number)
+{
+	animate_dice();
+
+	//If Dice object doesn't exist (=first run), initialize one
+	if(!pDice)
+	{
+		pDice = new Dice(number);
+	}
+	else
+	{
+		pDice->set_number(number);
+	}
+
+	image_update(pDice->get_number());
+// Actually this function doesn't even need one Dice.
+// It uses a known int value, it doesn't have to use Dice::get_number to get one.
+}
+

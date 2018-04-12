@@ -52,13 +52,6 @@ set(qtdice_SRC
 set(qtdice_RES
   src/dice.qrc)
 
-option(USER_MODE "Enable the user mode to save user's score etc" OFF)
-if(USER_MODE)
-	message(STATUS "Enabled user mode")
-	add_definitions(-DUSER_MODE)
-	set(qtdice_SRC "${qtdice_SRC} src/userwidget.cpp src/usermenu.cpp src/challenge.cpp")
-endif()
-
 option(ENABLE_SOUND "Enable rolling sound effect" ON)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
