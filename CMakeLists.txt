@@ -52,7 +52,7 @@ set(qtdice_SRC
 set(qtdice_RES
   src/dice.qrc)
 
-option(ENABLE_SOUND "Enable rolling sound effect" ON)
+option(ENABLE_SOUND "Enable rolling sound effect" OFF)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
 	add_definitions(-DENABLE_SOUND)

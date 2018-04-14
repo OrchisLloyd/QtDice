@@ -43,9 +43,8 @@ About::About(QWidget* parent) : QDialog(parent), about_ui(new Ui::About)
 	                                      "it under the terms of the GNU General Public License as published by\n"
 	                                      "the Free Software Foundation"));
 
-	about_ui->label_thanks->setText(tr("Special thanks to my girlfriend, Aidonitsa, who tolerates my passion"
+	about_ui->label_thanks->setText(tr("Special thanks to my girlfriend, Aidonitsa, who tolerates my passion\n"
 	                                   "and love for Qt/C++ and Gentoo Linux.\n\nWithout her, none of these would be possible."));
-	about_ui->label_thanks->setWordWrap(true);
 
 	about_ui->tab_info->setAutoFillBackground(true);
 	about_ui->tab_contributions->setAutoFillBackground(true);
