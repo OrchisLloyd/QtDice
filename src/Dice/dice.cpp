@@ -43,10 +43,6 @@ void Dice::roll()
 	m_number = dis(e2);
 }
 
-void Dice::show()
-{
-}
-
 
 
 

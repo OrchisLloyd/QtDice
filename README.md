@@ -4,13 +4,14 @@ You need Qt5 and CMake 3 or higher
 
 -- Build instructions --
 
-cd path/QtDice/ && mkdir build && cd build
+cd path && git clone https://github.com/Petross404/QtDice.git
+cd QtDice && mkdir build && cd build
 
 cmake .. && make
 
 ./QtDice
 
-![Alt text](https://i.imgur.com/6NiTf1E.png)
+![Alt text](https://i.imgur.com/hyiDisd.png)
 
 This is a project only for fun and learning purposes. I wanted to mess with Qt5, C++ and cmake's options/conditional compilation.
 I inscribed this application to my girlfriend, who tolerates my amount of time being spent on learning C++.

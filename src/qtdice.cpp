@@ -19,7 +19,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->m_button->setIcon(QIcon::fromTheme("roll", *qico));
 
 #ifdef ENABLE_SOUND
-	roll_sound.setSource(QUrl("qrc:/sound/roll.wav"));
+	roll_sound.setSource(QUrl("qrc:resources/sound/roll.wav"));
 	Q_ASSERT_X(roll_sound.isLoaded(), "Error loading roll.wav", "");
 	roll_sound.setVolume(1.0f);
 #endif
@@ -40,7 +40,7 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->spinBox->setRange(1, 6);
 
 	//Create the image to show our red dice in the beggining
-	QPixmap image(":/images/dice.png");
+	QPixmap image(":/resources/images/dice.png");
 	qtdice_ui->label->setPixmap(image);
 	qtdice_ui->label->setBackgroundRole(QPalette::Base);
 	qtdice_ui->label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
@@ -53,10 +53,10 @@ QtDice::QtDice() : qtdice_ui(new Ui::QtDice)
 	qtdice_ui->m_button_quit->setFocus();
 
 	qtdice_ui->action_Roll_the_dice->setIcon(QIcon::fromTheme("roll", *qico));
-	qtdice_ui->m_button_quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
-	qtdice_ui->action_Quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/images/exit.ico")));
-	qtdice_ui->action_About_QtDice->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));
-	qtdice_ui->action_About_Qt->setIcon(QIcon(":/images/Qt_logo_2016.svg.ico"));
+	qtdice_ui->m_button_quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/resources/images/exit.ico")));
+	qtdice_ui->action_Quit->setIcon(QIcon::fromTheme("application-exit", QIcon(":/resources/images/exit.ico")));
+	qtdice_ui->action_About_QtDice->setIcon(QIcon::fromTheme("help-about", QIcon(":/resources/images/dice.ico")));
+	qtdice_ui->action_About_Qt->setIcon(QIcon(":/resources/images/Qt_logo_2016.svg.ico"));
 	qtdice_ui->action_Configure->setIcon(QIcon::fromTheme("settings"));
 
 	connect(qtdice_ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged),
@@ -135,7 +135,7 @@ void QtDice::animate_dice()
 	if(movie->fileName() == "")
 	{
 		//movie->setFileName(":/images/rolling_infinite.gif");
-		movie->setFileName(":images/bluedice.gif");
+		movie->setFileName(":resources/images/bluedice.gif");
 	}
 
 	qtdice_ui->label->setMovie(movie);
@@ -185,13 +185,13 @@ void QtDice::image_update(int image_number)
 {
 	//Now deal with which image will be loaded based on image_number
 	//The whole point of this program is here
-	QString image_name {":/images/dice-%1.png"};
+	QString image_name {":/resources/images/dice-%1.png"};
 
 	if((image_number < 0) || (image_number > 6))
 	{
 		qDebug() << "Oops! Very wrong number...";
 		QString msg_error = "A dice doesn't have this number : " + (QString("%1").arg(image_number));
-		QMessageBox::critical(this, tr("QtDice"),
+		QMessageBox::critical(this, tr("QtDice"), 
 		                      tr(msg_error.toLocal8Bit().constData()));
 	}
 	else
