@@ -27,20 +27,20 @@ class About;
 
 class About : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	About(QWidget* parent);
+    About(QWidget* parent);
 
 public slots:
-	void show();
-	void setName(QString name);
-	void setAboutIcon(QString imageName);
-	void setThanksText(QString thanksText);
-	QString getName();
+    void show();
+    void setName(QString name);
+    void setAboutIcon(QString imageName);
+    void setThanksText(QString thanksText);
+    QString getName();
 
 private:
-	QScopedPointer<Ui::About> about_ui;
-	QString m_name;
+    QScopedPointer<Ui::About> about_ui;
+    QString m_name;
 };
 #endif

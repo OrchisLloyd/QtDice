@@ -19,28 +19,28 @@ class Configure;
 
 class Configure : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit Configure(QWidget* parent);
-	~Configure();
+    explicit Configure(QWidget* parent);
+    ~Configure();
 
 public slots:
-	void show();
+    void show();
 // #ifdef ENABLE_SOUND
 // 	void createSoundMenu();
 // #endif
 // 	void create_generalSettings();
 
 private:
-	//QScopedPointer<Ui::Configure> configureUi;
-	Ui::Configure* configureUi;
-	QDialogButtonBox* buttonBox;
-	QGroupBox* gridGroupBox;
-	QGridLayout* gridLayout;
-	QGridLayout* gridLayout_GeneralSettings;
+    //QScopedPointer<Ui::Configure> configureUi;
+    Ui::Configure* configureUi;
+    QDialogButtonBox* buttonBox;
+    QGroupBox* gridGroupBox;
+    QGridLayout* gridLayout;
+    QGridLayout* gridLayout_GeneralSettings;
 #ifdef ENABLE_SOUND
-	QCheckBox* soundCheckBox;
+    QCheckBox* soundCheckBox;
 #endif
 };
 
