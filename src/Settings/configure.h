@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QScopedPointer>
+#include <QSharedPointer>
+#include <QWidget>
 #include <QGridLayout>
 #include <QDialogButtonBox>
 #include <QGroupBox>
@@ -11,11 +13,6 @@
 #ifdef ENABLE_SOUND
 #include <QCheckBox>
 #endif
-
-namespace Ui
-{
-class Configure;
-}
 
 class Configure : public QDialog
 {
@@ -33,12 +30,11 @@ public slots:
 //      void create_generalSettings();
 
 private:
-        //QScopedPointer<Ui::Configure> configureUi;
-        Ui::Configure* configureUi;
-        QDialogButtonBox* buttonBox;
-        QGroupBox* gridGroupBox;
-        QGridLayout* gridLayout;
-        QGridLayout* gridLayout_GeneralSettings;
+        QScopedPointer<QWidget> central_Widget;
+        QScopedPointer<QDialogButtonBox> buttonBox;
+        QScopedPointer<QGroupBox> gridGroupBox;
+        QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons;
+        QGroupBox* createGroupBox_General();
 #ifdef ENABLE_SOUND
         QCheckBox* soundCheckBox;
 #endif

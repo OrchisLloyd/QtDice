@@ -23,6 +23,7 @@ class QtDice : public QMainWindow
 public:
 
         QtDice(int number);
+        ~QtDice();
 
         void animate_dice();
         void image_update(int image_num);
@@ -57,20 +58,20 @@ protected:
         void keyPressEvent(QKeyEvent* e) override;
 
 private:
-        QPushButton* btn_roll, *btn_exit;
-        QWidget* central_Widget;
-        QGridLayout* gridLayout, *gridLabel, *gridStatus, *gridWarning;
+        QScopedPointer<QPushButton> btn_roll, btn_exit;
+        QScopedPointer<QWidget> central_Widget;
+        QScopedPointer<QGridLayout> gridLayout, gridLabel, gridStatus, gridWarning;
         QTranslator translator;
         int diceNumber;
-        QPixmap* image;
+        QScopedPointer<QPixmap> image;
         QImage qimage;
-        QIcon* qtdiceIcon, *exitIcon;
-        QMovie* movie;
+        QScopedPointer<QIcon> qtdiceIcon, exitIcon;
+        QScopedPointer<QMovie> movie;
         QSize windowSize;
-        QLabel* label, *label_status, *label_warning;
+        QScopedPointer<QLabel> label, label_status, label_warning;
         QMenu* menuFile, *menuEdit, *menuAbout;
-        QAction* actionRoll_the_dice, *actionQuit, *actionConfigure, *actionAboutQt, *actionAbout;
-        QSpinBox* spinBox;
+        QScopedPointer<QAction> actionRoll_the_dice, actionQuit, actionConfigure, actionAboutQt, actionAbout;
+        QScopedPointer<QSpinBox> spinBox;
         QSpacerItem* spacer_a, *spacer_b;
 
         void createMenus();
