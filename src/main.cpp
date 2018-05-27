@@ -10,10 +10,10 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication app(argc, argv);
+        QApplication app(argc, argv);
 
-    QtDice diceWindow;
-    diceWindow.show();
+        QtDice diceWindow;
+        diceWindow.show();
 
-    return app.exec();
+        return app.exec();
 }
