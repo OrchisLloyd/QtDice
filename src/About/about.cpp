@@ -14,11 +14,11 @@ About::About(QWidget* parent) : QDialog(parent), about_ui(new Ui::About)
         about_ui->setupUi(this);
 
         //Make this window modal. No interaction with parent window is possible...
-        this->setModal(true);
+        setModal(true);
         //...until the user clicks OK and signal done is sent
         connect(about_ui->pushButton, &QPushButton::clicked, this, &About::done);
 
-        this->setWindowTitle(QString(tr("About QtDice")));
+        setWindowTitle(QString(tr("About QtDice")));
         about_ui->label_version_number->setText(QString("%1").arg(QtDice_VERSION));
         about_ui->label_qt_version->setText(tr("Using Qt %1 (compiled with Qt %2)").arg(qVersion()).arg(QT_VERSION_STR));
         about_ui->pushButton->setIcon(QIcon::fromTheme("answer"));
