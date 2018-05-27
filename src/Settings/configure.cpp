@@ -24,7 +24,7 @@ Configure::Configure(QWidget* parent)
         gridLayout->addWidget(buttonBox.data(), 1, 0);
         gridButtons->addWidget(buttonBox.data(), 0, 0);
         gridLayout->addLayout(gridButtons.data(), 1, 0);
-        setLayout(gridLayout.data());
+        //setLayout(gridLayout.data());
 }
 
 Configure::~Configure()
@@ -42,8 +42,6 @@ QGroupBox* Configure::createGroupBox_General()
 #ifdef ENABLE_SOUND
         grid_GeneralSettings->addWidget(soundCheckBox, 0, 0);
 #endif
-        //grid_GeneralSettings->addWidget(buttonBox.data(), 0, 0);
-
-        gridGroupBox->setLayout(grid_GeneralSettings.data());
+		gridGroupBox->setLayout(grid_GeneralSettings.data());
         return gridGroupBox.data();
 }
