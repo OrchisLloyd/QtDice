@@ -24,13 +24,8 @@ public:
 
 public slots:
         void show();
-// #ifdef ENABLE_SOUND
-//      void createSoundMenu();
-// #endif
-//      void create_generalSettings();
 
 private:
-        QScopedPointer<QWidget> central_Widget;
         QScopedPointer<QDialogButtonBox> buttonBox;
         QScopedPointer<QGroupBox> gridGroupBox;
         QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons;

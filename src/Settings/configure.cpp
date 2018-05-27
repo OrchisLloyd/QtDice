@@ -1,5 +1,4 @@
 #include "configure.h"
-#include "ui_configure.h"
 #include <QPushButton>
 
 Configure::Configure(QWidget* parent)
@@ -10,9 +9,8 @@ Configure::Configure(QWidget* parent)
           grid_GeneralSettings(new QGridLayout(this)),
           gridButtons(new QGridLayout(this)), 
 #ifdef ENABLE_SOUND
-          soundCheckBox(new QCheckBox(tr("Enable sound when rolling"), this)),
+          soundCheckBox(new QCheckBox(tr("Enable sound when rolling"), this))
 #endif
-          central_Widget(new QWidget(this))
 {
         //Make this window modal
         setModal(true);
