@@ -1,47 +1,47 @@
 #ifndef CONFIGURE_H
 #define CONFIGURE_H
 
+#include <QApplication>
 #include <QDialog>
 #include <QScopedPointer>
+#include <QSharedPointer>
+#include <QWidget>
 #include <QGridLayout>
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QDebug>
-
-#ifdef ENABLE_SOUND
+#include <QPixmap>
+#include <QLabel>
+#include <QtGlobal>
+#include <QSettings>
 #include <QCheckBox>
-#endif
 
-namespace Ui
-{
-class Configure;
-}
 
 class Configure : public QDialog
 {
-	Q_OBJECT
+        Q_OBJECT
 
 public:
-	explicit Configure(QWidget* parent);
-	~Configure();
+        explicit Configure(QWidget* parent);
+        ~Configure();
 
 public slots:
-	void show();
-// #ifdef ENABLE_SOUND
-// 	void createSoundMenu();
-// #endif
-// 	void create_generalSettings();
+        void show();
+
+private slots:
+        void writeSettings();
+
 
 private:
-	//QScopedPointer<Ui::Configure> configureUi;
-	Ui::Configure* configureUi;
-	QDialogButtonBox* buttonBox;
-	QGroupBox* gridGroupBox;
-	QGridLayout* gridLayout;
-	QGridLayout* gridLayout_GeneralSettings;
-#ifdef ENABLE_SOUND
-	QCheckBox* soundCheckBox;
-#endif
+        QScopedPointer<QDialogButtonBox> buttonBox;
+        QScopedPointer<QLabel> labelIcon;
+        QScopedPointer<QGroupBox> gridGroupBox, gridGroupBox_Icon;
+        QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
+        QScopedPointer<QPixmap> pixmapSettings;
+        QScopedPointer<QSettings> settings;
+        QScopedPointer<QCheckBox> soundCheckBox;
+        QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
+        void readSettings();
 };
 
 #endif // CONFIGURE_H

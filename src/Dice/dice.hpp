@@ -14,14 +14,14 @@
 class Dice
 {
 private:
-	int m_number;
+        int m_number;
 
 public:
-	Dice(int num);
-	Dice();
-	int get_number();
-	void set_number(int num);
-	void roll();
-	void show();
+        Dice(int num);
+        Dice();
+        int get_number();
+        void set_number(int num);
+        void roll();
+        void show();
 };
 #endif /* dice_hpp */
