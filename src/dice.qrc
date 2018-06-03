@@ -16,5 +16,6 @@
 	<file>resources/images/386.ico</file>
 	<file>resources/images/bluedice.gif</file>
 	<file>resources/sound/roll.wav</file>
+	<file>resources/images/SettingsL.png</file>
 </qresource>
 </RCC>	

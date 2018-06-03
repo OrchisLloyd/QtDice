@@ -28,14 +28,13 @@ public:
         void animate_dice();
         void image_update(int image_num);
 
-# ifdef USER_MODE
 public slots:
-
+#ifdef USER_MODE
         void enableUserWidget();
         void deleteUserWidget();
-# endif
+#endif
 
-private slots :
+private slots:
         void reload();
         void reload(int num);
         void disableWidgets();
@@ -61,6 +60,7 @@ private:
         QScopedPointer<QPushButton> btn_roll, btn_exit;
         QScopedPointer<QWidget> central_Widget;
         QScopedPointer<QGridLayout> gridLayout, gridLabel, gridStatus, gridWarning;
+        QScopedPointer<QSettings> settings;
         QTranslator translator;
         int diceNumber;
         QScopedPointer<QPixmap> image;
@@ -75,9 +75,9 @@ private:
         QSpacerItem* spacer_a, *spacer_b;
 
         void createMenus();
-        void instantiate();
         void setupWidgets();
         void setupLayouts();
+        bool isSoundEnabled();
 
 # ifdef ENABLE_SOUND
         QSoundEffect roll_sound;
@@ -88,7 +88,7 @@ private:
 # endif
         // Making an dynamic object of type Dice, will help upon creating one
         // only when the programm is first run by checking if it already exists.
-        Dice* pDice = nullptr;
+        QScopedPointer<Dice> pDice;
 };
 
-#endif                                                    // QTDICE_H
+#endif               // QTDICE_H

@@ -25,15 +25,15 @@ QtDice::QtDice(int number)
           actionRoll_the_dice(new QAction(tr("&Roll the dice"), this)),
           actionQuit(new QAction(tr("&Quit"), this)),
           actionConfigure(new QAction(tr("&Configure"), this)),
-          actionAbout(new QAction(tr("&About QtDice"), this)),
           actionAboutQt(new QAction(tr("&About Qt"), this)),
-          spinBox(new QSpinBox(this)),
+          actionAbout(new QAction(tr("&About QtDice"), this)),
           movie(new QMovie(this)),
+          spinBox(new QSpinBox(this)),
+          settings(new QSettings("QtDice")),
           qtdiceIcon(new QIcon(":/resources/images/dice.ico")),
           exitIcon(new QIcon(":/resources/images/exit.ico"))
 {
         qDebug() << QString("The number given from argv is %1").arg(diceNumber);
-        instantiate();
         createMenus();
 
         setWindowTitle("QtDice");
@@ -43,11 +43,15 @@ QtDice::QtDice(int number)
         setupWidgets();
 
         //Connect spinBox to reload function and the label_warning
-        connect(spinBox.data(), QOverload<int>::of(&QSpinBox::valueChanged), this, static_cast<void (QtDice::*)(int)>(&QtDice::reload));
+        connect(spinBox.data(), QOverload<int>::of(&QSpinBox::valueChanged), this,
+                static_cast<void (QtDice::*)(int)>(&QtDice::reload));
+
         connect(spinBox.data(), &QSpinBox::editingFinished, this, &QtDice::printWarning);
         connect(this, &QtDice::reloaded_without_spinbox, label_warning.data(), &QLabel::clear);
+
         //Connect buttons to functions
-        connect(btn_roll.data(), &QPushButton::clicked, this, static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+        connect(btn_roll.data(), &QPushButton::clicked, this,
+                static_cast<void (QtDice::*)(void)>(&QtDice::reload));
         connect(btn_exit.data(), &QPushButton::clicked, this, &QApplication::quit);
 
         setCentralWidget(central_Widget.data());
@@ -65,6 +69,7 @@ QtDice::QtDice(int number)
                 reload(4);
         }
 }
+
 QtDice::~QtDice()
 {
         qDebug() << "Destructor";
@@ -72,14 +77,14 @@ QtDice::~QtDice()
 
 void QtDice::QtDiceConfiguration()
 {
-        Configure* c = new Configure(this);
-        c->show();
+        Configure* confWindow = new Configure(this);
+        confWindow->show();
 }
 
 void QtDice::aboutQtDice()
 {
-        About* a = new About(this);
-        a->show();
+        About* aboutWindow = new About(this);
+        aboutWindow->show();
 }
 
 //Before showing the image, it plays a small animation of
@@ -87,10 +92,15 @@ void QtDice::aboutQtDice()
 void QtDice::animate_dice()
 {
 #ifdef ENABLE_SOUND
-        //QSound::play(":/sound/roll.wav");
-        roll_sound.play();
-        qDebug() << "Play sound";
-#endif
+
+        // Decide if the sound will be played...
+        if (isSoundEnabled())
+        {
+                roll_sound.play();
+                qDebug() << "Play sound";
+        }
+
+#endif                                                      // ENABLE_SOUND
 
         // When animation starts, disable spinBox, the buttons etc...
         connect(movie.data(), &QMovie::started, this, &QtDice::disableWidgets);
@@ -130,7 +140,8 @@ void QtDice::disableWidgets()
         btn_roll->setFocus();
         actionRoll_the_dice->setEnabled(false);
         btn_roll->setEnabled(false);
-        //...also set the QLabel's that show the status
+
+        //...also set the QLabel that show the status
         label_status->setText(tr("Rolling..."));
         spinBox->setEnabled(false);
 }
@@ -147,9 +158,9 @@ void QtDice::enableWidgets()
 }
 
 // This function declares image_update(int image_number)
-// What this function does, is that it accepts an image_number which is
-// generated randomly in Dice class members and based on this integer
-// it selects the proper dice image to show
+// This function accepts an image_number which is already have been
+// generated randomly in Dice class members. Based on image_number it
+// selects the proper dice image to show
 void QtDice::image_update(int image_number)
 {
         //Now deal with which image will be loaded based on image_number
@@ -180,8 +191,21 @@ void QtDice::image_update(int image_number)
         });
 }
 
-void QtDice::instantiate()
+bool QtDice::isSoundEnabled()
 {
+        settings->beginGroup(tr("/sound"));
+        settings->sync();
+
+        if (settings->value("rolling_sound").toBool())
+        {
+                settings->endGroup();
+                return true;
+        }
+        else
+        {
+                settings->endGroup();
+                return false;
+        }
 }
 
 void QtDice::keyPressEvent(QKeyEvent* e)
@@ -196,21 +220,22 @@ void QtDice::keyPressEvent(QKeyEvent* e)
         }
 }
 
-// This is the random reload function. After the animation is over,
-// a dice is rolled. Look at Dice/dice.cpp for more details.
+// This is the random reload function. After the animation is over, a dice
+// is rolled. Look at Dice/dice.cpp for more details.
 void QtDice::reload()
 {
         animate_dice();
 
         //If Dice object doesn't exist (=first run), initialize one
-        if (!pDice)
+        if (pDice == Q_NULLPTR)
         {
-                pDice = new Dice();
+                pDice.reset(new Dice);
         }
 
         pDice->roll();
         image_update(pDice->get_number());
 
+        // Inform the program that no spinBox action took place
         emit reloaded_without_spinbox();
 }
 
@@ -221,9 +246,9 @@ void QtDice::reload(int number)
         animate_dice();
 
         //If Dice object doesn't exist (=first run), initialize one
-        if (!pDice)
+        if (pDice == Q_NULLPTR)
         {
-                pDice = new Dice(number);
+                pDice.reset(new Dice(number));
         }
         else
         {
@@ -243,7 +268,8 @@ void QtDice::createMenus()
 
         menuFile->addAction(actionRoll_the_dice.data());
         actionRoll_the_dice->setIcon(*qtdiceIcon.data());
-        connect(actionRoll_the_dice.data(), &QAction::triggered, this, static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+        connect(actionRoll_the_dice.data(), &QAction::triggered, this,
+                static_cast<void (QtDice::*)(void)>(&QtDice::reload));
 
         menuFile->addSeparator();
 
@@ -253,7 +279,7 @@ void QtDice::createMenus()
 
         menuEdit->addAction(actionConfigure.data());
         connect(actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration);
-        actionConfigure->setIcon(QIcon::fromTheme("settings"));
+        actionConfigure->setIcon(QIcon::fromTheme("settings-configure"));
 
         menuAbout->addAction(actionAbout.data());
         actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/resources/images/dice.ico")));
@@ -318,3 +344,4 @@ void QtDice::stop_last_frame(QMovie* movie)
                 }
         }
 }
+

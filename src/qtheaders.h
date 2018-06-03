@@ -28,6 +28,7 @@
 #include <QMovie>
 #include <QTranslator>
 #include <QtGlobal>
+#include <QSettings>
 
 #ifdef ENABLE_SOUND
 # include <QtMultimedia/QSound>

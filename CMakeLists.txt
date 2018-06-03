@@ -29,17 +29,17 @@ configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/
 add_subdirectory(src/About)
 add_subdirectory(src/Settings)
 include_directories(src/)
+
+option(ENABLE_SOUND "Enable rolling sound effect" OFF)
+if(ENABLE_SOUND)
+	message(STATUS "Enable rolling sound of the dice")
+	add_definitions(-DENABLE_SOUND)
+endif()
 # Find the QtWidgets and Qt5Multimedia library
 find_package(Qt5Widgets CONFIG REQUIRED)
-find_package(Qt5Multimedia CONFIG REQUIRED)
-#set(UI_SOURCES
-#    src/qtdice.ui
-#    src/userwidget.ui
-#    src/usermenu.ui
-#    src/challenge.ui
-#    src/About/about.ui
-#    src/Settings/configure.ui)
-#qt5_wrap_ui(UI_H ${UI_SOURCES})
+if(ENABLE_SOUND)
+	find_package(Qt5Multimedia CONFIG REQUIRED)
+endif()
 
 set(qtdice_SRC
   src/main.cpp
@@ -52,24 +52,15 @@ set(qtdice_SRC
 set(qtdice_RES
   src/dice.qrc)
 
-option(ENABLE_SOUND "Enable rolling sound effect" OFF)
-if(ENABLE_SOUND)
-	message(STATUS "Enable rolling sound of the dice")
-	add_definitions(-DENABLE_SOUND)
-endif()
-
-option(ENABLE_POPUP "Enable popup menu on QPushButton" OFF)
-if(ENABLE_POPUP)
-	message(STATUS "Enable popup menu on QPushButton")
-	add_definitions(-DENABLE_POPUP)
-endif()
-
 # Tell CMake to create the executable
 add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} 
         ${qtdice_RES} ${UI_H})
 
 # Use the Widgets module from Qt 5.
-target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::Multimedia)
+target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
+if(ENABLE_SOUND)
+	target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Multimedia)
+endif()
 
 # Install the executable
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${KDE_INSTALL_BINDIR})

@@ -1,6 +1,7 @@
 #ifndef CONFIGURE_H
 #define CONFIGURE_H
 
+#include <QApplication>
 #include <QDialog>
 #include <QScopedPointer>
 #include <QSharedPointer>
@@ -9,10 +10,12 @@
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QDebug>
-
-#ifdef ENABLE_SOUND
+#include <QPixmap>
+#include <QLabel>
+#include <QtGlobal>
+#include <QSettings>
 #include <QCheckBox>
-#endif
+
 
 class Configure : public QDialog
 {
@@ -25,14 +28,20 @@ public:
 public slots:
         void show();
 
+private slots:
+        void writeSettings();
+
+
 private:
         QScopedPointer<QDialogButtonBox> buttonBox;
-        QScopedPointer<QGroupBox> gridGroupBox;
-        QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons;
-        QGroupBox* createGroupBox_General();
-#ifdef ENABLE_SOUND
-        QCheckBox* soundCheckBox;
-#endif
+        QScopedPointer<QLabel> labelIcon;
+        QScopedPointer<QGroupBox> gridGroupBox, gridGroupBox_Icon;
+        QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
+        QScopedPointer<QPixmap> pixmapSettings;
+        QScopedPointer<QSettings> settings;
+        QScopedPointer<QCheckBox> soundCheckBox;
+        QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
+        void readSettings();
 };
 
 #endif // CONFIGURE_H
