@@ -7,9 +7,8 @@
 
 #ifndef ABOUT_H
 #define ABOUT_H
-#include "ui_about.h"
 
-#include "../version.h"
+#include "../src/version.h"
 
 #include <QApplication>
 #include <QWidget>
@@ -19,11 +18,9 @@
 #include <QString>
 #include <QPixmap>
 #include <QImage>
-
-namespace Ui
-{
-class About;
-}
+#include <QPushButton>
+#include <QGridLayout>
+#include <QTabWidget>
 
 class About : public QDialog
 {
@@ -40,7 +37,12 @@ public slots:
         QString getName();
 
 private:
-        QScopedPointer<Ui::About> about_ui;
-        QString m_name;
+        QScopedPointer<QString> m_name;
+        QScopedPointer<QPushButton> pushButton;
+        QScopedPointer<QTabWidget> tabWidget;
+        QScopedPointer<QGridLayout> gridLayout;
+        QScopedPointer<QWidget> w_info, w_contributions, w_license, w_thanks;
+
+        void setupLayouts();
 };
-#endif
+#endif                                                      // ABOUT_H

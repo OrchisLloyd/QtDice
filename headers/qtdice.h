@@ -8,9 +8,10 @@
 #ifndef QTDICE_H
 #define QTDICE_H
 
-#include "Dice/dice.hpp"
-#include "version.h"
-# include "qtheaders.h"
+#include "../src/Dice/dice.hpp"
+#include "../src/version.h"
+# include "include/qtheaders.h"
+
 #include <iostream>
 
 #include <QMainWindow>
@@ -72,7 +73,6 @@ private:
         QMenu* menuFile, *menuEdit, *menuAbout;
         QScopedPointer<QAction> actionRoll_the_dice, actionQuit, actionConfigure, actionAboutQt, actionAbout;
         QScopedPointer<QSpinBox> spinBox;
-        QSpacerItem* spacer_a, *spacer_b;
 
         void createMenus();
         void setupWidgets();
@@ -81,10 +81,6 @@ private:
 
 # ifdef ENABLE_SOUND
         QSoundEffect roll_sound;
-# endif
-# ifdef USER_MODE
-        UserWidget* userwidget;
-        QCheckBox* checkBox;
 # endif
         // Making an dynamic object of type Dice, will help upon creating one
         // only when the programm is first run by checking if it already exists.

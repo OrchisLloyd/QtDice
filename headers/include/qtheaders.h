@@ -8,10 +8,6 @@
 #ifndef QTHEADERS_H
 #define QTHEADERS_H
 
-# ifdef USER_MODE
-#   include "userwidget.h"
-#   include <QCheckBox>
-# endif
 #include <QMessageBox>
 #include <QPushButton>
 #include <QGridLayout>
@@ -29,6 +25,8 @@
 #include <QTranslator>
 #include <QtGlobal>
 #include <QSettings>
+#include <QWidget>
+#include <QScopedPointer>
 
 #ifdef ENABLE_SOUND
 # include <QtMultimedia/QSound>

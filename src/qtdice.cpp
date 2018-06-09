@@ -5,9 +5,9 @@
  *
  */
 
-#include "qtdice.h"
-#include "About/about.h"
-#include "Settings/configure.h"
+#include "../headers/qtdice.h"
+#include "../headers/about.h"
+#include "../headers/configure.h"
 
 QtDice::QtDice(int number)
         : diceNumber(number),
@@ -18,7 +18,7 @@ QtDice::QtDice(int number)
           gridLabel(new QGridLayout),
           gridStatus(new QGridLayout),
           gridWarning(new QGridLayout),
-          image(new QPixmap(":/resources/images/dice.png")),
+          image(new QPixmap(":/images/dice.png")),
           label(new QLabel(this)),
           label_status(new QLabel(tr("Haven't rolled yet"), this)),
           label_warning(new QLabel(this)),
@@ -30,8 +30,8 @@ QtDice::QtDice(int number)
           movie(new QMovie(this)),
           spinBox(new QSpinBox(this)),
           settings(new QSettings("QtDice")),
-          qtdiceIcon(new QIcon(":/resources/images/dice.ico")),
-          exitIcon(new QIcon(":/resources/images/exit.ico"))
+          qtdiceIcon(new QIcon(":/images/dice.ico")),
+          exitIcon(new QIcon(":/images/exit.ico"))
 {
         qDebug() << QString("The number given from argv is %1").arg(diceNumber);
         createMenus();
@@ -116,7 +116,7 @@ void QtDice::animate_dice()
         //Make sure we don't constantly re-append a fileName!
         if (movie->fileName() == "")
         {
-                movie->setFileName(":resources/images/bluedice.gif");
+                movie->setFileName(":/images/bluedice.gif");
         }
 
         label->setMovie(movie.data());
@@ -165,7 +165,7 @@ void QtDice::image_update(int image_number)
 {
         //Now deal with which image will be loaded based on image_number
         //The whole point of this program is here
-        QString image_name {":/resources/images/dice-%1.png"};
+        QString image_name {":/images/dice-%1.png"};
 
         if ((image_number < 0) || (image_number > 6))
         {
@@ -282,11 +282,11 @@ void QtDice::createMenus()
         actionConfigure->setIcon(QIcon::fromTheme("settings-configure"));
 
         menuAbout->addAction(actionAbout.data());
-        actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/resources/images/dice.ico")));
+        actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));
         connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
 
         menuAbout->addAction(actionAboutQt.data());
-        actionAboutQt->setIcon(QIcon(":/resources/images/Qt_logo_2016.svg.ico"));
+        actionAboutQt->setIcon(QIcon(":/images/Qt_logo_2016.svg.ico"));
         connect(actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt);
 
 }

@@ -1,4 +1,4 @@
-#include "configure.h"
+#include "../headers/configure.h"
 #include <QPushButton>
 
 Configure::Configure(QWidget* parent)
@@ -10,7 +10,7 @@ Configure::Configure(QWidget* parent)
           gridLayout(new QGridLayout(this)),
           gridLabel(new QGridLayout(this)),
           grid_GeneralSettings(new QGridLayout(this)),
-          pixmapSettings(new QPixmap(":/resources/images/SettingsL.png")),
+          pixmapSettings(new QPixmap(":/images/SettingsL.png")),
           soundCheckBox(new QCheckBox("Play rolling sound?")),
           settings(new QSettings("QtDice")),
           gridButtons(new QGridLayout(this))

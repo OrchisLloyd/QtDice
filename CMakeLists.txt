@@ -46,23 +46,24 @@ set(qtdice_SRC
   src/qtdice.cpp
   src/Dice/dice.cpp
   src/About/about.cpp
+  src/About/infotab.cpp
   src/Settings/configure.cpp
 )
 
 set(qtdice_RES
-  src/dice.qrc)
+  share/dice.qrc)
 
 # Tell CMake to create the executable
 add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} 
         ${qtdice_RES} ${UI_H})
 
 # Use the Widgets module from Qt 5.
-target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
-if(ENABLE_SOUND)
-	target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Multimedia)
-endif()
+target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::Multimedia)
+#if(ENABLE_SOUND)
+#	target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Multimedia)
+#endif()
 
 # Install the executable
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${KDE_INSTALL_BINDIR})
 install(PROGRAMS QtDice.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(PROGRAMS src/images/dice.png DESTINATION ${KDE_INSTALL_ICONDIR})
+install(PROGRAMS share/images/dice.png DESTINATION ${KDE_INSTALL_ICONDIR})

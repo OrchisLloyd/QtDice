@@ -68,7 +68,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../dice.qrc">:/resources/images/dice.png</pixmap>
+        <pixmap resource="../../share/dice.qrc">:/images/dice.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -252,7 +252,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>:/images/386.png</pixmap>
+          <pixmap resource="../../share/dice.qrc">:/images/386.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -299,7 +299,8 @@
   </layout>
  </widget>
  <resources>
-  <include location="../dice.qrc"/>
+  <include location="../../share/dice.qrc"/>
+  <include location="../../share/dice.qrc"/>
  </resources>
  <connections/>
 </ui>
