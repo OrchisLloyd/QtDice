@@ -14,6 +14,7 @@
 # endif
 #include <QMessageBox>
 #include <QPushButton>
+#include <QStatusBar>
 #include <QGridLayout>
 #include <QSpinBox>
 #include <QString>

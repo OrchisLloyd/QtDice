@@ -19,29 +19,29 @@
 
 class Configure : public QDialog
 {
-        Q_OBJECT
+	Q_OBJECT
 
 public:
-        explicit Configure(QWidget* parent);
-        ~Configure();
+	explicit Configure(QWidget* parent);
+	~Configure();
 
 public slots:
-        void show();
+	void show();
 
 private slots:
-        void writeSettings();
+	void writeSettings();
 
 
 private:
-        QScopedPointer<QDialogButtonBox> buttonBox;
-        QScopedPointer<QLabel> labelIcon;
-        QScopedPointer<QGroupBox> gridGroupBox, gridGroupBox_Icon;
-        QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
-        QScopedPointer<QPixmap> pixmapSettings;
-        QScopedPointer<QSettings> settings;
-        QScopedPointer<QCheckBox> soundCheckBox;
-        QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
-        void readSettings();
+	QScopedPointer<QDialogButtonBox> buttonBox;
+	QScopedPointer<QLabel> labelIcon;
+	QScopedPointer<QGroupBox> gridGroupBox, gridGroupBox_Icon;
+	QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
+	QScopedPointer<QPixmap> pixmapSettings;
+	QScopedPointer<QSettings> settings;
+	QScopedPointer<QCheckBox> soundCheckBox;
+	QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
+	void readSettings();
 };
 
 #endif // CONFIGURE_H
