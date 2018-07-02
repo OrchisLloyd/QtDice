@@ -348,14 +348,33 @@ void QtDice::stop_last_frame(QMovie* movie)
 	}
 }
 
+bool QtDice::isStatusBarEnabled()
+{
+	settings->beginGroup(tr("/sound"));
+	settings->sync();
+
+	if (settings->value("statusbar").toBool())
+	{
+		settings->endGroup();
+		return true;
+	}
+	else
+	{
+		settings->endGroup();
+		return false;
+	}
+}
+
 #ifdef ENABLE_STATUSBAR
 void QtDice::createStatusBar()
 {
-	statusBar()->show();
-	statusBar()->showMessage(tr("Ready"));
-	statusBar()->setSizeGripEnabled(true);
+	if (isStatusBarEnabled())
+	{
+		statusBar()->show();
+		statusBar()->showMessage(tr("Ready"));
+	}
 
-	connect(roll_sound, &QSoundEffect::playingChanged, this, &QtDice::print_on_StatusBar);
+	//connect(roll_sound, &QSoundEffect::playingChanged, this, &QtDice::print_on_StatusBar);
 }
 
 void QtDice::print_on_StatusBar()

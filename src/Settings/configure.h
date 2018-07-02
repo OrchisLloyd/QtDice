@@ -16,7 +16,6 @@
 #include <QSettings>
 #include <QCheckBox>
 
-
 class Configure : public QDialog
 {
 	Q_OBJECT
@@ -31,7 +30,6 @@ public slots:
 private slots:
 	void writeSettings();
 
-
 private:
 	QScopedPointer<QDialogButtonBox> buttonBox;
 	QScopedPointer<QLabel> labelIcon;
@@ -39,7 +37,7 @@ private:
 	QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
 	QScopedPointer<QPixmap> pixmapSettings;
 	QScopedPointer<QSettings> settings;
-	QScopedPointer<QCheckBox> soundCheckBox;
+	QScopedPointer<QCheckBox> soundCheckBox, statusbarCheckBox;
 	QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
 	void readSettings();
 };

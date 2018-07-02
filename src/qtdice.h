@@ -75,6 +75,7 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
+	bool isStatusBarEnabled();
 
 # ifdef ENABLE_SOUND
 	QSoundEffect roll_sound;
