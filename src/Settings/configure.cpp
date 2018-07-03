@@ -41,7 +41,7 @@ Configure::Configure(QWidget* parent)
 	soundCheckBox->setChecked(false);
 	gridGroupBox->setEnabled(false);
 # ifndef ENABLE_STATUSBAR
-
+	statusbarCheckBox->setEnabled(false);
 # endif
 #endif
 
