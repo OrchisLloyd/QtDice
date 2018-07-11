@@ -16,8 +16,12 @@ int main(int argc, char* argv[])
         QCommandLineParser parser;
         QCommandLineOption diceNumber(QStringList() << "n" << "number",
                                       QApplication::translate("Main",
+<<<<<<< HEAD
                                                       "number that dice has to start with"),
                                       "number", "0");
+=======
+                                                      "number that dice has to start with"), "number", "0");
+>>>>>>> remotes/origin/no-ui
 
         parser.addOption(diceNumber);
         parser.process(app);

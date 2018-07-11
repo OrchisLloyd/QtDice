@@ -51,17 +51,28 @@ set(qtdice_SRC
 )
 
 set(qtdice_RES
+<<<<<<< HEAD
   share/dice.qrc)
+=======
+  src/dice.qrc)
+>>>>>>> remotes/origin/no-ui
 
 # Tell CMake to create the executable
 add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} 
         ${qtdice_RES} ${UI_H})
 
 # Use the Widgets module from Qt 5.
+<<<<<<< HEAD
 target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets Qt5::Multimedia)
 #if(ENABLE_SOUND)
 #	target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Multimedia)
 #endif()
+=======
+target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Widgets)
+if(ENABLE_SOUND)
+	target_link_libraries(${CMAKE_PROJECT_NAME} Qt5::Multimedia)
+endif()
+>>>>>>> remotes/origin/no-ui
 
 # Install the executable
 install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${KDE_INSTALL_BINDIR})

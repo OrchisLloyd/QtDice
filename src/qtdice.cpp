@@ -5,9 +5,15 @@
  *
  */
 
+<<<<<<< HEAD
 #include "../headers/qtdice.h"
 #include "../headers/about.h"
 #include "../headers/configure.h"
+=======
+#include "qtdice.h"
+#include "About/about.h"
+#include "Settings/configure.h"
+>>>>>>> remotes/origin/no-ui
 
 QtDice::QtDice(int number)
         : diceNumber(number),
@@ -18,7 +24,11 @@ QtDice::QtDice(int number)
           gridLabel(new QGridLayout),
           gridStatus(new QGridLayout),
           gridWarning(new QGridLayout),
+<<<<<<< HEAD
           image(new QPixmap(":/images/dice.png")),
+=======
+          image(new QPixmap(":/resources/images/dice.png")),
+>>>>>>> remotes/origin/no-ui
           label(new QLabel(this)),
           label_status(new QLabel(tr("Haven't rolled yet"), this)),
           label_warning(new QLabel(this)),
@@ -30,8 +40,13 @@ QtDice::QtDice(int number)
           movie(new QMovie(this)),
           spinBox(new QSpinBox(this)),
           settings(new QSettings("QtDice")),
+<<<<<<< HEAD
           qtdiceIcon(new QIcon(":/images/dice.ico")),
           exitIcon(new QIcon(":/images/exit.ico"))
+=======
+          qtdiceIcon(new QIcon(":/resources/images/dice.ico")),
+          exitIcon(new QIcon(":/resources/images/exit.ico"))
+>>>>>>> remotes/origin/no-ui
 {
         qDebug() << QString("The number given from argv is %1").arg(diceNumber);
         createMenus();
@@ -116,7 +131,11 @@ void QtDice::animate_dice()
         //Make sure we don't constantly re-append a fileName!
         if (movie->fileName() == "")
         {
+<<<<<<< HEAD
                 movie->setFileName(":/images/bluedice.gif");
+=======
+                movie->setFileName(":resources/images/bluedice.gif");
+>>>>>>> remotes/origin/no-ui
         }
 
         label->setMovie(movie.data());
@@ -165,7 +184,11 @@ void QtDice::image_update(int image_number)
 {
         //Now deal with which image will be loaded based on image_number
         //The whole point of this program is here
+<<<<<<< HEAD
         QString image_name {":/images/dice-%1.png"};
+=======
+        QString image_name {":/resources/images/dice-%1.png"};
+>>>>>>> remotes/origin/no-ui
 
         if ((image_number < 0) || (image_number > 6))
         {
@@ -192,6 +215,7 @@ void QtDice::image_update(int image_number)
 }
 
 bool QtDice::isSoundEnabled()
+<<<<<<< HEAD
 {
         settings->beginGroup(tr("/sound"));
         settings->sync();
@@ -220,6 +244,36 @@ void QtDice::keyPressEvent(QKeyEvent* e)
         }
 }
 
+=======
+{
+        settings->beginGroup(tr("/sound"));
+        settings->sync();
+
+        if (settings->value("rolling_sound").toBool())
+        {
+                settings->endGroup();
+                return true;
+        }
+        else
+        {
+                settings->endGroup();
+                return false;
+        }
+}
+
+void QtDice::keyPressEvent(QKeyEvent* e)
+{
+        if (e->key() == Qt::Key_R)
+        {
+                reload();
+        }
+        else if (e->key() == Qt::Key_Escape)
+        {
+                QApplication::quit();
+        }
+}
+
+>>>>>>> remotes/origin/no-ui
 // This is the random reload function. After the animation is over, a dice
 // is rolled. Look at Dice/dice.cpp for more details.
 void QtDice::reload()
@@ -282,11 +336,19 @@ void QtDice::createMenus()
         actionConfigure->setIcon(QIcon::fromTheme("settings-configure"));
 
         menuAbout->addAction(actionAbout.data());
+<<<<<<< HEAD
         actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/images/dice.ico")));
         connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
 
         menuAbout->addAction(actionAboutQt.data());
         actionAboutQt->setIcon(QIcon(":/images/Qt_logo_2016.svg.ico"));
+=======
+        actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/resources/images/dice.ico")));
+        connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
+
+        menuAbout->addAction(actionAboutQt.data());
+        actionAboutQt->setIcon(QIcon(":/resources/images/Qt_logo_2016.svg.ico"));
+>>>>>>> remotes/origin/no-ui
         connect(actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt);
 
 }
