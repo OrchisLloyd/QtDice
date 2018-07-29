@@ -37,7 +37,7 @@ private:
 	QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
 	QScopedPointer<QPixmap> pixmapSettings;
 	QScopedPointer<QSettings> settings;
-	QScopedPointer<QCheckBox> soundCheckBox, statusbarCheckBox;
+	QScopedPointer<QCheckBox> soundCheckBox;
 	QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
 	void readSettings();
 };

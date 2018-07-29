@@ -13,8 +13,7 @@ Configure::Configure(QWidget* parent)
 	  gridLabel(new QGridLayout(this)),
 	  pixmapSettings(new QPixmap(":/resources/images/SettingsL.png")),
 	  settings(new QSettings("QtDice")),
-	  soundCheckBox(new QCheckBox("Play rolling sound?")),
-	  statusbarCheckBox(new QCheckBox("Enable statusbar?"))
+	  soundCheckBox(new QCheckBox("Play rolling sound?"))
 {
 	//Make this window modal
 	setModal(true);
@@ -62,7 +61,6 @@ void Configure::show()
 QGroupBox* Configure::createGroupBox_General()
 {
 	grid_GeneralSettings->addWidget(soundCheckBox.data(), 0, 0);
-	grid_GeneralSettings->addWidget(statusbarCheckBox.data(), 1, 0);
 	gridGroupBox->setLayout(grid_GeneralSettings.data());
 	return gridGroupBox.data();
 }
@@ -85,7 +83,6 @@ void Configure::readSettings()
 	settings->beginGroup(tr("/sound"));
 	settings->sync();
 	soundCheckBox->setChecked(settings->value("rolling_sound").toInt());
-	statusbarCheckBox->setChecked(settings->value("statusbar").toInt());
 	settings->endGroup();
 }
 
@@ -93,7 +90,6 @@ void Configure::writeSettings()
 {
 	settings->beginGroup(tr("/sound"));
 	settings->setValue(tr("rolling_sound"), soundCheckBox->checkState());
-	settings->setValue(tr("statusbar"), statusbarCheckBox->checkState());
 	settings->sync();
 	settings->endGroup();
 }
