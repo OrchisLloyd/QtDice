@@ -8,13 +8,8 @@
 #ifndef QTHEADERS_H
 #define QTHEADERS_H
 
-# ifdef USER_MODE
-#   include "userwidget.h"
-#   include <QCheckBox>
-# endif
 #include <QMessageBox>
 #include <QPushButton>
-#include <QStatusBar>
 #include <QGridLayout>
 #include <QSpinBox>
 #include <QString>

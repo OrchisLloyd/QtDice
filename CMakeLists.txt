@@ -30,12 +30,6 @@ add_subdirectory(src/About)
 add_subdirectory(src/Settings)
 include_directories(src/)
 
-option(ENABLE_STATUSBAR "Enable statusbar on ${PROJECT_NAME} OFF")
-if(ENABLE_STATUSBAR)
-	message(STATUS "StatusBar is activated")
-	add_definitions(-DENABLE_STATUSBAR)
-endif()
-
 option(ENABLE_SOUND "Enable rolling sound effect" OFF)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
