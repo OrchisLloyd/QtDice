@@ -9,7 +9,7 @@
 
 #include "about.h"
 
-About::About(QWidget* parent) : QDialog(parent), about_ui(new Ui::About)
+About::About(QWidget *parent) : QDialog(parent), about_ui(new Ui::About)
 {
 	about_ui->setupUi(this);
 
@@ -79,3 +79,4 @@ QString About::getName()
 {
 	return this->m_name;
 }
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

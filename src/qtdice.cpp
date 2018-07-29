@@ -47,14 +47,14 @@ QtDice::QtDice(int number)
 
 	//Connect spinBox to reload function and the label_warning
 	connect(spinBox.data(), QOverload<int>::of(&QSpinBox::valueChanged), this,
-	        static_cast<void (QtDice::*)(int)>(&QtDice::reload));
+	        static_cast<void (QtDice::*)(int) > (&QtDice::reload));
 
 	connect(spinBox.data(), &QSpinBox::editingFinished, this, &QtDice::printWarning);
 	connect(this, &QtDice::reloaded_without_spinbox, label_warning.data(), &QLabel::clear);
 
 	//Connect buttons to functions
 	connect(btn_roll.data(), &QPushButton::clicked, this,
-	        static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+	        static_cast<void (QtDice::*)(void) > (&QtDice::reload));
 	connect(btn_exit.data(), &QPushButton::clicked, this, &QApplication::quit);
 
 	setCentralWidget(central_Widget.data());
@@ -80,13 +80,13 @@ QtDice::~QtDice()
 
 void QtDice::QtDiceConfiguration()
 {
-	Configure* confWindow = new Configure(this);
+	Configure *confWindow = new Configure(this);
 	confWindow->show();
 }
 
 void QtDice::aboutQtDice()
 {
-	About* aboutWindow = new About(this);
+	About *aboutWindow = new About(this);
 	aboutWindow->show();
 }
 
@@ -211,7 +211,7 @@ bool QtDice::isSoundEnabled()
 	}
 }
 
-void QtDice::keyPressEvent(QKeyEvent* e)
+void QtDice::keyPressEvent(QKeyEvent *e)
 {
 	if (e->key() == Qt::Key_R)
 	{
@@ -272,7 +272,7 @@ void QtDice::createMenus()
 	menuFile->addAction(actionRoll_the_dice.data());
 	actionRoll_the_dice->setIcon(*qtdiceIcon.data());
 	connect(actionRoll_the_dice.data(), &QAction::triggered, this,
-	        static_cast<void (QtDice::*)(void)>(&QtDice::reload));
+	        static_cast<void (QtDice::*)(void) > (&QtDice::reload));
 
 	menuFile->addSeparator();
 
@@ -331,7 +331,7 @@ void QtDice::setupWidgets()
 }
 
 // Check if the frame is the last one and stop the dice animation
-void QtDice::stop_last_frame(QMovie* movie)
+void QtDice::stop_last_frame(QMovie *movie)
 {
 	if (movie->currentFrameNumber() == (movie->frameCount() - 1))
 	{
@@ -390,3 +390,4 @@ void QtDice::print_on_StatusBar()
 }
 
 #endif                                                      // ENABLE_STATUSBAR
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

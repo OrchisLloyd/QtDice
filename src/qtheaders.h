@@ -27,10 +27,10 @@
 #include <QSettings>
 
 #ifdef ENABLE_SOUND
-# include <QtMultimedia/QSound>
-# include <QtMultimedia/QMediaPlayer>
-# include <QUrl>
-# include <QtMultimedia/QSoundEffect>
+#include <QtMultimedia/QSound>
+#include <QtMultimedia/QMediaPlayer>
+#include <QUrl>
+#include <QtMultimedia/QSoundEffect>
 #endif
 
 #include <QEvent>
@@ -41,4 +41,4 @@
 #include <QIcon>
 #include <QInputDialog>
 
-#endif   //QTHEADERS_H
+#endif				//QTHEADERS_H

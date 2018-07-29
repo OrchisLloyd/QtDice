@@ -20,27 +20,20 @@
 #include <QPixmap>
 #include <QImage>
 
-namespace Ui
-{
-class About;
-}
+namespace Ui {
+    class About;
+} class About:public QDialog {
+  Q_OBJECT public:
+     About(QWidget * parent);
 
-class About : public QDialog
-{
-	Q_OBJECT
+    public slots:void show();
+    void setName(QString name);
+    void setAboutIcon(QString imageName);
+    void setThanksText(QString thanksText);
+    QString getName();
 
-public:
-	About(QWidget* parent);
-
-public slots:
-	void show();
-	void setName(QString name);
-	void setAboutIcon(QString imageName);
-	void setThanksText(QString thanksText);
-	QString getName();
-
-private:
-	QScopedPointer<Ui::About> about_ui;
-	QString m_name;
+  private:
+     QScopedPointer < Ui::About > about_ui;
+    QString m_name;
 };
 #endif

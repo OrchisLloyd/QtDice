@@ -25,3 +25,4 @@ public:
 	void show();
 };
 #endif /* dice_hpp */
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

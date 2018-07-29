@@ -10,7 +10,7 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 	QCommandLineParser parser;
@@ -27,3 +27,4 @@ int main(int argc, char* argv[])
 
 	return app.exec();
 }
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

@@ -16,30 +16,26 @@
 #include <QSettings>
 #include <QCheckBox>
 
-class Configure : public QDialog
-{
-	Q_OBJECT
+class Configure:public QDialog {
+  Q_OBJECT public:
+     explicit Configure(QWidget * parent);
+    ~Configure();
 
-public:
-	explicit Configure(QWidget* parent);
-	~Configure();
+    public slots:void show();
 
-public slots:
-	void show();
+    private slots:void writeSettings();
 
-private slots:
-	void writeSettings();
-
-private:
-	QScopedPointer<QDialogButtonBox> buttonBox;
-	QScopedPointer<QLabel> labelIcon;
-	QScopedPointer<QGroupBox> gridGroupBox, gridGroupBox_Icon;
-	QScopedPointer<QGridLayout> gridLayout, grid_GeneralSettings, gridButtons, gridLabel;
-	QScopedPointer<QPixmap> pixmapSettings;
-	QScopedPointer<QSettings> settings;
-	QScopedPointer<QCheckBox> soundCheckBox;
-	QGroupBox* createGroupBox_General(), *createGroupBox_Icon();
-	void readSettings();
+  private:
+     QScopedPointer < QDialogButtonBox > buttonBox;
+     QScopedPointer < QLabel > labelIcon;
+     QScopedPointer < QGroupBox > gridGroupBox, gridGroupBox_Icon;
+     QScopedPointer < QGridLayout > gridLayout, grid_GeneralSettings,
+	gridButtons, gridLabel;
+     QScopedPointer < QPixmap > pixmapSettings;
+     QScopedPointer < QSettings > settings;
+     QScopedPointer < QCheckBox > soundCheckBox;
+    QGroupBox *createGroupBox_General(), *createGroupBox_Icon();
+    void readSettings();
 };
 
-#endif // CONFIGURE_H
+#endif				// CONFIGURE_H

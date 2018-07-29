@@ -1,10 +1,10 @@
 #include "configure.h"
 #include <QPushButton>
 
-Configure::Configure(QWidget* parent)
+Configure::Configure(QWidget *parent)
 	: QDialog(parent),
 	  buttonBox(new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Cancel)),
-	  labelIcon(new QLabel(static_cast<QDialog*>(this))),
+	  labelIcon(new QLabel(static_cast<QDialog *>(this))),
 	  gridGroupBox(new QGroupBox(tr("General Settings"), this)),
 	  gridGroupBox_Icon(new QGroupBox(this)),
 	  gridLayout(new QGridLayout(this)),
@@ -21,7 +21,7 @@ Configure::Configure(QWidget* parent)
 	readSettings();
 
 	// Add Apply button to buttonBox
-	QPushButton* applyBtn = new QPushButton(tr("&Apply"), this);
+	QPushButton *applyBtn = new QPushButton(tr("&Apply"), this);
 	buttonBox->addButton(applyBtn, QDialogButtonBox::ApplyRole);
 
 	connect(buttonBox.data(), &QDialogButtonBox::rejected, this, &Configure::reject);
@@ -58,14 +58,14 @@ void Configure::show()
 	QDialog::show();
 }
 
-QGroupBox* Configure::createGroupBox_General()
+QGroupBox *Configure::createGroupBox_General()
 {
 	grid_GeneralSettings->addWidget(soundCheckBox.data(), 0, 0);
 	gridGroupBox->setLayout(grid_GeneralSettings.data());
 	return gridGroupBox.data();
 }
 
-QGroupBox* Configure::createGroupBox_Icon()
+QGroupBox *Configure::createGroupBox_Icon()
 {
 	labelIcon->setPixmap(*pixmapSettings.data());
 	labelIcon->setScaledContents(true);
@@ -93,3 +93,4 @@ void Configure::writeSettings()
 	settings->sync();
 	settings->endGroup();
 }
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
