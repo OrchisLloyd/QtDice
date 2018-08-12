@@ -17,7 +17,7 @@ Dice::Dice()
 	m_number = dis(e2);
 }
 
-int Dice::get_number()
+int Dice::getNumber()
 {
 	if ((this->m_number < 0) && (this->m_number < 6))
 	{
@@ -30,7 +30,7 @@ int Dice::get_number()
 	}
 }
 
-void Dice::set_number(int num)
+void Dice::setNumber(int num)
 {
 	this->m_number = num;
 }

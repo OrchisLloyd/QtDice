@@ -19,8 +19,8 @@ private:
 public:
 	Dice(int num);
 	Dice();
-	int get_number();
-	void set_number(int num);
+    int getNumber();
+    void setNumber(int num);
 	void roll();
 	void show();
 };

@@ -224,7 +224,7 @@ void QtDice::reload()
 	}
 
 	pDice->roll();
-    imageUpdate(pDice->get_number());
+    imageUpdate(pDice->getNumber());
 
 	// Inform the program that no spinBox action took place
     emit isReloadedWithoutSpinbox();
@@ -243,10 +243,10 @@ void QtDice::reload(int number)
 	}
 	else
 	{
-		pDice->set_number(number);
+        pDice->setNumber(number);
 	}
 
-    imageUpdate(pDice->get_number());
+    imageUpdate(pDice->getNumber());
 // Actually this function doesn't even need one Dice.
 // It uses a known int value, it doesn't have to use Dice::get_number to get one.
 }
