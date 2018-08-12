@@ -4,3 +4,5 @@
 
 #define Dice_VERSION_MAJOR 1
 #define Dice_VERSION_MINOR 0
+
+

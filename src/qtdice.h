@@ -13,82 +13,91 @@
 #include "qtheaders.h"
 #include <iostream>
 
-#include <QMainWindow>
-#include <QApplication>
+#include <QtCore/QLoggingCategory>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QAction>
 
-class QtDice:public QMainWindow {
-  Q_OBJECT public:
+Q_DECLARE_LOGGING_CATEGORY(LOG_QTDICE)
 
-     QtDice(int number);
-    ~QtDice();
+class QtDice : public QMainWindow
+{
 
-    void animate_dice();
-    void image_update(int image_num);
+    Q_OBJECT
 
-    private slots:void reload();
+public:
+
+    QtDice(int number, QWidget *parent = nullptr);
+
+    void animateDice();
+    void imageUpdate(int image_num);
+
+private slots:
+    void aboutQtDice();
+    void reload();
     void reload(int num);
+    void resetQtDice();
     void disableWidgets();
     void enableWidgets();
-    void stop_last_frame(QMovie * movie);
-    void aboutQtDice();
+    void stopLastQMovieFrame(QMovie *movie);
     void QtDiceConfiguration();
     void printWarning();
-#ifdef	ENABLE_STATUSBAR
-    void print_on_StatusBar();
-#endif
+    void printNumberOfRolls();
 
-     signals:void qmovieFrameChanged(QMovie * movie);
-    bool reloaded_without_spinbox();
-    bool dice_stopped_rolling();
-#ifdef USER_MODE
-    void userModeIsOn();
-    void userModeIsOff();
-#endif
+signals:
+    void qmovieFrameChanged(QMovie *movie);
+    bool isReloadedWithoutSpinbox();
+    bool isNumberOfRollsIncremented(bool answer);
 
-  protected:
-    void keyPressEvent(QKeyEvent * e) override;
+protected:
+    void keyPressEvent(QKeyEvent *e) override;
 
-  private:
-     QScopedPointer < QPushButton > btn_roll, btn_exit;
-     QScopedPointer < QWidget > central_Widget;
-     QScopedPointer < QGridLayout > gridLayout, gridLabel, gridStatus,
-	gridWarning;
-     QScopedPointer < QSettings > settings;
+private:
+    QScopedPointer<QPushButton> btnRoll;
+    QScopedPointer<QPushButton> btnReset;
+    QScopedPointer<QPushButton> btnQuit;
+    QScopedPointer<QWidget> widgetCentral;
+    QScopedPointer<QGridLayout> gridLayout;
+    QScopedPointer<QGridLayout> gridLabel;
+    QScopedPointer<QGridLayout> gridStatus;
+    QScopedPointer<QGridLayout> gridReset;
+    QScopedPointer<QGridLayout> gridWarning;
+    QScopedPointer <QSettings> settings;
     QTranslator translator;
-    int diceNumber;
-     QScopedPointer < QPixmap > image;
+    int diceNumber, numberOfRolls;
+    QScopedPointer <QPixmap> image;
     QImage qimage;
-     QScopedPointer < QIcon > qtdiceIcon, exitIcon;
-     QScopedPointer < QMovie > movie;
-    QSize windowSize;
-     QScopedPointer < QLabel > label, label_status, label_warning;
-    QMenu *menuFile, *menuEdit, *menuAbout;
-     QScopedPointer < QAction > actionRoll_the_dice, actionQuit,
-	actionConfigure, actionAboutQt, actionAbout;
-     QScopedPointer < QSpinBox > spinBox;
-    QSpacerItem *spacer_a, *spacer_b;
+    QScopedPointer<QIcon> qtdiceIcon;
+    QScopedPointer<QIcon> exitIcon;
+    QScopedPointer<QMovie> movie;
+    QScopedPointer<QLabel> label;
+    QScopedPointer<QLabel> labelStatus;
+    QScopedPointer<QLabel> labelWarning;
+    QScopedPointer<QLabel> labelNumberofRolls;
+    QScopedPointer<QMenu> menuFile;
+    QScopedPointer<QMenu> menuEdit;
+    QScopedPointer<QMenu> menuAbout;
+    QScopedPointer<QAction> actionRoll;
+    QScopedPointer<QAction> actionQuit;
+    QScopedPointer<QAction> actionReset;
+    QScopedPointer<QAction> actionConfigure;
+    QScopedPointer<QAction> actionAboutQt;
+    QScopedPointer<QAction> actionAbout;
+    QScopedPointer<QAction> actionSettings;
+    QScopedPointer<QSpinBox> spinBox;
 
     void createMenus();
     void setupWidgets();
     void setupLayouts();
     bool isSoundEnabled();
-    bool isStatusBarEnabled();
 
 #ifdef ENABLE_SOUND
     QSoundEffect roll_sound;
 #endif
 
-#ifdef ENABLE_STATUSBAR
-    void createStatusBar();
-#endif
-
-#ifdef USER_MODE
-    UserWidget *userwidget;
-    QCheckBox *checkBox;
-#endif
     // Making an dynamic object of type Dice, will help upon creating one
     // only when the programm is first run by checking if it already exists.
-     QScopedPointer < Dice > pDice;
+    QScopedPointer<Dice> pDice;
 };
 
 #endif				// QTDICE_H
