@@ -17,10 +17,10 @@ private:
 	int m_number;
 
 public:
-	Dice(int num);
+	Dice( int num );
 	Dice();
-    int getNumber();
-    void setNumber(int num);
+	int getNumber();
+	void setNumber( int num );
 	void roll();
 	void show();
 };

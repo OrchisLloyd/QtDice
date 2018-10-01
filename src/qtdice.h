@@ -10,94 +10,106 @@
 
 #include "Dice/dice.hpp"
 #include "version.h"
-#include "qtheaders.h"
 #include <iostream>
 
 #include <QtCore/QLoggingCategory>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QApplication>
+#include <QtCore/QSettings>
+#include <QtCore/QStandardPaths>
+#include <QtGui/QMovie>
 #include <QtWidgets/QAction>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QShortcut>
+#include <QtWidgets/QMenu>
+#include <QMenuBar>
+#include <QtWidgets/QMessageBox>
 
-Q_DECLARE_LOGGING_CATEGORY(LOG_QTDICE)
+Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 
 class QtDice : public QMainWindow
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 
-    QtDice(int number, QWidget *parent = nullptr);
+	QtDice( int number, QWidget *parent = nullptr );
 
-    void animateDice();
-    void imageUpdate(int image_num);
+	void animateDice();
+	void imageUpdate( int image_num );
 
 private slots:
-    void aboutQtDice();
-    void reload();
-    void reload(int num);
-    void resetQtDice();
-    void disableWidgets();
-    void enableWidgets();
-    void stopLastQMovieFrame(QMovie *movie);
-    void QtDiceConfiguration();
-    void printWarning();
-    void printNumberOfRolls();
+	void aboutQtDice();
+	void reload();
+	void reload( int num );
+	void resetQtDice();
+	void disableWidgets();
+	void enableWidgets();
+	void stopLastQMovieFrame( QMovie *movie );
+	void QtDiceConfiguration();
+	void printWarning();
+	void printNumberOfRolls();
 
 signals:
-    void qmovieFrameChanged(QMovie *movie);
-    bool isReloadedWithoutSpinbox();
-    bool isNumberOfRollsIncremented(bool answer);
+	void qmovieFrameChanged( QMovie *movie );
+	bool isReloadedWithoutSpinbox();
+	bool isNumberOfRollsIncremented( bool answer );
 
 protected:
-    void keyPressEvent(QKeyEvent *e) override;
+	void keyPressEvent( QKeyEvent *e ) override;
 
 private:
-    QScopedPointer<QPushButton> btnRoll;
-    QScopedPointer<QPushButton> btnReset;
-    QScopedPointer<QPushButton> btnQuit;
-    QScopedPointer<QWidget> widgetCentral;
-    QScopedPointer<QGridLayout> gridLayout;
-    QScopedPointer<QGridLayout> gridLabel;
-    QScopedPointer<QGridLayout> gridStatus;
-    QScopedPointer<QGridLayout> gridReset;
-    QScopedPointer<QGridLayout> gridWarning;
-    QScopedPointer <QSettings> settings;
-    QTranslator translator;
-    int diceNumber, numberOfRolls;
-    QScopedPointer <QPixmap> image;
-    QImage qimage;
-    QScopedPointer<QIcon> qtdiceIcon;
-    QScopedPointer<QIcon> exitIcon;
-    QScopedPointer<QMovie> movie;
-    QScopedPointer<QLabel> label;
-    QScopedPointer<QLabel> labelStatus;
-    QScopedPointer<QLabel> labelWarning;
-    QScopedPointer<QLabel> labelNumberofRolls;
-    QScopedPointer<QMenu> menuFile;
-    QScopedPointer<QMenu> menuEdit;
-    QScopedPointer<QMenu> menuAbout;
-    QScopedPointer<QAction> actionRoll;
-    QScopedPointer<QAction> actionQuit;
-    QScopedPointer<QAction> actionReset;
-    QScopedPointer<QAction> actionConfigure;
-    QScopedPointer<QAction> actionAboutQt;
-    QScopedPointer<QAction> actionAbout;
-    QScopedPointer<QAction> actionSettings;
-    QScopedPointer<QSpinBox> spinBox;
+	QScopedPointer<QPushButton> btnRoll;
+	QScopedPointer<QPushButton> btnReset;
+	QScopedPointer<QPushButton> btnQuit;
+	QScopedPointer<QWidget> widgetCentral;
+	QScopedPointer<QGridLayout> gridLayout;
+	QScopedPointer<QGridLayout> gridLabel;
+	QScopedPointer<QGridLayout> gridStatus;
+	QScopedPointer<QGridLayout> gridReset;
+	QScopedPointer<QGridLayout> gridWarning;
+	QScopedPointer <QSettings> settings;
+	int diceNumber, numberOfRolls;
+	QScopedPointer <QPixmap> image;
+	QImage qimage;
+	QScopedPointer<QIcon> qtdiceIcon;
+	QScopedPointer<QIcon> exitIcon;
+	QScopedPointer<QMovie> movie;
+	QScopedPointer<QLabel> label;
+	QScopedPointer<QLabel> labelStatus;
+	QScopedPointer<QLabel> labelWarning;
+	QScopedPointer<QLabel> labelNumberofRolls;
+	QScopedPointer<QMenu> menuFile;
+	QScopedPointer<QMenu> menuEdit;
+	QScopedPointer<QMenu> menuAbout;
+	QScopedPointer<QAction> actionRoll;
+	QScopedPointer<QAction> actionQuit;
+	QScopedPointer<QAction> actionReset;
+	QScopedPointer<QAction> actionConfigure;
+	QScopedPointer<QAction> actionAboutQt;
+	QScopedPointer<QAction> actionAbout;
+	QScopedPointer<QAction> actionSettings;
+	QScopedPointer<QSpinBox> spinBox;
 
-    void createMenus();
-    void setupWidgets();
-    void setupLayouts();
-    bool isSoundEnabled();
+	void createMenus();
+	void setupWidgets();
+	void setupLayouts();
+	bool isSoundEnabled();
 
 #ifdef ENABLE_SOUND
-    QSoundEffect roll_sound;
+	QSoundEffect roll_sound;
 #endif
 
-    // Making an dynamic object of type Dice, will help upon creating one
-    // only when the programm is first run by checking if it already exists.
-    QScopedPointer<Dice> pDice;
+	// Making an dynamic object of type Dice, will help upon creating one
+	// only when the programm is first run by checking if it already exists.
+	QScopedPointer<Dice> pDice;
 };
 
 #endif				// QTDICE_H
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
