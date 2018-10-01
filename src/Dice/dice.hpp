@@ -14,14 +14,15 @@
 class Dice
 {
 private:
-        int m_number;
+	int m_number;
 
 public:
-        Dice(int num);
-        Dice();
-        int get_number();
-        void set_number(int num);
-        void roll();
-        void show();
+	Dice( int num );
+	Dice();
+	int getNumber();
+	void setNumber( int num );
+	void roll();
+	void show();
 };
 #endif /* dice_hpp */
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

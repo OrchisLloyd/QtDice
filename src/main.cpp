@@ -10,25 +10,23 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
-int main(int argc, char* argv[])
+int main( int argc, char *argv[] )
 {
+
         QApplication app(argc, argv);
         QCommandLineParser parser;
         QCommandLineOption diceNumber(QStringList() << "n" << "number",
                                       QApplication::translate("Main",
-<<<<<<< HEAD
-                                                      "number that dice has to start with"),
-                                      "number", "0");
-=======
                                                       "number that dice has to start with"), "number", "0");
->>>>>>> remotes/origin/no-ui
 
-        parser.addOption(diceNumber);
-        parser.process(app);
-        int number = QString("%1").arg(parser.value(diceNumber)).toInt();
 
-        QtDice diceWindow(number);
-        diceWindow.show();
+	parser.addOption( diceNumber );
+	parser.process( app );
+	int number = QString( "%1" ).arg( parser.value( diceNumber ) ).toInt();
 
-        return app.exec();
+	QtDice diceWindow( number );
+	diceWindow.show();
+
+	return app.exec();
 }
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
