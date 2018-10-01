@@ -5,18 +5,20 @@
  *
  */
 
-#include "qtdice.h"
+#include "../headers/qtdice.h"
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
 int main( int argc, char *argv[] )
 {
-	QApplication app( argc, argv );
-	QCommandLineParser parser;
-	QCommandLineOption diceNumber( QStringList() << "n" << "number",
-	                               QApplication::translate( "Main",
-	                                               "number that dice has to start with" ), "number", "0" );
+
+        QApplication app(argc, argv);
+        QCommandLineParser parser;
+        QCommandLineOption diceNumber(QStringList() << "n" << "number",
+                                      QApplication::translate("Main",
+                                                      "number that dice has to start with"), "number", "0");
+
 
 	parser.addOption( diceNumber );
 	parser.process( app );

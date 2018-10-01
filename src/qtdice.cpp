@@ -4,36 +4,33 @@
  * take a look at ../License/GPL-3.txt
  *
  */
-#include <Windows.h>
 #include "qtdice.h"
 #include "About/about.h"
 #include "Settings/configure.h"
 
-Q_LOGGING_CATEGORY( LOG_QTDICE, "QtDice" )
-
-QtDice::QtDice( int number )
-	: diceNumber( number ),
-	  btnRoll( new QPushButton( tr( "&Roll the dice" ), this ) ),
-	  btnQuit( new QPushButton( tr( "&Quit" ), this ) ),
-	  widgetCentral( new QWidget( this ) ),
-	  gridLayout( new QGridLayout ),
-	  gridLabel( new QGridLayout ),
-	  gridStatus( new QGridLayout ),
-	  gridWarning( new QGridLayout ),
-	  image( new QPixmap( ":/resources/images/dice.png" ) ),
-	  label( new QLabel( this ) ),
-	  labelStatus( new QLabel( tr( "Haven't rolled yet" ), this ) ),
-	  labelWarning( new QLabel( this ) ),
-	  actionRoll( new QAction( tr( "&Roll the dice" ), this ) ),
-	  actionQuit( new QAction( tr( "&Quit" ), this ) ),
-	  actionConfigure( new QAction( tr( "&Configure" ), this ) ),
-	  actionAboutQt( new QAction( tr( "&About Qt" ), this ) ),
-	  actionAbout( new QAction( tr( "&About QtDice" ), this ) ),
-	  settings( new QSettings( "QtDice" ) ),
-	  qtdiceIcon( new QIcon( ":/resources/images/dice.ico" ) ),
-	  exitIcon( new QIcon( ":/resources/images/exit.ico" ) ),
-	  movie( new QMovie( this ) ),
-	  spinBox( new QSpinBox( this ) )
+QtDice::QtDice(int number)
+        : diceNumber(number),
+          btn_roll(new QPushButton(tr("&Roll the dice"), this)),
+          btn_exit(new QPushButton(tr("&Quit"), this)),
+          central_Widget(new QWidget(this)),
+          gridLayout(new QGridLayout),
+          gridLabel(new QGridLayout),
+          gridStatus(new QGridLayout),
+          gridWarning(new QGridLayout),
+          image(new QPixmap(":/resources/images/dice.png")),
+          label(new QLabel(this)),
+          label_status(new QLabel(tr("Haven't rolled yet"), this)),
+          label_warning(new QLabel(this)),
+          actionRoll_the_dice(new QAction(tr("&Roll the dice"), this)),
+          actionQuit(new QAction(tr("&Quit"), this)),
+          actionConfigure(new QAction(tr("&Configure"), this)),
+          actionAboutQt(new QAction(tr("&About Qt"), this)),
+          actionAbout(new QAction(tr("&About QtDice"), this)),
+          movie(new QMovie(this)),
+          spinBox(new QSpinBox(this)),
+          settings(new QSettings("QtDice")),
+          qtdiceIcon(new QIcon(":/resources/images/dice.ico")),
+          exitIcon(new QIcon(":/resources/images/exit.ico"))
 {
 	qDebug() << QString( "The number given from argv is %1" ).arg( &diceNumber );
 	createMenus();
@@ -99,36 +96,36 @@ void QtDice::animateDice()
 
 #endif                                                      // ENABLE_SOUND
 
-	// When animation starts, disable spinBox, the buttons etc...
-	QObject::connect( movie.data(), &QMovie::started, this, &QtDice::disableWidgets );
+        // When animation starts, disable spinBox, the buttons etc...
+        connect(movie.data(), &QMovie::started, this, &QtDice::disableWidgets);
 
-	//Thanks to the guys at this thread :
-	//https://forum.qt.io/topic/88197/custom-signal-to-slot-the-slot-requires-more-arguments-than-the-signal-provides
-	QObject::connect( movie.data(), &QMovie::frameChanged, this, std::bind( &QtDice::qmovieFrameChanged, this, movie.data() ) );
-	QObject::connect( this, &QtDice::qmovieFrameChanged, this, &QtDice::stopLastQMovieFrame );
+        //Thanks to the guys at this thread :
+        //https://forum.qt.io/topic/88197/custom-signal-to-slot-the-slot-requires-more-arguments-than-the-signal-provides
+        connect(movie.data(), &QMovie::frameChanged, this, std::bind(&QtDice::qmovieFrameChanged, this, movie.data()));
+        connect(this, &QtDice::qmovieFrameChanged, this, &QtDice::stop_last_frame);
 
-	// When movie is finished, re-enable spinBox, buttons etc
-	QObject::connect( movie.data(), &QMovie::finished, this, &QtDice::enableWidgets );
+        // When movie is finished, re-enable spinBox, buttons etc
+        connect(movie.data(), &QMovie::finished, this, &QtDice::enableWidgets);
 
-	//Make sure we don't constantly re-append a fileName!
-	if ( movie->fileName() == "" )
-	{
-		movie->setFileName( ":resources/images/bluedice.gif" );
-	}
+        //Make sure we don't constantly re-append a fileName!
+        if (movie->fileName() == "")
+        {
+                movie->setFileName(":resources/images/bluedice.gif");
+        }
 
-	label->setMovie( movie.data() );
+        label->setMovie(movie.data());
 
-	//Just to make sure that movie has a valid type or exit
-	if ( movie->isValid() )
-	{
-		movie->start();
-	}
-	else
-	{
-		QString anim_error {"Animation type is not supported!"};
-		label->setText( tr( anim_error.toLocal8Bit().constData() ) );
-		QMessageBox::critical( this, tr( "Error" ), tr( anim_error.toLocal8Bit().constData() ) );
-	}
+        //Just to make sure that movie has a valid type or exit
+        if (movie->isValid())
+        {
+                movie->start();
+        }
+        else
+        {
+                QString anim_error {"Animation type is not supported!"};
+                label->setText(tr(anim_error.toLocal8Bit().constData()));
+                QMessageBox::critical(this, tr("Error"), tr(anim_error.toLocal8Bit().constData()));
+        }
 }
 
 void QtDice::disableWidgets()
@@ -184,6 +181,32 @@ void QtDice::imageUpdate( int image_number )
 			spinBox->blockSignals( false );
 		}
 	} );
+        //Now deal with which image will be loaded based on image_number
+        //The whole point of this program is here
+        QString image_name {":/resources/images/dice-%1.png"};
+
+        if ((image_number < 0) || (image_number > 6))
+        {
+                qDebug() << "Oops! Very wrong number...";
+                QString msg_error = "A dice doesn't have this number : " + (QString("%1").arg(image_number));
+                QMessageBox::critical(this, tr("QtDice"),
+                                      tr(msg_error.toLocal8Bit().constData()));
+        }
+        else
+        {
+                image->load(image_name.arg(image_number));
+        }
+
+        connect(movie.data(), &QMovie::frameChanged, this,
+                [ = ]()
+        {
+                if (movie->state() == QMovie::NotRunning)
+                {
+                        spinBox->blockSignals(true);
+                        spinBox->setValue(image_number);
+                        spinBox->blockSignals(false);
+                }
+        });
 }
 
 bool QtDice::isSoundEnabled()
@@ -209,6 +232,34 @@ void QtDice::keyPressEvent( QKeyEvent *e )
 	{
 		QApplication::quit();
 	}
+}
+
+{
+        settings->beginGroup(tr("/sound"));
+        settings->sync();
+
+        if (settings->value("rolling_sound").toBool())
+        {
+                settings->endGroup();
+                return true;
+        }
+        else
+        {
+                settings->endGroup();
+                return false;
+        }
+}
+
+void QtDice::keyPressEvent(QKeyEvent* e)
+{
+        if (e->key() == Qt::Key_R)
+        {
+                reload();
+        }
+        else if (e->key() == Qt::Key_Escape)
+        {
+                QApplication::quit();
+        }
 }
 
 // This is the random reload function. After the animation is over, a dice
@@ -280,14 +331,14 @@ void QtDice::createMenus()
 	QObject::connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
-	menuAbout->addAction( actionAbout.data() );
-	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
-	QObject::connect( actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice );
 
-	menuAbout->addAction( actionAboutQt.data() );
-	actionAboutQt->setIcon( QIcon( ":/resources/images/Qt_logo_2016.svg.ico" ) );
-	QObject::connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );
+        menuAbout->addAction(actionAbout.data());
+        actionAbout->setIcon(QIcon::fromTheme("help-about", QIcon(":/resources/images/dice.ico")));
+        connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
 
+        menuAbout->addAction(actionAboutQt.data());
+        actionAboutQt->setIcon(QIcon(":/resources/images/Qt_logo_2016.svg.ico"));
+        connect(actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt);
 }
 
 void QtDice::printWarning()

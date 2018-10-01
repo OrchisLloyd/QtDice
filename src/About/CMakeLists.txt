@@ -7,6 +7,5 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-#set(about_SRC about.cpp show.cpp)
-#set(about_UI about.ui)
+set(about_UI about.ui)
 #set(about_H about.h)

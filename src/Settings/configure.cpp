@@ -1,4 +1,4 @@
-#include "configure.h"
+#include "../headers/configure.h"
 #include <QPushButton>
 
 Configure::Configure( QWidget *parent )
