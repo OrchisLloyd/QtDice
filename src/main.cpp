@@ -5,7 +5,7 @@
  *
  */
 
-#include "../headers/qtdice.h"
+#include "headers/qtdice.h"
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
@@ -19,13 +19,12 @@ int main( int argc, char *argv[] )
                                       QApplication::translate("Main",
                                                       "number that dice has to start with"), "number", "0");
 
-
 	parser.addOption( diceNumber );
 	parser.process( app );
 	int number = QString( "%1" ).arg( parser.value( diceNumber ) ).toInt();
 
-	QtDice diceWindow( number );
-	diceWindow.show();
+	QScopedPointer<QtDice> diceWindow(new QtDice( number ));
+	diceWindow->show();
 
 	return app.exec();
 }

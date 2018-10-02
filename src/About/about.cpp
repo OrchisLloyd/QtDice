@@ -21,11 +21,11 @@ About::About(QWidget* parent)
           w_thanks(new QWidget(this))
           {}
 
-void About::show()
-{
-	QDialog::show();
-}
-
-void About::setName( QString name )
-{
-}
+// void About::show()
+// {
+// 	QDialog::show();
+// }
+// 
+// void About::setName( QString name )
+// {
+// }

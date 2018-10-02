@@ -1,5 +1,5 @@
 /* Petros S <petross404@gmail.com>
- *
+ * 
  * For more information about the license
  * take a look at ../License/GPL-3.txt
  *
@@ -27,25 +27,24 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QShortcut>
 #include <QtWidgets/QMenu>
-#include <QMenuBar>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
 
 Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 
 class QtDice : public QMainWindow
 {
-
 	Q_OBJECT
-
+	
 public:
-
 	QtDice( int number, QWidget *parent = nullptr );
+	~QtDice();
 
 	void animateDice();
 	void imageUpdate( int image_num );
 
 private slots:
-	void aboutQtDice();
+	//void aboutQtDice();
 	void reload();
 	void reload( int num );
 	void resetQtDice();
@@ -54,15 +53,10 @@ private slots:
 	void stopLastQMovieFrame( QMovie *movie );
 	void QtDiceConfiguration();
 	void printWarning();
-	void printNumberOfRolls();
 
 signals:
 	void qmovieFrameChanged( QMovie *movie );
-	bool isReloadedWithoutSpinbox();
 	bool isNumberOfRollsIncremented( bool answer );
-
-protected:
-	void keyPressEvent( QKeyEvent *e ) override;
 
 private:
 	QScopedPointer<QPushButton> btnRoll;
@@ -101,10 +95,10 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
-
-#ifdef ENABLE_SOUND
-	QSoundEffect roll_sound;
-#endif
+	
+	#ifdef ENABLE_SOUND
+		QSoundEffect roll_sound;
+	#endif
 
 	// Making an dynamic object of type Dice, will help upon creating one
 	// only when the programm is first run by checking if it already exists.
