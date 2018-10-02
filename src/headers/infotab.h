@@ -15,11 +15,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #ifndef INFOTAB_H
 #define INFOTAB_H
 
-#include "../headers/include/qtheaders.h"
+#include <QtWidgets/QScopedPointer>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QWidget>
 
 class InfoTab : public QWidget
 {

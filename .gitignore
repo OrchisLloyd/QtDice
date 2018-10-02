@@ -1,0 +1,8 @@
+*build*
+*/build*
+*.kdev*
+kdev*
+*.h.in
+*.cpp.*
+*.o*
+*.exe

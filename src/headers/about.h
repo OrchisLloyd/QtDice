@@ -8,7 +8,7 @@
 #ifndef ABOUT_H
 #define ABOUT_H
 
-#include "../src/version.h"
+#include "version.h"
 
 #include <QApplication>
 #include <QWidget>
@@ -30,11 +30,11 @@ public:
         About(QWidget* parent);
 
 public slots:
-        void show();
-        void setName(QString name);
-        void setAboutIcon(QString imageName);
-        void setThanksText(QString thanksText);
-        QString getName();
+//         void show();
+//         void setName(QString name);
+//         void setAboutIcon(QString imageName);
+//         void setThanksText(QString thanksText);
+//         QString getName();
 
 private:
         QScopedPointer<QString> m_name;
