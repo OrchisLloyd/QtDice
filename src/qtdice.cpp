@@ -251,7 +251,6 @@ void QtDice::createMenus()
 	connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
-
 	menuAbout->addAction( actionAbout.data() );
 	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
 	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
