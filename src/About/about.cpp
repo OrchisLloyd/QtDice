@@ -9,23 +9,25 @@
 
 #include "../headers/about.h"
 
-About::About(QWidget* parent)
-        : QDialog(parent),
-          m_name(new QString),
-          pushButton(new QPushButton(tr("&Close"), this)),
-          tabWidget(new QTabWidget(this)),
-          gridLayout(new QGridLayout(this)),
-          w_info(new QWidget(this)),
-          w_contributions(new QWidget(this)),
-          w_license(new QWidget(this)),
-          w_thanks(new QWidget(this))
-          {}
+About::About( QWidget *parent )
+	: QDialog( parent ),
+	  m_name( new QString ),
+	  pushButton( new QPushButton( tr( "&Close" ), this ) ),
+	  tabWidget( new QTabWidget( this ) ),
+	  gridLayout( new QGridLayout( this ) ),
+	  w_info( new QWidget( this ) ),
+	  w_contributions( new QWidget( this ) ),
+	  w_license( new QWidget( this ) ),
+	  w_thanks( new QWidget( this ) )
+{}
 
 // void About::show()
 // {
 // 	QDialog::show();
 // }
-// 
+//
 // void About::setName( QString name )
 // {
 // }
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+

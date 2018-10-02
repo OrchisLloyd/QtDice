@@ -19,10 +19,11 @@
 
 class Configure : public QDialog
 {
-        Q_OBJECT
+	Q_OBJECT
 
 public:
-	explicit Configure(QWidget* parent);
+	explicit Configure( QWidget *parent );
+
 	~Configure();
 
 public slots:
@@ -43,9 +44,11 @@ private:
 	QScopedPointer<QPixmap> pixmapSettings;
 	QScopedPointer<QSettings> settings;
 	QScopedPointer<QCheckBox> soundCheckBox;
-	QGroupBox* createGroupBox_General();
-	QGroupBox* createGroupBox_Icon();
+	QGroupBox *createGroupBox_General();
+	QGroupBox *createGroupBox_Icon();
+
 	void readSettings();
 };
 
 #endif // CONFIGURE_H
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
