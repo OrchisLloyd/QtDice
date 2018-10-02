@@ -13,6 +13,7 @@
 #include <QPixmap>
 #include <QLabel>
 #include <QtGlobal>
+#include <QButtonGroup> 
 #include <QSettings>
 #include <QCheckBox>
 

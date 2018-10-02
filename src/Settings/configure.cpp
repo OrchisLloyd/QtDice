@@ -20,14 +20,19 @@ Configure::Configure( QWidget *parent )
 	setWindowTitle( tr( "QtDice Settings" ) );
 	readSettings();
 
+	QButtonGroup *btnGroup = new QButtonGroup(this);
 	// Add Apply button to buttonBox
 	QPushButton *applyBtn = new QPushButton( tr( "&Apply" ), this );
 	buttonBox->addButton( applyBtn, QDialogButtonBox::ApplyRole );
-
+	applyBtn->setEnabled(false);
+	
 	connect( buttonBox.data(), &QDialogButtonBox::rejected, this, &Configure::reject );
 	connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::accept );
 	connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::writeSettings );
 	connect( applyBtn, &QPushButton::clicked, this, &Configure::writeSettings );
+	
+	btnGroup->addButton(soundCheckBox.data(), 0);
+	btnGroup->addButton(applyBtn, 1);
 
 	gridLayout->addWidget( createGroupBox_Icon(), 0, 0 );
 	gridLayout->addWidget( createGroupBox_General(), 0, 1 );
