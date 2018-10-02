@@ -1,5 +1,5 @@
 /* Petros S <petross404@gmail.com>
- * 
+ *
  * For more information about the license
  * take a look at ../License/GPL-3.txt
  *
@@ -35,7 +35,7 @@ Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 class QtDice : public QMainWindow
 {
 	Q_OBJECT
-	
+
 public:
 	QtDice( int number, QWidget *parent = nullptr );
 	~QtDice();
@@ -95,10 +95,10 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
-	
-	#ifdef ENABLE_SOUND
-		QSoundEffect roll_sound;
-	#endif
+
+#ifdef ENABLE_SOUND
+	QSoundEffect roll_sound;
+#endif
 
 	// Making an dynamic object of type Dice, will help upon creating one
 	// only when the programm is first run by checking if it already exists.

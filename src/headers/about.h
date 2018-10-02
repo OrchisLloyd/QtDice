@@ -24,10 +24,10 @@
 
 class About : public QDialog
 {
-        Q_OBJECT
+	Q_OBJECT
 
 public:
-        About(QWidget* parent);
+	About( QWidget *parent );
 
 public slots:
 //         void show();
@@ -37,12 +37,13 @@ public slots:
 //         QString getName();
 
 private:
-        QScopedPointer<QString> m_name;
-        QScopedPointer<QPushButton> pushButton;
-        QScopedPointer<QTabWidget> tabWidget;
-        QScopedPointer<QGridLayout> gridLayout;
-        QScopedPointer<QWidget> w_info, w_contributions, w_license, w_thanks;
+	QScopedPointer<QString> m_name;
+	QScopedPointer<QPushButton> pushButton;
+	QScopedPointer<QTabWidget> tabWidget;
+	QScopedPointer<QGridLayout> gridLayout;
+	QScopedPointer<QWidget> w_info, w_contributions, w_license, w_thanks;
 
-        void setupLayouts();
+	void setupLayouts();
 };
 #endif                                                      // ABOUT_H
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
