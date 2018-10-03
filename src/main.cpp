@@ -12,11 +12,6 @@
 
 int main( int argc, char *argv[] )
 {
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833
 	QApplication app( argc, argv );
 	QCommandLineParser parser;
 	QCommandLineOption diceNumber( QStringList() << "n" << "number",

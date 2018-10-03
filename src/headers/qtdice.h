@@ -28,11 +28,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
-#include <QSoundEffect>
-<<<<<<< HEAD:src/headers/qtdice.h
-=======
-
->>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833:src/headers/qtdice.h
 
 Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 

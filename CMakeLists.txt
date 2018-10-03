@@ -24,15 +24,28 @@ configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/
 add_subdirectory(src/Settings)
 include_directories(src)
 
+if(WIN32) # Check if we are on Windows and look for Qt5
+	set(PLATFORM_TARGET "WIN32")
+	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
+		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.1\\msvc2017_64\\lib\\cmake\\;C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
+		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
+	endif()
+elseif(APPLE)
+	set(PLATFORM_TARGET "MACOSX_BUNDLE")
+endif(WIN32)
+
 option(ENABLE_SOUND "Enable rolling sound effect" OFF)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
 	add_definitions(-DENABLE_SOUND)
 endif()
 # Find the QtWidgets and Qt5Multimedia library
+find_package(Qt5Widgets CONFIG REQUIRED)
 if(ENABLE_SOUND)
 	find_package(Qt5Multimedia CONFIG REQUIRED)
 endif()
+
+qt5_add_resources(qtdice_RES src/dice.qrc)
 
 set(qtdice_SRC
 	src/main.cpp
@@ -47,18 +60,9 @@ set(qtdice_H
 	src/headers/configure.h
 	src/headers/infotab.h
 )
-if(WIN32) # Check if we are on Windows and look for Qt5
-	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
-		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.1\\msvc2017_64\\lib\\cmake\\;C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
-		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
-	endif()
-endif(WIN32)
-
-find_package(Qt5Widgets CONFIG REQUIRED)
-qt5_add_resources(qtdice_RES src/dice.qrc)
 
 # Tell CMake to create the executable
-add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} ${qtdice_RES})
+add_executable(${CMAKE_PROJECT_NAME} ${PLATFORM_TARGET} ${qtdice_SRC} ${qtdice_RES})
 
 if(WIN32) # Check if we are on Windows
 	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
