@@ -6,3 +6,4 @@
 #define Dice_VERSION_MINOR 0
 
 
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

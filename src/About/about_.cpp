@@ -34,17 +34,17 @@ About::About( QWidget *parent ) : QDialog( parent ), about_ui( new Ui::About )
 	about_ui->label_links_str->setOpenExternalLinks( true );
 
 	QString license_text =
-	        ""
-	        "This program is free software; you can redistribute it and/or modify\n"
-	        "it under the terms of the GNU General Public License as published by\n"
-	        "the Free Software Foundation";
+		""
+		"This program is free software; you can redistribute it and/or modify\n"
+		"it under the terms of the GNU General Public License as published by\n"
+		"the Free Software Foundation";
 	//about_ui->label_license_text->setTextFormat(Qt::RichText);
 	about_ui->label_license_text->setText( tr( "This program is free software; you can redistribute it and/or modify\n"
-	                                       "it under the terms of the GNU General Public License as published by\n"
-	                                       "the Free Software Foundation" ) );
+					       "it under the terms of the GNU General Public License as published by\n"
+					       "the Free Software Foundation" ) );
 
 	about_ui->label_thanks->setText( tr( "Special thanks to my girlfriend, Aidonitsa, who tolerates my passion\n"
-	                                     "and love for Qt/C++ and Gentoo Linux.\n\nWithout her, none of these would be possible." ) );
+					     "and love for Qt/C++ and Gentoo Linux.\n\nWithout her, none of these would be possible." ) );
 
 	about_ui->tab_info->setAutoFillBackground( true );
 	about_ui->tab_contributions->setAutoFillBackground( true );

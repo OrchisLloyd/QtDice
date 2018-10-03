@@ -29,4 +29,5 @@ About::About( QWidget *parent )
 // void About::setName( QString name )
 // {
 // }
+//#include "../headers/moc_about.cpp"
 // kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

@@ -4,13 +4,13 @@
 Configure::Configure( QWidget *parent )
 	: QDialog( parent ),
 	  buttonBox( new QDialogButtonBox( QDialogButtonBox::Save | QDialogButtonBox::Cancel ) ),
-	  labelIcon( new QLabel( static_cast<QDialog *>( this ) ) ),
-	  gridGroupBox( new QGroupBox( tr( "General Settings" ), this ) ),
-	  gridGroupBox_Icon( new QGroupBox( this ) ),
-	  gridLayout( new QGridLayout( this ) ),
-	  grid_GeneralSettings( new QGridLayout( this ) ),
-	  gridButtons( new QGridLayout( this ) ),
-	  gridLabel( new QGridLayout( this ) ),
+	  labelIcon( new QLabel ),
+	  gridGroupBox( new QGroupBox( tr( "General Settings" ) ) ),
+	  gridGroupBox_Icon( new QGroupBox ),
+	  gridLayout( new QGridLayout ),
+	  grid_GeneralSettings( new QGridLayout ),
+	  gridButtons( new QGridLayout ),
+	  gridLabel( new QGridLayout ),
 	  pixmapSettings( new QPixmap( ":/resources/images/SettingsL.png" ) ),
 	  settings( new QSettings( "QtDice" ) ),
 	  soundCheckBox( new QCheckBox( "Play rolling sound?" ) )
@@ -20,19 +20,19 @@ Configure::Configure( QWidget *parent )
 	setWindowTitle( tr( "QtDice Settings" ) );
 	readSettings();
 
-	QButtonGroup *btnGroup = new QButtonGroup(this);
+	QButtonGroup *btnGroup = new QButtonGroup;
 	// Add Apply button to buttonBox
 	QPushButton *applyBtn = new QPushButton( tr( "&Apply" ), this );
 	buttonBox->addButton( applyBtn, QDialogButtonBox::ApplyRole );
-	applyBtn->setEnabled(false);
-	
+	applyBtn->setEnabled( false );
+
 	connect( buttonBox.data(), &QDialogButtonBox::rejected, this, &Configure::reject );
 	connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::accept );
 	connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::writeSettings );
 	connect( applyBtn, &QPushButton::clicked, this, &Configure::writeSettings );
-	
-	btnGroup->addButton(soundCheckBox.data(), 0);
-	btnGroup->addButton(applyBtn, 1);
+
+	btnGroup->addButton( soundCheckBox.data(), 0 );
+	btnGroup->addButton( applyBtn, 1 );
 
 	gridLayout->addWidget( createGroupBox_Icon(), 0, 0 );
 	gridLayout->addWidget( createGroupBox_General(), 0, 1 );
@@ -95,4 +95,5 @@ void Configure::writeSettings()
 	settings->sync();
 	settings->endGroup();
 }
+#include "headers/moc_configure.cpp"
 // kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
