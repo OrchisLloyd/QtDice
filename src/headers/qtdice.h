@@ -1,5 +1,4 @@
 /* Petros S <petross404@gmail.com>
- *
  * For more information about the license
  * take a look at ../License/GPL-3.txt
  *
@@ -30,13 +29,16 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
 #include <QSoundEffect>
+<<<<<<< HEAD:src/headers/qtdice.h
+=======
+
+>>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833:src/headers/qtdice.h
 
 Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 
 class QtDice : public QMainWindow
 {
 	Q_OBJECT
-
 public:
 	QtDice( int number, QWidget *parent = nullptr );
 	~QtDice();
@@ -96,7 +98,7 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
-
+  
 #ifdef ENABLE_SOUND
 	QSoundEffect roll_sound;
 #endif

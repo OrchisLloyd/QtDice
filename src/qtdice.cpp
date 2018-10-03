@@ -251,11 +251,21 @@ void QtDice::createMenus()
 	connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833
 	menuAbout->addAction( actionAbout.data() );
 	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
 	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
 
+<<<<<<< HEAD
+=======
+	menuAbout->addAction( actionAbout.data() );
+	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
+	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
+  
+>>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833
 	menuAbout->addAction( actionAboutQt.data() );
 	actionAboutQt->setIcon( QIcon( ":/resources/images/Qt_logo_2016.svg.ico" ) );
 	connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );
@@ -315,4 +325,8 @@ void QtDice::stopLastQMovieFrame( QMovie *movie )
 	}
 }
 #include "headers/moc_qtdice.cpp"
+<<<<<<< HEAD
 // kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+=======
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+>>>>>>> 41c7c5f3be74d0f284ee8e39dc7638099e23c833
