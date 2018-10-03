@@ -29,6 +29,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
 
+
 Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 
 class QtDice : public QMainWindow
@@ -93,7 +94,11 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
 #ifdef ENABLE_SOUND
 	QSoundEffect roll_sound;
 #endif

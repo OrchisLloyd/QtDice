@@ -79,8 +79,13 @@ if(WIN32) # Check if we are on Windows
 		)
 	elseif(CMAKE_COMPILER_IS_GNUCXX)
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+<<<<<<< HEAD
 			COMPILE_OPTIONS "-fuse-ld=gold"
 			LINK_FLAGS "-Wl,--verbose -Wl,--trace"
+=======
+			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold"
+			#LINK_FLAGS "-Wl,--verbose -Wl,--trace"
+>>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
 		)
 	elseif(CMAKE_CXX_COMPILER_ID MATHES "Clang")
 		message(STATUS "Compiler is: ${CMAKE_CXX_COMPILER_ID}")

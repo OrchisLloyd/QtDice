@@ -31,4 +31,7 @@ About::About( QWidget *parent )
 // }
 //#include "../headers/moc_about.cpp"
 // kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
