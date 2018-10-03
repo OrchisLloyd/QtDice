@@ -11,28 +11,28 @@
 QtDice::QtDice( int number, QWidget *parent )
 	: diceNumber( number ),
 	  QMainWindow( parent ),
-	  btnRoll( new QPushButton( tr( "&Roll the dice" ), this ) ),
-	  btnQuit( new QPushButton( tr( "&Quit" ), this ) ),
-	  widgetCentral( new QWidget( this ) ),
+	  btnRoll( new QPushButton( tr( "&Roll the dice" ) ) ),
+	  btnQuit( new QPushButton( tr( "&Quit" ) ) ),
+	  widgetCentral( new QWidget() ),
 	  gridLayout( new QGridLayout ),
 	  gridLabel( new QGridLayout ),
 	  gridStatus( new QGridLayout ),
 	  gridWarning( new QGridLayout ),
 	  image( new QPixmap( ":/resources/images/dice.png" ) ),
-	  label( new QLabel( this ) ),
-	  labelStatus( new QLabel( tr( "Haven't rolled yet" ), this ) ),
-	  labelWarning( new QLabel( this ) ),
+	  label( new QLabel ),
+	  labelStatus( new QLabel( tr( "Haven't rolled yet" ) ) ),
+	  labelWarning( new QLabel ),
 	  actionRoll( new QAction( tr( "&Roll the dice" ), this ) ),
 	  actionQuit( new QAction( tr( "&Quit" ), this ) ),
 	  actionConfigure( new QAction( tr( "&Configure" ), this ) ),
 	  actionAboutQt( new QAction( tr( "&About Qt" ), this ) ),
 	  actionAbout( new QAction( tr( "&About QtDice" ), this ) ),
 	  movie( new QMovie( this ) ),
-	  spinBox( new QSpinBox( this ) ),
+	  spinBox( new QSpinBox ),
 	  settings( new QSettings( "QtDice" ) ),
 	  qtdiceIcon( new QIcon( ":/resources/images/dice.ico" ) ),
 	  exitIcon( new QIcon( ":/resources/images/exit.ico" ) ),
-	  pDice( new Dice() )
+	  pDice( Dice::instance() )
 {
 	qDebug() << QString( "The number given from argv is %1" ).arg( diceNumber );
 	createMenus();
@@ -45,16 +45,17 @@ QtDice::QtDice( int number, QWidget *parent )
 
 	//Connect spinBox to reload function and the label_warning
 	connect( spinBox.data(), QOverload<int>::of( &QSpinBox::valueChanged ), this,
-	         static_cast<void ( QtDice::* )( int ) > ( &QtDice::reload ) );
+		 static_cast<void ( QtDice::* )( int ) > ( &QtDice::reload ) );
 
 	//Connect buttons to functions
 	connect( btnRoll.data(), &QPushButton::clicked, this,
-	         static_cast<void ( QtDice::* )( void )> ( &QtDice::reload ) );
+		 static_cast<void ( QtDice::* )( void )> ( &QtDice::reload ) );
 	connect( btnQuit.data(), &QPushButton::clicked, this, &QApplication::quit );
 
 	setCentralWidget( widgetCentral.data() );
 	centralWidget()->setLayout( gridLayout.data() );
 	setMinimumSize( 520, 580 );
+	setMaximumSize( 520, 580 );
 
 	// GUI is all set, handle the argv that is passed to the QtDice ctor
 	if ( ( diceNumber > 1 ) && ( diceNumber < 6 ) )
@@ -164,7 +165,7 @@ void QtDice::imageUpdate( int image_number )
 		qDebug() << "Oops! Very wrong number...";
 		QString msg_error = "A dice doesn't have this number : " + ( QString( "%1" ).arg( image_number ) );
 		QMessageBox::critical( this, tr( "QtDice" ),
-		                       tr( msg_error.toLocal8Bit().constData() ) );
+				       tr( msg_error.toLocal8Bit().constData() ) );
 	}
 	else
 	{
@@ -172,7 +173,7 @@ void QtDice::imageUpdate( int image_number )
 	}
 
 	connect( movie.data(), &QMovie::frameChanged, this,
-	         [ = ]()
+		 [ = ]()
 	{
 		if ( movie->state() == QMovie::NotRunning )
 		{
@@ -227,7 +228,6 @@ void QtDice::resetQtDice()
 	numberOfRolls = 0;
 	setupWidgets();
 	label->setPixmap( QPixmap( ":/resources/images/128-apps-dice.png" ) );
-	pDice.reset();
 }
 
 void QtDice::createMenus()
@@ -239,7 +239,7 @@ void QtDice::createMenus()
 	menuFile->addAction( actionRoll.data() );
 	actionRoll->setIcon( *qtdiceIcon.data() );
 	connect( actionRoll.data(), &QAction::triggered, this,
-	         static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
+		 static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
 
 	menuFile->addSeparator();
 
@@ -255,6 +255,10 @@ void QtDice::createMenus()
 	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
 	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
 
+	menuAbout->addAction( actionAbout.data() );
+	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
+	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
+  
 	menuAbout->addAction( actionAboutQt.data() );
 	actionAboutQt->setIcon( QIcon( ":/resources/images/Qt_logo_2016.svg.ico" ) );
 	connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );

@@ -28,6 +28,8 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
+#include <QSoundEffect>
+
 
 Q_DECLARE_LOGGING_CATEGORY( LOG_QTDICE )
 
@@ -98,10 +100,7 @@ private:
 	QSoundEffect roll_sound;
 #endif
 
-
-	// Making an dynamic object of type Dice, will help upon creating one
-	// only when the programm is first run by checking if it already exists.
-	QScopedPointer<Dice> pDice;
+	Dice *pDice;
 };
 
 #endif				// QTDICE_H

@@ -13,9 +13,9 @@
 #include <QPixmap>
 #include <QLabel>
 #include <QtGlobal>
+#include <QButtonGroup>
 #include <QSettings>
 #include <QCheckBox>
-
 
 class Configure : public QDialog
 {
@@ -23,7 +23,6 @@ class Configure : public QDialog
 
 public:
 	explicit Configure( QWidget *parent );
-
 	~Configure();
 
 public slots:
@@ -51,4 +50,3 @@ private:
 };
 
 #endif // CONFIGURE_H
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

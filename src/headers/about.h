@@ -24,7 +24,6 @@
 
 class About : public QDialog
 {
-
 	Q_OBJECT
 
 public:
