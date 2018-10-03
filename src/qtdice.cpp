@@ -9,8 +9,8 @@
 #include "headers/configure.h"
 
 QtDice::QtDice( int number, QWidget *parent )
-	: diceNumber( number ),
-	  QMainWindow( parent ),
+	: QMainWindow( parent ),
+	  diceNumber( number ),
 	  btnRoll( new QPushButton( tr( "&Roll the dice" ) ) ),
 	  btnQuit( new QPushButton( tr( "&Quit" ) ) ),
 	  widgetCentral( new QWidget() ),
@@ -319,8 +319,3 @@ void QtDice::stopLastQMovieFrame( QMovie *movie )
 	}
 }
 #include "headers/moc_qtdice.cpp"
-<<<<<<< HEAD
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
-=======
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
->>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79

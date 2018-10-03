@@ -58,6 +58,7 @@ signals:
 	bool isNumberOfRollsIncremented( bool answer );
 
 private:
+	int diceNumber;
 	QScopedPointer<QPushButton> btnRoll;
 	QScopedPointer<QPushButton> btnReset;
 	QScopedPointer<QPushButton> btnQuit;
@@ -68,7 +69,7 @@ private:
 	QScopedPointer<QGridLayout> gridReset;
 	QScopedPointer<QGridLayout> gridWarning;
 	QScopedPointer <QSettings> settings;
-	int diceNumber, numberOfRolls;
+	int numberOfRolls;
 	QScopedPointer <QPixmap> image;
 	QImage qimage;
 	QScopedPointer<QIcon> qtdiceIcon;
@@ -94,11 +95,7 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
 #ifdef ENABLE_SOUND
 	QSoundEffect roll_sound;
 #endif

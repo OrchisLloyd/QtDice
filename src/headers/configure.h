@@ -23,10 +23,6 @@ class Configure : public QDialog
 
 public:
 	explicit Configure( QWidget *parent );
-<<<<<<< HEAD
-
-=======
->>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
 	~Configure();
 
 public slots:
@@ -53,9 +49,4 @@ private:
 	void readSettings();
 };
 
-<<<<<<< HEAD
 #endif // CONFIGURE_H
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
-=======
-#endif // CONFIGURE_H
->>>>>>> e41dfcdaaf016b941a30ef18f6b678029e96ba79
