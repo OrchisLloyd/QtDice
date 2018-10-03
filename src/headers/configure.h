@@ -45,8 +45,8 @@ private:
 	QScopedPointer<QCheckBox> soundCheckBox;
 	QGroupBox *createGroupBox_General();
 	QGroupBox *createGroupBox_Icon();
+
 	void readSettings();
 };
 
 #endif // CONFIGURE_H
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
