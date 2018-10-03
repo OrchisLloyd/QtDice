@@ -23,6 +23,7 @@ class Configure : public QDialog
 
 public:
 	explicit Configure( QWidget *parent );
+
 	~Configure();
 
 public slots:
@@ -45,6 +46,7 @@ private:
 	QScopedPointer<QCheckBox> soundCheckBox;
 	QGroupBox *createGroupBox_General();
 	QGroupBox *createGroupBox_Icon();
+
 	void readSettings();
 };
 

@@ -1,0 +1,21 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>resources/images/dice-1.png</file>
+	<file>resources/images/dice-2.png</file>
+	<file>resources/images/dice-3.png</file>
+	<file>resources/images/dice-4.png</file>
+	<file>resources/images/dice-5.png</file>
+	<file>resources/images/dice-6.png</file>
+	<file>resources/images/dice.png</file>
+	<file>resources/images/dice.ico</file>
+	<file>resources/images/exit.ico</file>
+	<file>resources/images/rolling.gif</file>
+	<file>resources/images/rolling_infinite.gif</file>
+	<file>resources/images/Qt_logo_2016.svg.ico</file>
+	<file>resources/images/386.png</file>
+	<file>resources/images/386.ico</file>
+	<file>resources/images/bluedice.gif</file>
+	<file>resources/sound/roll.wav</file>
+	<file>resources/images/SettingsL.png</file>
+</qresource>
+</RCC>	

@@ -16,7 +16,7 @@ set(QtDice_VERSION ${QtDice_VERSION_MAJOR}.${QtDice_VERSION_MINOR})
 
 set(Dice_VERSION_MAJOR 1)
 set(Dice_VERSION_MINOR 0)
-
+set(CMAKE_BUILD_TYPE "Release")
 configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/headers/version.h @ONLY)
 
 #file(GLOB TS_FILES "${PROJECT_SOURCE_DIR}/translations/*.ts")
@@ -24,12 +24,28 @@ configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/
 add_subdirectory(src/Settings)
 include_directories(src)
 
+if(WIN32) # Check if we are on Windows
+	set(PLATFORM_TARGET "WIN32")
+	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
+		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.12.0\\msvc2017_64\\")
+	elseif(CMAKE_COMPILER_IS_GNUCXX)
+		message(STATUS "Setting PATH...")
+		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.12.0\\mingw73_64\\;C:\\Qt\\5.12.0\\mingw73_64\\include\\")
+	endif()
+elseif(UNIX)
+	#
+elseif(APPLE)
+	set(PLATFORM_TARGET "MACOSX_BUNDLE")
+endif(WIN32)
+
 option(ENABLE_SOUND "Enable rolling sound effect" OFF)
 if(ENABLE_SOUND)
 	message(STATUS "Enable rolling sound of the dice")
 	add_definitions(-DENABLE_SOUND)
 endif()
 # Find the QtWidgets and Qt5Multimedia library
+find_package(Qt5Widgets CONFIG REQUIRED)
+qt5_add_resources(qtdice_RES src/dice.qrc)
 if(ENABLE_SOUND)
 	find_package(Qt5Multimedia CONFIG REQUIRED)
 endif()
@@ -47,35 +63,26 @@ set(qtdice_H
 	src/headers/configure.h
 	src/headers/infotab.h
 )
-if(WIN32) # Check if we are on Windows and look for Qt5
-	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
-		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.1\\msvc2017_64\\lib\\cmake\\;C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
-		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
-	endif()
-endif(WIN32)
-
-find_package(Qt5Widgets CONFIG REQUIRED)
-qt5_add_resources(qtdice_RES src/dice.qrc)
 
 # Tell CMake to create the executable
-add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} ${qtdice_RES})
+add_executable(${CMAKE_PROJECT_NAME} ${PLATFORM_TARGET} ${qtdice_SRC} ${qtdice_RES})
 
 if(WIN32) # Check if we are on Windows
 	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHc /std:c++latest ")
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
 			WIN32_EXECUTABLE YES
-			COMPILE_OPTIONS "/c"
+			#COMPILE_OPTIONS 
 			LINK_FLAGS "/ENTRY:mainCRTStartup /VERBOSE /MANIFEST:NO"
 			LINK_LIBRARIES "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib 
 					ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib"
 		)
 	elseif(CMAKE_COMPILER_IS_GNUCXX)
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold"
-			#LINK_FLAGS "-Wl,--verbose -Wl,--trace"
+			COMPILE_OPTIONS "-fuse-ld=gold"
+			LINK_FLAGS "-Wl,--verbose -Wl,--trace"
 		)
-	elseif(CMAKE_CXX_COMPILER_ID MATHES Clang)
+	elseif(CMAKE_CXX_COMPILER_ID MATHES "Clang")
 		message(STATUS "Compiler is: ${CMAKE_CXX_COMPILER_ID}")
 	else()
 		message(FATAL_ERROR "You are using an unsupported Windows compiler! (Not MSVC, Clang or GCC)")

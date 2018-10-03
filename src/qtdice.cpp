@@ -251,7 +251,6 @@ void QtDice::createMenus()
 	connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
-
 	menuAbout->addAction( actionAbout.data() );
 	actionAbout->setIcon( QIcon::fromTheme( "help-about", QIcon( ":/resources/images/dice.ico" ) ) );
 	//connect(actionAbout.data(), &QAction::triggered, this, &QtDice::aboutQtDice);
@@ -289,6 +288,7 @@ void QtDice::setupWidgets()
 
 	spinBox->setRange( 1, 6 );
 
+	//setup the main label
 	label->setPixmap( *image.data() );
 	label->setBackgroundRole( QPalette::Base );
 	label->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );

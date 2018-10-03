@@ -20,6 +20,8 @@ private:
 	Dice( int num );
 	Dice();
 	~Dice();
+
+	//PIMPL
 	struct DiceImplementation;
 	std::unique_ptr<DiceImplementation> d_dice;
 

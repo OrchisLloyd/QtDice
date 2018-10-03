@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\src\\main.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\src\\main.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\src\\qtdice.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\src\\qtdice.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/src/qtdice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\src\\Dice\\dice.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\src\\Dice\\dice.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/src/Dice/dice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\src\\Settings\\configure.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\src\\Settings\\configure.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/src/Settings/configure.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\qrc_dice.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\build\\qrc_dice.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/build/qrc_dice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\mingw-w64\\x86_64-8.1.0\\mingw64\\bin\\g++.exe  -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB @CMakeFiles/QtDice.dir/includes_CXX.rsp -O3 -DNDEBUG   -fuse-ld=gold -std=gnu++11 -o CMakeFiles\\QtDice.dir\\QtDice_autogen\\mocs_compilation.cpp.obj -c C:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\mocs_compilation.cpp",
+  "file": "C:/Users/Petros/projects/QtDice/build/QtDice_autogen/mocs_compilation.cpp"
+}
+]
