@@ -12,6 +12,7 @@ QtDice::QtDice( int number, QWidget *parent )
 	: diceNumber( number ),
 	  QMainWindow( parent ),
 	  btnRoll( new QPushButton( tr( "&Roll the dice" ) ) ),
+	  btnReset( new QPushButton( tr( "&Reset" ) ) ),
 	  btnQuit( new QPushButton( tr( "&Quit" ) ) ),
 	  widgetCentral( new QWidget() ),
 	  gridLayout( new QGridLayout ),
@@ -21,7 +22,6 @@ QtDice::QtDice( int number, QWidget *parent )
 	  image( new QPixmap( ":/resources/images/dice.png" ) ),
 	  label( new QLabel ),
 	  labelStatus( new QLabel( tr( "Haven't rolled yet" ) ) ),
-	  labelWarning( new QLabel ),
 	  actionRoll( new QAction( tr( "&Roll the dice" ), this ) ),
 	  actionQuit( new QAction( tr( "&Quit" ), this ) ),
 	  actionConfigure( new QAction( tr( "&Configure" ), this ) ),
@@ -52,6 +52,7 @@ QtDice::QtDice( int number, QWidget *parent )
 		 static_cast<void ( QtDice::* )( void )> ( &QtDice::reload ) );
 	connect( btnQuit.data(), &QPushButton::clicked, this, &QApplication::quit );
 
+	connect( btnReset.data(), &QPushButton::clicked, this, &QtDice::resetQtDice );
 	setCentralWidget( widgetCentral.data() );
 	centralWidget()->setLayout( gridLayout.data() );
 	setMinimumSize( 520, 580 );
@@ -228,6 +229,8 @@ void QtDice::resetQtDice()
 	numberOfRolls = 0;
 	setupWidgets();
 	label->setPixmap( QPixmap( ":/resources/images/128-apps-dice.png" ) );
+	btnReset->setEnabled(false);
+	spinBox->clear();
 }
 
 void QtDice::createMenus()
@@ -260,11 +263,6 @@ void QtDice::createMenus()
 	connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );
 }
 
-void QtDice::printWarning()
-{
-	labelWarning->setText( tr( "Did you cheat?" ) );
-}
-
 void QtDice::setupLayouts()
 {
 	gridLayout->addLayout( gridLabel.data(), 0, 0 );
@@ -277,7 +275,7 @@ void QtDice::setupLayouts()
 	gridStatus->addWidget( spinBox.data(), 0, 1 );
 	gridStatus->addWidget( btnRoll.data(), 0, 2 );
 
-	gridWarning->addWidget( labelWarning.data(), 0, 0 );
+	gridWarning->addWidget( btnReset.data(), 0, 0 );
 	gridWarning->addWidget( btnQuit.data(), 0, 1 );
 }
 
@@ -285,6 +283,8 @@ void QtDice::setupWidgets()
 {
 	btnRoll->setIcon( QIcon::fromTheme( "roll", *qtdiceIcon.data() ) );
 	btnQuit->setIcon( QIcon::fromTheme( "application-exit", *exitIcon.data() ) );
+	
+	btnReset->setEnabled(false);
 
 	spinBox->setRange( 1, 6 );
 
@@ -314,3 +314,4 @@ void QtDice::stopLastQMovieFrame( QMovie *movie )
 	}
 }
 #include "headers/moc_qtdice.cpp"
+// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

@@ -50,13 +50,13 @@ private slots:
 	void enableWidgets();
 	void stopLastQMovieFrame( QMovie *movie );
 	void QtDiceConfiguration();
-	void printWarning();
 
 signals:
 	void qmovieFrameChanged( QMovie *movie );
 	bool isNumberOfRollsIncremented( bool answer );
 
 private:
+	int diceNumber;
 	QScopedPointer<QPushButton> btnRoll;
 	QScopedPointer<QPushButton> btnReset;
 	QScopedPointer<QPushButton> btnQuit;
@@ -64,10 +64,9 @@ private:
 	QScopedPointer<QGridLayout> gridLayout;
 	QScopedPointer<QGridLayout> gridLabel;
 	QScopedPointer<QGridLayout> gridStatus;
-	QScopedPointer<QGridLayout> gridReset;
 	QScopedPointer<QGridLayout> gridWarning;
 	QScopedPointer <QSettings> settings;
-	int diceNumber, numberOfRolls;
+	int numberOfRolls;
 	QScopedPointer <QPixmap> image;
 	QImage qimage;
 	QScopedPointer<QIcon> qtdiceIcon;
@@ -75,8 +74,6 @@ private:
 	QScopedPointer<QMovie> movie;
 	QScopedPointer<QLabel> label;
 	QScopedPointer<QLabel> labelStatus;
-	QScopedPointer<QLabel> labelWarning;
-	QScopedPointer<QLabel> labelNumberofRolls;
 	QScopedPointer<QMenu> menuFile;
 	QScopedPointer<QMenu> menuEdit;
 	QScopedPointer<QMenu> menuAbout;
@@ -93,7 +90,7 @@ private:
 	void setupWidgets();
 	void setupLayouts();
 	bool isSoundEnabled();
-  
+
 #ifdef ENABLE_SOUND
 	QSoundEffect roll_sound;
 #endif
