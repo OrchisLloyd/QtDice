@@ -1,12 +1,8 @@
-language: cpp 
 sudo: required
-dist: trusty
+dist: precise
+language: cpp
 
-compiler:
-        - clang
-        - gcc
-
-        matrix:
+matrix:
   include:
     - compiler: gcc
       addons:
