@@ -34,8 +34,8 @@ if(WIN32) # Check if we are on Windows and look for Qt5
 		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
 	else()
 		check_cxx_compiler_flag("-std=c++14" COMPILER_SUPPORTS_CXX14)
-		if(${COMPILER_SUPPORTS_CXX14})
-			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+		if(NOT ${COMPILER_SUPPORTS_CXX14})
+			message(FATAL_ERROR "Compiler : " ${CMAKE_CXX_COMPILER_ID} " doesn't support c++14")
 		endif()
 	endif()
 elseif(APPLE)
@@ -84,7 +84,7 @@ if(WIN32) # Check if we are on Windows
 		)
 	elseif(CMAKE_COMPILER_IS_GNUCXX)
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold"
+			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold;-std=c++14"
 			#LINK_FLAGS "-Wl,--verbose -Wl,--trace"
 		)
 	elseif(CMAKE_CXX_COMPILER_ID MATHES Clang)
