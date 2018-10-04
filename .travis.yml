@@ -1,5 +1,7 @@
 language: cpp 
 sudo: required
+dist: trusty
+
 before_install:
         - sudo apt-get update -qq
         - sudo apt-get install qtbase5-dev
@@ -9,7 +11,44 @@ before_install:
 compiler:
         - clang
         - gcc
-  
+
+        matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env: COMPILER=g++-6
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env: COMPILER=g++-7
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-6
+          packages:
+            - clang-6
+      env: COMPILER=clang++-6
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-7
+          packages:
+            - clang-7
+      env: COMPILER=clang++-7
+
 script:
         - mkdir build
         - cd build 
