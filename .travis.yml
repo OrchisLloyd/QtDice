@@ -2,12 +2,6 @@ language: cpp
 sudo: required
 dist: trusty
 
-before_install:
-        - sudo apt-get update -qq
-        - sudo apt-get install qtbase5-dev
-        - sudo apt-get install qt5-default qttools5-dev-tools
-        - sudo apt-get install cmake
-
 compiler:
         - clang
         - gcc
@@ -48,6 +42,12 @@ compiler:
           packages:
             - clang-7
       env: COMPILER=clang++-7
+
+before_install:
+        - sudo apt-get update -qq
+        - sudo apt-get install qtbase5-dev
+        - sudo apt-get install qt5-default qttools5-dev-tools
+        - sudo apt-get install cmake
 
 script:
         - mkdir build
