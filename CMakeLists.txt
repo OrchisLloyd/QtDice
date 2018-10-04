@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(QtDice CXX)
 
+include(CheckCXXCompilerFlag)
 message(STATUS "CMAKE_GENERATOR: ${CMAKE_GENERATOR}")
 message(STATUS "CMAKE_CXX_COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 
@@ -24,11 +25,18 @@ configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/
 add_subdirectory(src/Settings)
 include_directories(src)
 
+message(STATUS ${CMAKE_CXX_FLAGS})
+#Now setup other options
 if(WIN32) # Check if we are on Windows and look for Qt5
 	set(PLATFORM_TARGET "WIN32")
 	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
 		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.1\\msvc2017_64\\lib\\cmake\\;C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
 		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
+	else()
+		check_cxx_compiler_flag("-std=c++14" COMPILER_SUPPORTS_CXX14)
+		if(${COMPILER_SUPPORTS_CXX14})
+			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+		endif()
 	endif()
 elseif(APPLE)
 	set(PLATFORM_TARGET "MACOSX_BUNDLE")
