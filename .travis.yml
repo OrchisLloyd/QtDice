@@ -48,7 +48,7 @@ before_install:
 script:
         - mkdir build
         - cd build 
-        - cmake ..
+        - cmake -DCMAKE_CXX_FLAGS="-std=c++14" ..
         - make
 
 notifications:
