@@ -25,14 +25,14 @@
 
 class InfoTab : public QWidget
 {
-	Q_OBJECT
+		Q_OBJECT
 public:
 
-	explicit InfoTab( QWidget *parent );
+		explicit InfoTab( QWidget *parent );
 
 private:
-	QScopedPointer<QGridLayout> gridLayout;
-	QScopedPointer<QLabel> labelIcon, labelName, labelEmail, labelGithub, labelVersion;
+		QScopedPointer<QGridLayout> gridLayout;
+		QScopedPointer<QLabel> labelIcon, labelName, labelEmail, labelGithub, labelVersion;
 
 };
 

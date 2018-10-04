@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+381a82fa7d589a395d325672cec59428 CMakeFiles/QtDice_autogen
+5c696c353eedce199e7c71d32e8524e9 qrc_dice.cpp

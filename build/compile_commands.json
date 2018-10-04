@@ -1,0 +1,44 @@
+[
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\src\\main.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\src\\main.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\src\\qtdice.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\src\\qtdice.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/src/qtdice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\src\\Dice\\dice.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\src\\Dice\\dice.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/src/Dice/dice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\src\\Settings\\configure.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\src\\Settings\\configure.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/src/Settings/configure.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\qrc_dice.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\build\\qrc_dice.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/build/qrc_dice.cpp"
+},
+{
+  "directory": "C:/Users/Petros/projects/QtDice/build",
+  "command": "C:\\PROGRA~2\\MICROS~3\\2017\\COMMUN~1\\VC\\Tools\\MSVC\\1415~1.267\\bin\\Hostx64\\x64\\cl.exe @<<
+ /nologo /TP -DENABLE_SOUND -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -IC:\\Users\\Petros\\projects\\QtDice\\build -IC:\\Users\\Petros\\projects\\QtDice -IC:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\include -IC:\\Users\\Petros\\projects\\QtDice\\src -IC:\\Qt\\5.11.1\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtWidgets -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtGui -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtANGLE -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtCore -IC:\\Qt\\5.12.0\\msvc2017_64\\.\\mkspecs\\win32-msvc -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtMultimedia -IC:\\Qt\\5.12.0\\msvc2017_64\\include\\QtNetwork  /DWIN32 /D_WINDOWS /W3 /GR /EHsc /EHc /std:c++latest  /MDd /Zi /Ob0 /Od /RTC1   /c /FoCMakeFiles\\QtDice.dir\\QtDice_autogen\\mocs_compilation.cpp.obj /FdCMakeFiles\\QtDice.dir\\ /FS -c C:\\Users\\Petros\\projects\\QtDice\\build\\QtDice_autogen\\mocs_compilation.cpp
+<<",
+  "file": "C:/Users/Petros/projects/QtDice/build/QtDice_autogen/mocs_compilation.cpp"
+}
+]

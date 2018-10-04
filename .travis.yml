@@ -54,4 +54,3 @@ script:
 notifications:
     email:
         - petross404@gmail.com
-    
