@@ -1,5 +1,4 @@
 #include "../headers/configure.h"
-#include <QPushButton>
 
 Configure::Configure( QWidget *parent )
 		: QDialog( parent ),
@@ -23,13 +22,11 @@ Configure::Configure( QWidget *parent )
 		setWindowTitle( tr( "QtDice Settings" ) );
 		readSettings();
 
-		QButtonGroup *btnGroup = new QButtonGroup;
-
 		connect( buttonBox.data(), &QDialogButtonBox::rejected, this, &Configure::reject );
 		connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::accept );
 		connect( buttonBox.data(), &QDialogButtonBox::accepted, this, &Configure::writeSettings );
 
-		btnGroup->addButton( soundCheckBox.data(), 0 );
+		connect( soundCheckBox.data(), &QCheckBox::clicked, this, &Configure::isCheckBoxUnsaved );
 
 		gridLayout->addWidget( createGroupBox_Icon(), 0, 0 );
 		gridLayout->addWidget( createGroupBox_General(), 0, 1 );
@@ -83,8 +80,6 @@ void Configure::readSettings()
 		settings->sync();
 		soundCheckBox->setChecked( settings->value( "rolling_sound" ).toInt() );
 		settings->endGroup();
-
-		isSoundBoxChecked = soundCheckBox->isChecked();
 }
 
 void Configure::writeSettings()
@@ -95,31 +90,34 @@ void Configure::writeSettings()
 		settings->endGroup();
 }
 
-void Configure::closeEvent( QCloseEvent *closeEvent )
+void Configure::closeEvent( QCloseEvent *closeEv )
 {
 		if ( isCheckBoxUnsaved() )
 		{
 				int r = QMessageBox::warning( this,
-						tr( "Unsaved Changes" ),
-						tr( "Do you want to save the changes?" ),
-						QMessageBox::Save |
-						QMessageBox::Discard |
-						QMessageBox::Cancel );
+							tr( "Unsaved Changes" ),
+							tr( "Do you want to save the changes?" ),
+							QMessageBox::Save |
+							QMessageBox::Discard |
+							QMessageBox::Cancel );
+
 				if ( r == QMessageBox::Save )
 				{
 						writeSettings();
-						closeEvent->accept();
+						closeEv->accept();
 				}
-				else if ( r == QMessageBox::Discard ) {closeEvent->accept();}
-				else {closeEvent->ignore();}
+				else if ( r == QMessageBox::Discard ) { closeEv->accept(); }
+				else { closeEv->ignore(); }
 		}
 }
 
 bool Configure::isCheckBoxUnsaved()
 {
+		readSettings();
 		if ( settings->value( "rolling_sound" ).toBool() != soundCheckBox->isChecked() )
 		{
 				emit soundCheckUnsaved();
+				b_isSoundBoxUnSaved = true;
 				return true;
 		}
 		return false;

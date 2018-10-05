@@ -49,10 +49,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Petros\projects\QtDice
+CMAKE_SOURCE_DIR = C:\Users\petros\projects\QtDice
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Petros\projects\QtDice\build
+CMAKE_BINARY_DIR = C:\Users\petros\projects\QtDice\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -81,18 +81,18 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd C:\Users\Petros\projects\QtDice\build
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Petros\projects\QtDice\build\CMakeFiles C:\Users\Petros\projects\QtDice\build\src\Settings\CMakeFiles\progress.marks
+	cd C:\Users\petros\projects\QtDice\build
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\petros\projects\QtDice\build\CMakeFiles C:\Users\petros\projects\QtDice\build\src\Settings\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\Settings\all
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Petros\projects\QtDice\build\CMakeFiles 0
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\petros\projects\QtDice\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd C:\Users\Petros\projects\QtDice\build
+	cd C:\Users\petros\projects\QtDice\build
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\Settings\clean
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
 .PHONY : clean
 
 # The main clean target
@@ -102,23 +102,23 @@ clean\fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd C:\Users\Petros\projects\QtDice\build
+	cd C:\Users\petros\projects\QtDice\build
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\Settings\preinstall
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall\fast:
-	cd C:\Users\Petros\projects\QtDice\build
+	cd C:\Users\petros\projects\QtDice\build
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\Settings\preinstall
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
 .PHONY : preinstall\fast
 
 # clear depends
 depend:
-	cd C:\Users\Petros\projects\QtDice\build
+	cd C:\Users\petros\projects\QtDice\build
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
 .PHONY : depend
 
 # Help Target
@@ -140,8 +140,8 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd C:\Users\Petros\projects\QtDice\build
+	cd C:\Users\petros\projects\QtDice\build
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
-	cd C:\Users\Petros\projects\QtDice\build\src\Settings
+	cd C:\Users\petros\projects\QtDice\build\src\Settings
 .PHONY : cmake_check_build_system
 

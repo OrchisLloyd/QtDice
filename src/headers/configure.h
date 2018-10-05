@@ -1,60 +1,59 @@
 #ifndef CONFIGURE_H
 #define CONFIGURE_H
 
-#include <QApplication>
-#include <QDialog>
-#include <QScopedPointer>
-#include <QSharedPointer>
-#include <QWidget>
-#include <QGridLayout>
-#include <QDialogButtonBox>
-#include <QGroupBox>
-#include <QDebug>
-#include <QPixmap>
-#include <QLabel>
-#include <QMessageBox>
-#include <QtGlobal>
-#include <QButtonGroup>
-#include <QSettings>
-#include <QCheckBox>
-#include <QCloseEvent>
+#include <QtCore/QDebug>
+#include <QtCore/QScopedPointer>
+#include <QtCore/QSettings>
+#include <QtCore/QtGlobal>
+#include <QtGui/QCloseEvent>
+#include <QtGui/QPixmap>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QWidget>
 
 class Configure : public QDialog
 {
-		Q_OBJECT
+    Q_OBJECT
 
 public:
-		explicit Configure( QWidget *parent );
-		~Configure();
+    explicit Configure ( QWidget *parent );
+    ~Configure();
 
 protected:
-		virtual void closeEvent( QCloseEvent *closeEvent );
+    virtual void closeEvent ( QCloseEvent *closeEv );
 public slots:
-		void show();
+    void show();
 
 private slots:
-		void writeSettings();
-		bool isCheckBoxUnsaved();
+    void writeSettings();
+    bool isCheckBoxUnsaved();
 signals:
-		void checkBoxToggled();
-		void soundCheckUnsaved();
+    void checkBoxToggled();
+    void soundCheckUnsaved();
 private:
-		QScopedPointer<QDialogButtonBox> buttonBox;
-		QScopedPointer<QLabel> labelIcon;
-		QScopedPointer<QGroupBox> gridGroupBox;
-		QScopedPointer<QGroupBox> gridGroupBox_Icon;
-		QScopedPointer<QGridLayout> gridLayout;
-		QScopedPointer<QGridLayout> grid_GeneralSettings;
-		QScopedPointer<QGridLayout> gridButtons;
-		QScopedPointer<QGridLayout> gridLabel;
-		QScopedPointer<QPixmap> pixmapSettings;
-		QScopedPointer<QSettings> settings;
-		QScopedPointer<QCheckBox> soundCheckBox;
-		QGroupBox *createGroupBox_General();
-		QGroupBox *createGroupBox_Icon();
-		bool isSoundBoxChecked;
-		void readSettings();
+    QScopedPointer<QDialogButtonBox> buttonBox;
+    QScopedPointer<QLabel> labelIcon;
+    QScopedPointer<QGroupBox> gridGroupBox;
+    QScopedPointer<QGroupBox> gridGroupBox_Icon;
+    QScopedPointer<QGridLayout> gridLayout;
+    QScopedPointer<QGridLayout> grid_GeneralSettings;
+    QScopedPointer<QGridLayout> gridButtons;
+    QScopedPointer<QGridLayout> gridLabel;
+    QScopedPointer<QPixmap> pixmapSettings;
+    QScopedPointer<QSettings> settings;
+    QScopedPointer<QCheckBox> soundCheckBox;
+    QGroupBox *createGroupBox_General();
+    QGroupBox *createGroupBox_Icon();
+    bool b_isSoundBoxUnSaved;
+    void readSettings();
 };
 
 #endif // CONFIGURE_H
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 

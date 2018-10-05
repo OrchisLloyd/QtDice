@@ -1,16 +1,16 @@
-The system is: Windows - 6.1.7601 - AMD64
+The system is: Windows - 10.0.17134 - AMD64
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.15.26726/bin/Hostx64/x64/cl.exe 
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.14.26428/bin/Hostx64/x64/cl.exe 
 Build flags: 
 Id flags:  
 
 The output was:
 0
-Microsoft (R) C/C++ Optimizing Compiler Version 19.15.26730 for x64
+Microsoft (R) C/C++ Optimizing Compiler Version 19.14.26429.4 for x64
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 CMakeCXXCompilerId.cpp
-Microsoft (R) Incremental Linker Version 14.15.26730.0
+Microsoft (R) Incremental Linker Version 14.14.26429.4
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:CMakeCXXCompilerId.exe 
@@ -21,44 +21,44 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
 
-The CXX compiler identification is MSVC, found in "C:/Users/Petros/projects/QtDice/build/CMakeFiles/3.12.2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+The CXX compiler identification is MSVC, found in "C:/Users/petros/projects/QtDice/build/CMakeFiles/3.12.3/CompilerIdCXX/CMakeCXXCompilerId.exe"
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: C:/Users/Petros/projects/QtDice/build/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/petros/projects/QtDice/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_a551b\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_a551b.dir\build.make /nologo -L                  CMakeFiles\cmTC_a551b.dir\build
-Building CXX object CMakeFiles/cmTC_a551b.dir/testCXXCompiler.cxx.obj
-	C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\cl.exe @C:\Users\Petros\AppData\Local\Temp\nm8F57.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_e4107\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_e4107.dir\build.make /nologo -L                  CMakeFiles\cmTC_e4107.dir\build
+Building CXX object CMakeFiles/cmTC_e4107.dir/testCXXCompiler.cxx.obj
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\cl.exe @C:\Users\petros\AppData\Local\Temp\nm9F9A.tmp
 testCXXCompiler.cxx
-Linking CXX executable cmTC_a551b.exe
-	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_a551b.dir --manifests  -- C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_a551b.dir\objects1.rsp @C:\Users\Petros\AppData\Local\Temp\nm917A.tmp
+Linking CXX executable cmTC_e4107.exe
+	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_e4107.dir --manifests  -- C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_e4107.dir\objects1.rsp @C:\Users\petros\AppData\Local\Temp\nmA047.tmp
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/Petros/projects/QtDice/build/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/petros/projects/QtDice/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_5d18d\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_5d18d.dir\build.make /nologo -L                  CMakeFiles\cmTC_5d18d.dir\build
-Building CXX object CMakeFiles/cmTC_5d18d.dir/CMakeCXXCompilerABI.cpp.obj
-	C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\cl.exe @C:\Users\Petros\AppData\Local\Temp\nm97FE.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_eb5b8\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_eb5b8.dir\build.make /nologo -L                  CMakeFiles\cmTC_eb5b8.dir\build
+Building CXX object CMakeFiles/cmTC_eb5b8.dir/CMakeCXXCompilerABI.cpp.obj
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\cl.exe @C:\Users\petros\AppData\Local\Temp\nmA3FF.tmp
 CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_5d18d.exe
-	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_5d18d.dir --manifests  -- C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_5d18d.dir\objects1.rsp @C:\Users\Petros\AppData\Local\Temp\nm98BB.tmp
+Linking CXX executable cmTC_eb5b8.exe
+	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_eb5b8.dir --manifests  -- C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_eb5b8.dir\objects1.rsp @C:\Users\petros\AppData\Local\Temp\nmA49C.tmp
 
 
 
 
 Detecting CXX [] compiler features compiled with the following output:
-Change Dir: C:/Users/Petros/projects/QtDice/build/CMakeFiles/CMakeTmp
+Change Dir: C:/Users/petros/projects/QtDice/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_35f5a\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_35f5a.dir\build.make /nologo -L                  CMakeFiles\cmTC_35f5a.dir\build
-Building CXX object CMakeFiles/cmTC_35f5a.dir/feature_tests.cxx.obj
-	C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\cl.exe @C:\Users\Petros\AppData\Local\Temp\nm9E64.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_851fd\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_851fd.dir\build.make /nologo -L                  CMakeFiles\cmTC_851fd.dir\build
+Building CXX object CMakeFiles/cmTC_851fd.dir/feature_tests.cxx.obj
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\cl.exe @C:\Users\petros\AppData\Local\Temp\nmA8A2.tmp
 feature_tests.cxx
-Linking CXX executable cmTC_35f5a.exe
-	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_35f5a.dir --manifests  -- C:\PROGRA~2\MICROS~3\2017\COMMUN~1\VC\Tools\MSVC\1415~1.267\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_35f5a.dir\objects1.rsp @C:\Users\Petros\AppData\Local\Temp\nm9F11.tmp
+Linking CXX executable cmTC_851fd.exe
+	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_851fd.dir --manifests  -- C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_851fd.dir\objects1.rsp @C:\Users\petros\AppData\Local\Temp\nmA95F.tmp
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers

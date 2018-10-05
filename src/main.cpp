@@ -12,7 +12,9 @@
 
 int main( int argc, char *argv[] )
 {
+		QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
 		QApplication app( argc, argv );
+
 		QCommandLineParser parser;
 		QCommandLineOption diceNumber( QStringList() << "n" << "number",
 									   QApplication::translate( "Main",

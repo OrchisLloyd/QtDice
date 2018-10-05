@@ -12,7 +12,6 @@ CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: ..\src\headers\configure.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QDebug
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QScopedPointer
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QSettings
-CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QSharedPointer
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QtGlobal
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qalgorithms.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qarraydata.h
@@ -121,7 +120,6 @@ CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\i
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtGui\qwindowdefs.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtGui\qwindowdefs_win.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QApplication
-CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QButtonGroup
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QCheckBox
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QDialog
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QDialogButtonBox
@@ -134,7 +132,6 @@ CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\i
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qabstractbutton.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qapplication.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qboxlayout.h
-CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qbuttongroup.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qcheckbox.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qdesktopwidget.h
 CMakeFiles\QtDice.dir\src\Settings\configure.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qdialog.h
@@ -161,6 +158,7 @@ CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QLoggingCategory
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QSettings
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QStandardPaths
+CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\Qt
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qalgorithms.h
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qarraydata.h
 CMakeFiles\QtDice.dir\src\main.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qatomic.h
@@ -333,9 +331,9 @@ CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCor
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QLoggingCategory
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QScopedPointer
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QSettings
-CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QSharedPointer
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QStandardPaths
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QString
+CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\Qt
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\QtGlobal
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qalgorithms.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtCore\qarraydata.h
@@ -463,7 +461,6 @@ CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtMul
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtMultimedia\qtmultimediaglobal.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QAction
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QApplication
-CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QButtonGroup
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QCheckBox
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QDialog
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\QDialogButtonBox
@@ -486,7 +483,6 @@ CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWid
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qactiongroup.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qapplication.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qboxlayout.h
-CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qbuttongroup.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qcheckbox.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qdesktopwidget.h
 CMakeFiles\QtDice.dir\src\qtdice.cpp.obj: C:\Qt\5.12.0\msvc2017_64\include\QtWidgets\qdialog.h

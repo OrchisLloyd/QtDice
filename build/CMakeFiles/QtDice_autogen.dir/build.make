@@ -44,10 +44,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Petros\projects\QtDice
+CMAKE_SOURCE_DIR = C:\Users\petros\projects\QtDice
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Petros\projects\QtDice\build
+CMAKE_BINARY_DIR = C:\Users\petros\projects\QtDice\build
 
 # Utility rule file for QtDice_autogen.
 
@@ -55,8 +55,8 @@ CMAKE_BINARY_DIR = C:\Users\Petros\projects\QtDice\build
 include CMakeFiles\QtDice_autogen.dir\progress.make
 
 CMakeFiles\QtDice_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=C:\Users\Petros\projects\QtDice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target QtDice"
-	echo >nul && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice_autogen.dir/AutogenInfo.cmake Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=C:\Users\petros\projects\QtDice\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target QtDice"
+	echo >nul && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice_autogen.dir/AutogenInfo.cmake Debug
 
 QtDice_autogen: CMakeFiles\QtDice_autogen
 QtDice_autogen: CMakeFiles\QtDice_autogen.dir\build.make
@@ -73,6 +73,6 @@ CMakeFiles\QtDice_autogen.dir\clean:
 .PHONY : CMakeFiles\QtDice_autogen.dir\clean
 
 CMakeFiles\QtDice_autogen.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\Petros\projects\QtDice C:\Users\Petros\projects\QtDice C:\Users\Petros\projects\QtDice\build C:\Users\Petros\projects\QtDice\build C:\Users\Petros\projects\QtDice\build\CMakeFiles\QtDice_autogen.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\petros\projects\QtDice C:\Users\petros\projects\QtDice C:\Users\petros\projects\QtDice\build C:\Users\petros\projects\QtDice\build C:\Users\petros\projects\QtDice\build\CMakeFiles\QtDice_autogen.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles\QtDice_autogen.dir\depend
 

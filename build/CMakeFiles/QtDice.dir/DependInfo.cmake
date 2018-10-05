@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Petros/projects/QtDice/build/QtDice_autogen/mocs_compilation.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/QtDice_autogen/mocs_compilation.cpp.obj"
-  "C:/Users/Petros/projects/QtDice/build/qrc_dice.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/qrc_dice.cpp.obj"
-  "C:/Users/Petros/projects/QtDice/src/Dice/dice.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/Dice/dice.cpp.obj"
-  "C:/Users/Petros/projects/QtDice/src/Settings/configure.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/Settings/configure.cpp.obj"
-  "C:/Users/Petros/projects/QtDice/src/main.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/main.cpp.obj"
-  "C:/Users/Petros/projects/QtDice/src/qtdice.cpp" "C:/Users/Petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/qtdice.cpp.obj"
+  "C:/Users/petros/projects/QtDice/build/QtDice_autogen/mocs_compilation.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/QtDice_autogen/mocs_compilation.cpp.obj"
+  "C:/Users/petros/projects/QtDice/build/qrc_dice.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/qrc_dice.cpp.obj"
+  "C:/Users/petros/projects/QtDice/src/Dice/dice.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/Dice/dice.cpp.obj"
+  "C:/Users/petros/projects/QtDice/src/Settings/configure.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/Settings/configure.cpp.obj"
+  "C:/Users/petros/projects/QtDice/src/main.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/main.cpp.obj"
+  "C:/Users/petros/projects/QtDice/src/qtdice.cpp" "C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir/src/qtdice.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

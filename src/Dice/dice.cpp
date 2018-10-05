@@ -32,7 +32,10 @@ Dice *Dice::instance()
 
 Dice::Dice( int num ) : d_dice( new DiceImplementation( num ) ) {}
 
-Dice::Dice() { d_dice.reset( new DiceImplementation ); }
+Dice::Dice()
+{
+		d_dice.reset( new DiceImplementation );
+}
 
 Dice::~Dice() = default;
 

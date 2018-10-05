@@ -84,7 +84,7 @@ if(WIN32) # Check if we are on Windows
 		)
 	elseif(CMAKE_COMPILER_IS_GNUCXX)
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
-			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold;-std=c++14"
+			COMPILE_OPTIONS "-mwindows;-fuse-ld=gold;-std=c++11"
 			#LINK_FLAGS "-Wl,--verbose -Wl,--trace"
 		)
 	elseif(CMAKE_CXX_COMPILER_ID MATHES Clang)

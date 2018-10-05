@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Petros/projects/QtDice/src/Settings
+# Install script for directory: C:/Users/petros/projects/QtDice/src/Settings
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

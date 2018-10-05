@@ -49,7 +49,7 @@ QtDice::QtDice( int number, QWidget *parent )
 
 		//Connect buttons to functions
 		connect( btnRoll.data(), &QPushButton::clicked, this,
-				 static_cast<void ( QtDice::* )( void )> ( &QtDice::reload ) );
+				 static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
 		connect( btnQuit.data(), &QPushButton::clicked, this, &QApplication::quit );
 
 		connect( btnReset.data(), &QPushButton::clicked, this, &QtDice::resetQtDice );
@@ -118,15 +118,12 @@ void QtDice::animateDice()
 		label->setMovie( movie.data() );
 
 		//Just to make sure that movie has a valid type or exit
-		if ( movie->isValid() )
-		{
-				movie->start();
-		}
+		if ( movie->isValid() ) {movie->start();} 
 		else
 		{
-				QString anim_error {"Animation type is not supported!"};
-				label->setText( tr( anim_error.toLocal8Bit().constData() ) );
-				QMessageBox::critical( this, tr( "Error" ), tr( anim_error.toLocal8Bit().constData() ) );
+				QString animationError {"Animation type is not supported! Did you forget to include *.qrc file?"};
+				label->setText( tr( animationError.toLocal8Bit().constData() ) );
+				QMessageBox::critical( this, tr( "Error" ), tr( animationError.toLocal8Bit().constData() ) );
 		}
 }
 

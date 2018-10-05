@@ -395,5 +395,8 @@ const char features[] = {"\n"
 
 						};
 
-int main( int argc, char **argv ) { ( void )argv; return features[argc]; }
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+int main( int argc, char **argv )
+{
+		( void ) argv;
+		return features[argc];
+}
