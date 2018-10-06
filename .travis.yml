@@ -57,9 +57,10 @@ before_install:
 script:
         - export CC=gcc-8
         - export CXX=g++-8
+        - g++ -v
         - mkdir build
         - cd build 
-        - cmake -DCMAKE_CXX_FLAGS="-std=c++14" ..
+        - cmake -DCMAKE_CXX_FLAGS="-std=c++14" -DCMAKE_PREFIX_PATH="/opt/qt59/" ..
         - make
 
 notifications:
