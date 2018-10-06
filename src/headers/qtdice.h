@@ -87,10 +87,14 @@ private:
     QScopedPointer<QAction> actionAbout;
     QScopedPointer<QAction> actionSettings;
     QScopedPointer<QSpinBox> spinBox;
+    int imageNumber;
 
     void createMenus();
     void setupWidgets();
     void setupLayouts();
+    void setupConnections();
+    void setupConnectionsOfAnimation();
+    void setupConnectionsOfReload();
     bool isSoundEnabled();
 
 #ifdef ENABLE_SOUND

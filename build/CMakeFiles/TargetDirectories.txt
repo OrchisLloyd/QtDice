@@ -1,6 +1,0 @@
-C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice.dir
-C:/Users/petros/projects/QtDice/build/CMakeFiles/edit_cache.dir
-C:/Users/petros/projects/QtDice/build/CMakeFiles/rebuild_cache.dir
-C:/Users/petros/projects/QtDice/build/CMakeFiles/QtDice_autogen.dir
-C:/Users/petros/projects/QtDice/build/src/Settings/CMakeFiles/edit_cache.dir
-C:/Users/petros/projects/QtDice/build/src/Settings/CMakeFiles/rebuild_cache.dir
