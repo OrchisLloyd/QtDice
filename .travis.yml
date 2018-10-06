@@ -62,7 +62,9 @@ script:
         - cd build 
         - cmake -DCMAKE_CXX_FLAGS="-std=c++14" -DCMAKE_PREFIX_PATH="/opt/qt59/" ..
         - make
-        - cppcheck --quiet --error-exitcode=1 . 
+        - gprof ./QtDice  > gprof.log
+        - head gprof.log -n 100
+        - cd ../src/ && cppcheck --quiet --force --error-exitcode=1 . 
 
 notifications:
     email:
