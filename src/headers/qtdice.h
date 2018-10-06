@@ -29,7 +29,10 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QMessageBox>
-#include <QtMultimedia/QSoundEffect>
+
+#ifdef  ENABLE_SOUND
+        #include <QtMultimedia/QSoundEffect>
+#endif
 
 Q_DECLARE_LOGGING_CATEGORY ( LOG_QTDICE )
 
