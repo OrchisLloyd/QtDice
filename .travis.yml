@@ -52,7 +52,7 @@ before_install:
         - sudo apt-get update -qq
         - sudo apt-get install qtbase5-dev g++-8
         - sudo apt-get install qt5-default qttools5-dev-tools
-        - sudo apt-get install cmake
+        - sudo apt-get install cmake cppcheck
 
 script:
         - export CC=gcc-8
@@ -62,6 +62,7 @@ script:
         - cd build 
         - cmake -DCMAKE_CXX_FLAGS="-std=c++14" -DCMAKE_PREFIX_PATH="/opt/qt59/" ..
         - make
+        - cppcheck --quiet --error-exitcode=1 . 
 
 notifications:
     email:
