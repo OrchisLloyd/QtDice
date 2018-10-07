@@ -34,6 +34,7 @@ QtDice::QtDice( int number, QWidget *parent )
 	  settings( new QSettings( "QtDice" ) ),
 	  qtdiceIcon( new QIcon( ":/resources/images/dice.ico" ) ),
 	  exitIcon( new QIcon( ":/resources/images/exit.ico" ) ),
+	  quitShortCut( new QShortcut( QKeySequence( Qt::Key_Escape ), this ) ),
 	  pDice( Dice::instance() )
 {
 	qDebug() << QString( "The number given from argv is %1" ).arg( diceNumber );
@@ -54,6 +55,8 @@ QtDice::QtDice( int number, QWidget *parent )
 	setMinimumSize( 520, 580 );
 	setMaximumSize( 520, 580 );
 
+	connect(quitShortCut.data(), &QShortcut::activated, this, &QApplication::quit);
+
 	// GUI is all set, handle the argv that is passed to the QtDice ctor
 	if ( ( diceNumber > 1 ) && ( diceNumber < 6 ) ) { reload( diceNumber ); }
 	else if ( diceNumber != 0 )
@@ -63,7 +66,7 @@ QtDice::QtDice( int number, QWidget *parent )
 	}
 }
 
-QtDice::~QtDice() {}
+QtDice::~QtDice() = default;
 
 void QtDice::QtDiceConfiguration()
 {
@@ -131,20 +134,20 @@ void QtDice::enableWidgets()
 // This function accepts an image_number which is already have been
 // generated randomly in Dice class members. Based on image_number it
 // selects the proper dice image to show
-void QtDice::imageUpdate( int image_number )
+void QtDice::imageUpdate( int imageNumber )
 {
 	//Now deal with which image will be loaded based on image_number
 	//The whole point of this program is here
 	QString imageName {":/resources/images/dice-%1.png"};
 
-	if ( ( image_number < 0 ) || ( image_number > 6 ) )
+	if ( ( imageNumber < 0 ) || ( imageNumber > 6 ) )
 	{
-		qDebug() << "Oops! Very wrong number...";
-		QString msg_error = "A dice doesn't have this number : " + ( QString( "%1" ).arg( image_number ) );
+		QString errorMsg = "A dice doesn't have this number : " 
+					+ ( QString( "%1" ).arg( imageNumber ) );
 		QMessageBox::critical( this, tr( "QtDice" ),
-				       tr( msg_error.toLocal8Bit().constData() ) );
+				       tr( errorMsg.toLocal8Bit().constData() ) );
 	}
-	else { image->load( imageName.arg( image_number ) ); }
+	else { image->load( imageName.arg( imageNumber ) ); }
 }
 
 bool QtDice::isSoundEnabled()
@@ -203,6 +206,8 @@ void QtDice::createMenus()
 
 	menuFile->addAction( actionRoll.data() );
 	actionRoll->setIcon( *qtdiceIcon.data() );
+	actionRoll->setShortcuts({QKeySequence::Refresh ,
+				QKeySequence(Qt::ControlModifier + Qt::Key_R)});
 	connect( actionRoll.data(), &QAction::triggered, this,
 		 static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
 
@@ -210,10 +215,14 @@ void QtDice::createMenus()
 
 	menuFile->addAction( actionQuit.data() );
 	actionQuit->setIcon( *exitIcon.data() );
+	actionQuit->setShortcuts({ QKeySequence(Qt::ControlModifier + Qt::Key_Q), 
+				 QKeySequence::Close });
 	connect( actionQuit.data(), &QAction::triggered, this, QApplication::quit );
 
 	menuEdit->addAction( actionConfigure.data() );
 	connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
+	actionConfigure->setShortcuts({ QKeySequence(Qt::ControlModifier + Qt::Key_E), 
+				QKeySequence::Preferences });
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
 	menuAbout->addAction( actionAbout.data() );
@@ -222,6 +231,7 @@ void QtDice::createMenus()
 
 	menuAbout->addAction( actionAboutQt.data() );
 	actionAboutQt->setIcon( QIcon( ":/resources/images/Qt_logo_2016.svg.ico" ) );
+	actionAboutQt->setShortcut( QKeySequence(Qt::ControlModifier + Qt::Key_B) );
 	connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );
 }
 
@@ -290,6 +300,7 @@ void QtDice::setupWidgets()
 {
 	btnRoll->setIcon( QIcon::fromTheme( "roll", *qtdiceIcon.data() ) );
 	btnQuit->setIcon( QIcon::fromTheme( "application-exit", *exitIcon.data() ) );
+
 
 	btnReset->setEnabled( false );
 

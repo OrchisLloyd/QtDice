@@ -44,7 +44,7 @@ public:
     ~QtDice();
 
     void animateDice();
-    void imageUpdate ( int image_num );
+    void imageUpdate ( int imageNumber );
 
 private slots:
     //void aboutQtDice();
@@ -90,6 +90,7 @@ private:
     QScopedPointer<QAction> actionAbout;
     QScopedPointer<QAction> actionSettings;
     QScopedPointer<QSpinBox> spinBox;
+    QScopedPointer<QShortcut> quitShortCut;
     int imageNumber;
 
     void createMenus();
