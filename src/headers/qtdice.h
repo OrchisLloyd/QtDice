@@ -31,7 +31,7 @@
 #include <QtWidgets/QMessageBox>
 
 #ifdef  ENABLE_SOUND
-        #include <QtMultimedia/QSoundEffect>
+#include <QtMultimedia/QSoundEffect>
 #endif
 
 Q_DECLARE_LOGGING_CATEGORY ( LOG_QTDICE )

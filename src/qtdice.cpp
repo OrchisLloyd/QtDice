@@ -226,7 +226,7 @@ void QtDice::createMenus()
 void QtDice::setupConnections()
 {
 	//Connect spinBox to reload function and the label_warning
-	connect( spinBox.data(), QOverload<int>::of( &QSpinBox::valueChanged ), this,
+	connect( spinBox.data(), static_cast<void ( QSpinBox::* )( int )> ( &QSpinBox::valueChanged ), this,
 		 static_cast<void ( QtDice::* )( int ) > ( &QtDice::reload ) );
 
 	//Connect buttons to functions
@@ -240,15 +240,14 @@ void QtDice::setupConnections()
 void QtDice::setupConnectionsOfAnimation()
 {
 	// When animation starts, disable spinBox, the buttons etc...
-	connect( movie.data(), &QMovie::started,
-		 this, &QtDice::disableWidgets, Qt::UniqueConnection );
+	connect( movie.data(), &QMovie::started, this, &QtDice::disableWidgets );
 
 	//Thanks to the guys at this thread :
 	//https://forum.qt.io/topic/88197/custom-signal-to-slot-the-slot-requires-more-arguments-than-the-signal-provides
 	connect( movie.data(), &QMovie::frameChanged,
 		 this, std::bind( &QtDice::qmovieFrameChanged, this, movie.data() ) );
 
-	connect( this, &QtDice::qmovieFrameChanged, this, &QtDice::stopLastQMovieFrame);
+	connect( this, &QtDice::qmovieFrameChanged, this, &QtDice::stopLastQMovieFrame );
 
 	// When movie is finished, re-enable spinBox, buttons etc
 	connect( movie.data(), &QMovie::finished, this, &QtDice::enableWidgets );
