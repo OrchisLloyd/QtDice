@@ -8,6 +8,8 @@
 #include "headers/about.h"
 #include "headers/configure.h"
 
+#include <functional>
+
 QtDice::QtDice( int number, QWidget *parent )
 	: diceNumber( number ),
 	  QMainWindow( parent ),
