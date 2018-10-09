@@ -22,7 +22,7 @@ parserArguments=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-para
 parserArgumentsC=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c99
 
 [CustomDefinesAndIncludes][ProjectPath0][Compiler]
-Name=MSVC
+Name=Clang
 
 [Launch]
 Launch Configurations=Launch Configuration 0
@@ -50,3 +50,6 @@ Make Binary=nmake
 
 [Project]
 VersionControlSupport=kdevgit
+
+[SourceFileTemplates]
+LastUsedTemplate=C:/Users/Petros/AppData/Local/kdevfiletemplates/template_descriptions/cpp_basic.desktop

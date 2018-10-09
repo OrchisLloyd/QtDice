@@ -26,10 +26,10 @@ private:
 public:
 	static Dice *instance();
 
-	int getNumber();
-	void setNumber( int num );
-	void roll();
-	void show();
+	int	getNumber();
+	void	setNumber( int num );
+	void	roll();
+	void	show();
 };
 #endif /* dice_hpp */
 // kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 

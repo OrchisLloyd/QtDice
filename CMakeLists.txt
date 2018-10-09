@@ -60,6 +60,7 @@ set(qtdice_SRC
 	src/qtdice.cpp
 	src/Dice/dice.cpp
 	#src/About/about.cpp
+	src/Animation/animation.cpp
 	src/Settings/configure.cpp
 )
 

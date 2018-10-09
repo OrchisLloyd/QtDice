@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include <Qt>
+#include <QtCore/Qthread>
 #include <QtCore/QLoggingCategory>
 #include <QtCore/QSettings>
 #include <QtCore/QStandardPaths>
@@ -91,6 +92,7 @@ private:
     QScopedPointer<QAction> actionSettings;
     QScopedPointer<QSpinBox> spinBox;
     QScopedPointer<QShortcut> quitShortCut;
+    QThread *thread;
     int imageNumber;
 
     void createMenus();

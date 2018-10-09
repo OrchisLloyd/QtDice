@@ -35,6 +35,7 @@ QtDice::QtDice( int number, QWidget *parent )
 	  qtdiceIcon( new QIcon( ":/resources/images/dice.ico" ) ),
 	  exitIcon( new QIcon( ":/resources/images/exit.ico" ) ),
 	  quitShortCut( new QShortcut( QKeySequence( Qt::Key_Escape ), this ) ),
+	  thread( new QThread( this ) ),
 	  pDice( Dice::instance() )
 {
 	qDebug() << QString( "The number given from argv is %1" ).arg( diceNumber );
@@ -54,8 +55,6 @@ QtDice::QtDice( int number, QWidget *parent )
 	centralWidget()->setLayout( gridLayout.data() );
 	setMinimumSize( 520, 580 );
 	setMaximumSize( 520, 580 );
-
-	connect(quitShortCut.data(), &QShortcut::activated, this, &QApplication::quit);
 
 	// GUI is all set, handle the argv that is passed to the QtDice ctor
 	if ( ( diceNumber > 1 ) && ( diceNumber < 6 ) ) { reload( diceNumber ); }
@@ -142,8 +141,8 @@ void QtDice::imageUpdate( int imageNumber )
 
 	if ( ( imageNumber < 0 ) || ( imageNumber > 6 ) )
 	{
-		QString errorMsg = "A dice doesn't have this number : " 
-					+ ( QString( "%1" ).arg( imageNumber ) );
+		QString errorMsg = "A dice doesn't have this number : "
+				   + ( QString( "%1" ).arg( imageNumber ) );
 		QMessageBox::critical( this, tr( "QtDice" ),
 				       tr( errorMsg.toLocal8Bit().constData() ) );
 	}
@@ -175,6 +174,7 @@ void QtDice::reload()
 
 	pDice->roll();
 	imageUpdate( pDice->getNumber() );
+
 }
 
 // This is a reload function. After the animation is over,
@@ -206,8 +206,9 @@ void QtDice::createMenus()
 
 	menuFile->addAction( actionRoll.data() );
 	actionRoll->setIcon( *qtdiceIcon.data() );
-	actionRoll->setShortcuts({QKeySequence::Refresh ,
-				QKeySequence(Qt::ControlModifier + Qt::Key_R)});
+	actionRoll->setShortcuts( {QKeySequence::Refresh ,
+				   QKeySequence( Qt::ControlModifier + Qt::Key_R )
+				  } );
 	connect( actionRoll.data(), &QAction::triggered, this,
 		 static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
 
@@ -215,14 +216,16 @@ void QtDice::createMenus()
 
 	menuFile->addAction( actionQuit.data() );
 	actionQuit->setIcon( *exitIcon.data() );
-	actionQuit->setShortcuts({ QKeySequence(Qt::ControlModifier + Qt::Key_Q), 
-				 QKeySequence::Close });
+	actionQuit->setShortcuts( { QKeySequence( Qt::ControlModifier + Qt::Key_Q ),
+				    QKeySequence::Close
+				  } );
 	connect( actionQuit.data(), &QAction::triggered, this, QApplication::quit );
 
 	menuEdit->addAction( actionConfigure.data() );
 	connect( actionConfigure.data(), &QAction::triggered, this, &QtDice::QtDiceConfiguration );
-	actionConfigure->setShortcuts({ QKeySequence(Qt::ControlModifier + Qt::Key_E), 
-				QKeySequence::Preferences });
+	actionConfigure->setShortcuts( { QKeySequence( Qt::ControlModifier + Qt::Key_E ),
+					 QKeySequence::Preferences
+				       } );
 	actionConfigure->setIcon( QIcon::fromTheme( "settings-configure" ) );
 
 	menuAbout->addAction( actionAbout.data() );
@@ -231,7 +234,7 @@ void QtDice::createMenus()
 
 	menuAbout->addAction( actionAboutQt.data() );
 	actionAboutQt->setIcon( QIcon( ":/resources/images/Qt_logo_2016.svg.ico" ) );
-	actionAboutQt->setShortcut( QKeySequence(Qt::ControlModifier + Qt::Key_B) );
+	actionAboutQt->setShortcut( QKeySequence( Qt::ControlModifier + Qt::Key_B ) );
 	connect( actionAboutQt.data(), &QAction::triggered, this, &QApplication::aboutQt );
 }
 
@@ -244,6 +247,7 @@ void QtDice::setupConnections()
 	//Connect buttons to functions
 	connect( btnRoll.data(), &QPushButton::clicked, this,
 		 static_cast<void ( QtDice::* )( void ) > ( &QtDice::reload ) );
+
 	connect( btnQuit.data(), &QPushButton::clicked, this, &QApplication::quit );
 
 	connect( btnReset.data(), &QPushButton::clicked, this, &QtDice::resetQtDice );

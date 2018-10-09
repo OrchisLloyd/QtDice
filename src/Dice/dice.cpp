@@ -23,19 +23,13 @@ Dice *Dice::m_pInstance = nullptr;
 
 Dice *Dice::instance()
 {
-	if ( !m_pInstance )
-	{
-		m_pInstance = new Dice;
-	}
+	if ( !m_pInstance ) { m_pInstance = new Dice; }
 	return m_pInstance;
 }
 
 Dice::Dice( int num ) : d_dice( new DiceImplementation( num ) ) {}
 
-Dice::Dice()
-{
-	d_dice.reset( new DiceImplementation );
-}
+Dice::Dice() { d_dice.reset( new DiceImplementation ); }
 
 Dice::~Dice() = default;
 
@@ -46,16 +40,10 @@ int Dice::getNumber()
 		std::cerr << "Abort" << std::endl;
 		exit( -1 );
 	}
-	else
-	{
-		return d_dice->m_num;
-	}
+	else { return d_dice->m_num; }
 }
 
-void Dice::setNumber( int num )
-{
-	d_dice->m_num = num;
-}
+void Dice::setNumber( int num ) { d_dice->m_num = num; }
 
 void Dice::roll()
 {
