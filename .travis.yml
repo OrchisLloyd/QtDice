@@ -1,46 +1,11 @@
 sudo: required
 dist: trusty
 language: cpp
-
-#matrix:
-  #include:
-    #- compiler: gcc
-      #addons:
-        #apt:
-          #sources:
-            #- ubuntu-toolchain-r-test
-          #packages:
-            #- g++-7
-      #env: COMPILER=g++-7
-    #- compiler: gcc
-      #addons:
-        #apt:
-          #sources:
-            #- ubuntu-toolchain-r-test
-          #packages:
-            #- g++-8
-      #env: COMPILER=g++-8
-    #- compiler: clang
-      #addons:
-        #apt:
-          #sources:
-            #- ubuntu-toolchain-r-test
-            #- llvm-toolchain-precise-6
-          #packages:
-            #- clang-6
-      #env: COMPILER=clang++-6
-    #- compiler: clang
-      #addons:
-        #apt:
-          #sources:
-            #- ubuntu-toolchain-r-test
-            #- llvm-toolchain-precise-7
-          #packages:
-            #- clang-7
-      #env: COMPILER=clang++-7
-
       
-os: linux
+os:
+  - windows
+  - linux
+
 addons:
   apt:
     sources:
@@ -49,12 +14,17 @@ addons:
       - g++-8
       
 before_install:
-        - sudo apt-get update -qq
+        before_install:
+#        - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then           ; fi
+#        - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then ; fi
+        - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
 
 install:
-        - sudo apt-get install qtbase5-dev g++-8
-        - sudo apt-get install qt5-default qttools5-dev-tools
-        - sudo apt-get install cmake cppcheck
+        if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+                - sudo apt-get install qtbase5-dev g++-8
+                - sudo apt-get install qt5-default qttools5-dev-tools
+                - sudo apt-get install cmake cppcheck
+        fi
 
 script:
         - export CC=gcc-8

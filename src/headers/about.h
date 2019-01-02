@@ -41,9 +41,12 @@ private:
     QScopedPointer<QPushButton> pushButton;
     QScopedPointer<QTabWidget> tabWidget;
     QScopedPointer<QGridLayout> gridLayout;
-    QScopedPointer<QWidget> w_info, w_contributions, w_license, w_thanks;
+    QScopedPointer<QWidget> w_info;
+    QScopedPointer<QWidget> w_contributions;
+    QScopedPointer<QWidget> w_license;
+    QScopedPointer<QWidget> w_thanks;
 
     void setupLayouts();
 };
 #endif                                                      // ABOUT_H
-// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+// kate: indent-mode cstyle; replace-tabs on; 

@@ -21,17 +21,18 @@ set(Dice_VERSION_MINOR 0)
 configure_file(${PROJECT_SOURCE_DIR}/src/version.h.in ${PROJECT_SOURCE_DIR}/src/headers/version.h @ONLY)
 
 #file(GLOB TS_FILES "${PROJECT_SOURCE_DIR}/translations/*.ts")
-#add_subdirectory(src/About)
+add_subdirectory(src/About)
 add_subdirectory(src/Settings)
-include_directories(src)
+include_directories(src/)
+include_directories(src/headers/)
+file(TO_NATIVE_PATH "${Qt5Widgets_INCLUDE_DIRS}" Qt5Widgets_INC_DIR)
 
 message(STATUS ${CMAKE_CXX_FLAGS})
 #Now setup other options
 if(WIN32) # Check if we are on Windows and look for Qt5
 	set(PLATFORM_TARGET "WIN32")
 	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
-		set(CMAKE_PREFIX_PATH "C:\\Qt\\5.11.1\\msvc2017_64\\lib\\cmake\\;C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
-		include_directories("C:\\Qt\\5.11.1\\msvc2017_64\\include\\")
+		include_directories(${Qt5Widgets_INC_DIR})
 	else()
 		check_cxx_compiler_flag("-std=c++11" COMPILER_SUPPORTS_CXX11)
 		if(NOT ${COMPILER_SUPPORTS_CXX11})
@@ -59,7 +60,8 @@ set(qtdice_SRC
 	src/main.cpp
 	src/qtdice.cpp
 	src/Dice/dice.cpp
-	#src/About/about.cpp
+	src/About/about.cpp
+	src/About/infotab.cpp
 	src/Animation/animation.cpp
 	src/Settings/configure.cpp
 )
@@ -71,15 +73,16 @@ set(qtdice_H
 )
 
 # Tell CMake to create the executable
-add_executable(${CMAKE_PROJECT_NAME} ${PLATFORM_TARGET} ${qtdice_SRC} ${qtdice_RES})
+#add_executable(${CMAKE_PROJECT_NAME} ${PLATFORM_TARGET} ${qtdice_SRC} ${qtdice_RES})
+add_executable(${CMAKE_PROJECT_NAME} ${qtdice_SRC} ${qtdice_RES})
 
 if(WIN32) # Check if we are on Windows
 	if(CMAKE_CXX_COMPILER_ID MATCHES MSVC) # Check if we are using the Visual Studio compiler.
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHc /std:c++latest ")
 		set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
 			WIN32_EXECUTABLE YES
-			COMPILE_OPTIONS "/c"
-			LINK_FLAGS "/ENTRY:mainCRTStartup /VERBOSE /MANIFEST:NO"
+			COMPILE_OPTIONS "/Gd"
+			LINK_FLAGS "/SUBSYSTEM:WINDOWS /VERBOSE /MANIFEST:NO"
 			LINK_LIBRARIES "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib 
 					ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib"
 		)
@@ -98,11 +101,6 @@ elseif(APPLE)
 			MACOSX_BUNDLE YES
 	)
 elseif(UNIX)
-# 	find_package(ECM REQUIRED NO_MODULE)
-# 	set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
-# 	include(KDEInstallDirs)
-# 	include(KDECMakeSettings)
-# 	include(KDECompilerSettings)
 	include(FeatureSummary)
 else()
 	message(SEND_ERROR "You are on an unsupported platform! (Not Win32, Mac OS X or Unix)")

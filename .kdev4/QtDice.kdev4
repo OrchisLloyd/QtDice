@@ -15,14 +15,25 @@ Extra Arguments=
 Install Directory=C:/Program Files (x86)/QtDice
 Runtime=Host System
 
+[Cppcheck]
+checkConfig=true
+checkInformation=true
+checkPerformance=true
+checkPortability=true
+checkStyle=true
+checkUnusedFunction=true
+inconclusiveAnalysis=true
+
 [CustomDefinesAndIncludes][ProjectPath0]
 Path=.
 parseAmbiguousAsCPP=true
 parserArguments=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++14
 parserArgumentsC=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c99
+parserArgumentsCuda=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -std=c++11
+parserArgumentsOpenCL=-ferror-limit=100 -fspell-checking -Wdocumentation -Wunused-parameter -Wunreachable-code -Wall -cl-std=CL1.1
 
 [CustomDefinesAndIncludes][ProjectPath0][Compiler]
-Name=Clang
+Name=MSVC
 
 [Launch]
 Launch Configurations=Launch Configuration 0
@@ -46,7 +57,7 @@ Working Directory=
 isExecutable=false
 
 [MakeBuilder]
-Make Binary=nmake
+Default Make Environment Profile=Qt5_MSVC
 
 [Project]
 VersionControlSupport=kdevgit

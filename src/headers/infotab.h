@@ -18,7 +18,7 @@
 #ifndef INFOTAB_H
 #define INFOTAB_H
 
-#include <QtWidgets/QScopedPointer>
+#include <QtCore/QScopedPointer>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
@@ -32,9 +32,13 @@ public:
 
 private:
     QScopedPointer<QGridLayout> gridLayout;
-    QScopedPointer<QLabel> labelIcon, labelName, labelEmail, labelGithub, labelVersion;
+    QScopedPointer<QLabel> labelIcon;
+    QScopedPointer<QLabel> labelName;
+    QScopedPointer<QLabel> labelEmail;
+    QScopedPointer<QLabel> labelGithub;
+    QScopedPointer<QLabel> labelVersion;
 
 };
 
 #endif // INFOTAB_H
-// kate: indent-mode cstyle; indent-width 4; replace-tabs on; 
+// kate: indent-mode cstyle; replace-tabs on; 

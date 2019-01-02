@@ -7,19 +7,22 @@
  * when the user clicks the "About QtDice" action.
  */
 
-#include "../headers/about.h"
+#include "about.h"
+#include "infotab.h"
 
 About::About( QWidget *parent )
-	: QDialog( parent ),
-	  m_name( new QString ),
-	  pushButton( new QPushButton( tr( "&Close" ), this ) ),
-	  tabWidget( new QTabWidget( this ) ),
-	  gridLayout( new QGridLayout( this ) ),
-	  w_info( new QWidget( this ) ),
-	  w_contributions( new QWidget( this ) ),
-	  w_license( new QWidget( this ) ),
-	  w_thanks( new QWidget( this ) )
-{}
+    : QDialog( parent ),
+      m_name( new QString ),
+      pushButton( new QPushButton( tr( "&Close" ), this ) ),
+      tabWidget( new QTabWidget( this ) ),
+      gridLayout( new QGridLayout( this ) ),
+      w_info( new QWidget( this ) ),
+      w_contributions( new QWidget( this ) ),
+      w_license( new QWidget( this ) ),
+      w_thanks( new QWidget( this ) )
+{
+    tabWidget->addTab(w_info.data(), tr("InfoTab"));
+}
 
 // void About::show()
 // {
@@ -29,5 +32,5 @@ About::About( QWidget *parent )
 // void About::setName( QString name )
 // {
 // }
-//#include "../headers/moc_about.cpp"
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+#include "moc_about.cpp"
+// kate: indent-mode cstyle; replace-tabs on; 

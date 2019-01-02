@@ -16,23 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../../headers/infotab.h"
+#include "infotab.h"
 
 InfoTab::InfoTab( QWidget *parent )
-	: QWidget( parent ),
-	  gridLayout( new QGridLayout( this ) ),
-	  labelIcon( new QLabel( "images/dice.png", this ) ),
-	  labelName( new QLabel( tr( "Petross404" ), this ) ),
-	  labelEmail( new QLabel( tr( "<petross404@gmail.com>" ), this ) ),
-	  labelGithub( new QLabel( tr( "" ), this ) ),
-	  labelVersion( new QLabel( tr( "" ), this ) )
+    : QWidget( parent ),
+      gridLayout( new QGridLayout( this ) ),
+      labelIcon( new QLabel( "images/dice.png", this ) ),
+      labelName( new QLabel( tr( "Petross404" ), this ) ),
+      labelEmail( new QLabel( tr( "<petross404@gmail.com>" ), this ) ),
+      labelGithub( new QLabel( tr( "" ), this ) ),
+      labelVersion( new QLabel( tr( "" ), this ) )
 {
-	gridLayout->addWidget( labelIcon.data(), 0, 0 );
-	gridLayout->addWidget( labelName.data(), 0, 1 );
-	gridLayout->addWidget( labelVersion.data(), 1, 1 );
-	gridLayout->addWidget( labelEmail.data(), 2, 1 );
-	gridLayout->addWidget( labelGithub.data(), 3, 1 );
+    gridLayout->addWidget( labelIcon.data(), 0, 0 );
+    gridLayout->addWidget( labelName.data(), 0, 1 );
+    gridLayout->addWidget( labelVersion.data(), 1, 1 );
+    gridLayout->addWidget( labelEmail.data(), 2, 1 );
+    gridLayout->addWidget( labelGithub.data(), 3, 1 );
 
-	setLayout( gridLayout.data() );
+    setLayout( gridLayout.data() );
 }
-// kate: indent-mode cstyle; indent-width 8; replace-tabs off; tab-width 8; 
+
+//#include "infotab_moc.cpp"
+// kate: indent-mode cstyle; replace-tabs on; 
